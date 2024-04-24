@@ -5,6 +5,7 @@ import com.github.dangelcrack.utils.XMLManager;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Objects;
 
 public class ConnectionMariaDB {
     private final static String FILE="connection.xml";
@@ -15,7 +16,13 @@ public class ConnectionMariaDB {
         ConnectionProperties properties = (ConnectionProperties) XMLManager.readXML(new ConnectionProperties(),FILE);
 
         try {
+            if(Objects.equals(properties.getDatabase(), "pokedex")){
+                System.out.println("Se ha encontrado");
+            }else{
+                System.out.println("No se ha encontrado");
+            }
             conn = DriverManager.getConnection(properties.getURL(),properties.getUser(),properties.getPassword());
+
         } catch (SQLException e) {
             e.printStackTrace();
             conn=null;

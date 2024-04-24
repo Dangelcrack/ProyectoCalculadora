@@ -4,6 +4,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
+import java.sql.Connection;
 
 @XmlRootElement(name="connection")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -78,6 +79,7 @@ public class ConnectionProperties implements Serializable {
     }
 
     public String getURL(){
+
         return "jdbc:mariadb://"+server+":"+port+"/"+database;
     }
 }
