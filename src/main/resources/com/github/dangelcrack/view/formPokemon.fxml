@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" prefHeight="854.0" prefWidth="466.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.dangelcrack.view.FormPokemonController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+   <children>
+      <TextField fx:id="name" promptText="Name" />
+      <TextField fx:id="firstType" promptText="firstType" />
+      <TextField fx:id="secondType" promptText="secondType" />
+      <TextField fx:id="photo" promptText="Photo" />
+      <TextField fx:id="level" promptText="LEVEL" />
+      <TextField fx:id="hp" promptText="HP" />
+      <TextField fx:id="attack" promptText="attack" />
+      <TextField fx:id="defense" promptText="defense" />
+      <TextField fx:id="spattack" promptText="SpecialAttack" />
+      <TextField fx:id="spdefense" promptText="SpecialDefense" />
+      <TextField fx:id="speed" promptText="Speed" />
+      <TextField fx:id="iv_hp" promptText="Iv_HP" />
+      <TextField fx:id="iv_attack" promptText="Iv_Attack" />
+      <TextField fx:id="iv_defense" promptText="Iv_Defense" />
+      <TextField fx:id="iv_spattack" promptText="Iv_SpAttack" />
+      <TextField fx:id="iv_spdefense" promptText="Iv_SpecialDefense" />
+      <TextField fx:id="iv_speed" promptText="Iv_Speed" />
+      <TextField fx:id="ev_hp" promptText="Ev_HP" />
+      <TextField fx:id="ev_attack" promptText="Ev_Attack" />
+      <TextField fx:id="ev_defense" promptText="Ev_Defense" />
+      <TextField fx:id="ev_spattack" promptText="Ev_SpAttack" />
+      <TextField fx:id="ev_spdefense" promptText="Ev_SpecialDefense" />
+      <TextField fx:id="ev_speed" promptText="Ev_Speed" />
+      <Button mnemonicParsing="false" onAction="#closeWindow" text="Agregar" />
+   </children>
+</VBox>
