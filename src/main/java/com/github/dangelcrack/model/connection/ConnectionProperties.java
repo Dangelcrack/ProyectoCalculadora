@@ -5,6 +5,9 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 @XmlRootElement(name="connection")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -27,7 +30,7 @@ public class ConnectionProperties implements Serializable {
     public ConnectionProperties() {
     }
 
-    public String getServer() {
+        public String getServer() {
         return server;
     }
 
@@ -80,6 +83,6 @@ public class ConnectionProperties implements Serializable {
 
     public String getURL(){
 
-        return "jdbc:mariadb://"+server+":"+port+"/"+database;
+        return "jdbc:mariadb://"+server+":"+port;
     }
 }

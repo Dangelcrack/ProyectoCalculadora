@@ -7,16 +7,16 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.developodo.view.MainController">
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.dangelcrack.view.MainController">
     <children>
-        <Label text="AUTORES" />
+        <Label text="Pokemon" />
       <TableView fx:id="tableView" editable="true" prefHeight="200.0" prefWidth="200.0">
         <columns>
-          <TableColumn fx:id="columnDNI" prefWidth="87.0" text="DNI" />
-          <TableColumn fx:id="columnName" prefWidth="112.0" text="NOMBRE" />
+          <TableColumn fx:id="columnName" prefWidth="87.0" text="Nombre" />
+          <TableColumn fx:id="columnFirstType" prefWidth="112.0" text="Tipo" />
         </columns>
       </TableView>
-      <Button mnemonicParsing="false" onAction="#agregaAuthor" text="Agregar" />
+      <Button mnemonicParsing="false" onAction="#agregaPokemon" text="Agregar" />
     </children>
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

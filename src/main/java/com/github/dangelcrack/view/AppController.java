@@ -42,8 +42,6 @@ public class AppController extends Controller implements Initializable {
         stage.setScene(_scene);
         view.controller.onOpen(parent);
         stage.showAndWait();
-        //podríamos leer que ha devuelto...
-
     }
 
 
