@@ -1,7 +1,10 @@
 package com.github.dangelcrack.model.entity;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Pokemon {
     private String pokemonName;
@@ -27,12 +30,13 @@ public class Pokemon {
     private int ev_SpecialAttack;
     private int ev_SpecialDefense;
     private int ev_Speed;
+    private List<Move> moves;
 
     public Pokemon(String pokemonName, String firstType, String secondType, String photoPokemon, int levelCap,
                    int health, int attack, int defense, int specialAttack, int specialDefense, int speed,
                    int iv_Health, int iv_Attack, int iv_Defense, int iv_SpecialAttack, int iv_SpecialDefense,
                    int iv_Speed, int ev_Health, int ev_Attack, int ev_Defense, int ev_SpecialAttack,
-                   int ev_SpecialDefense, int ev_Speed) {
+                   int ev_SpecialDefense, int ev_Speed,List<Move> moves) {
         this.pokemonName = pokemonName;
         this.firstType = firstType;
         this.secondType = secondType;
@@ -56,6 +60,7 @@ public class Pokemon {
         this.ev_SpecialAttack = ev_SpecialAttack;
         this.ev_SpecialDefense = ev_SpecialDefense;
         this.ev_Speed = ev_Speed;
+        this.moves=moves;
     }
 
     public Pokemon() {
@@ -243,6 +248,34 @@ public class Pokemon {
 
     public void setEv_Speed(int ev_Speed) {
         this.ev_Speed = ev_Speed;
+    }
+    public String getMovesNamesString(Pokemon pokemon) {
+        List<Move> movesList = pokemon.getMoves();
+        return movesList == null ? "" :
+                movesList.stream()
+                        .map(Move::getNameMove)
+                        .collect(Collectors.joining(", "));
+    }
+
+    public List<Move> getMoves(){
+        return moves;
+    }
+    public void setMoves(List<Move> moves){ this.moves = moves;}
+    public void addMove(Move move){
+        if(moves==null){
+            moves = new ArrayList<>();
+        }
+        if(!moves.contains(move)){
+            moves.add(move);
+        }
+    }
+    public Move getMove(Move move){
+        Move result = null;
+        if(moves!=null){
+            int i = moves.indexOf(move);
+            result = moves.get(i);
+        }
+        return result;
     }
 
     @Override

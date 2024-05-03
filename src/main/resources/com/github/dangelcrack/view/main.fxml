@@ -7,13 +7,15 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.dangelcrack.view.MainController">
+<VBox alignment="CENTER" prefHeight="347.0" prefWidth="729.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.dangelcrack.view.MainController">
     <children>
         <Label text="Pokemon" />
       <TableView fx:id="tableView" editable="true" prefHeight="200.0" prefWidth="200.0">
         <columns>
           <TableColumn fx:id="columnName" prefWidth="87.0" text="Nombre" />
           <TableColumn fx:id="columnFirstType" prefWidth="112.0" text="Tipo" />
+            <TableColumn fx:id="columnsecondType" prefWidth="112.0" text="Tipo2" />
+            <TableColumn fx:id="columnMoves" prefWidth="489.0" text="Movimientos" />
         </columns>
       </TableView>
       <Button mnemonicParsing="false" onAction="#agregaPokemon" text="Agregar" />

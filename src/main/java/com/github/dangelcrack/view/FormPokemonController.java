@@ -1,17 +1,36 @@
 package com.github.dangelcrack.view;
 
+import com.github.dangelcrack.model.dao.MoveDAO;
+import com.github.dangelcrack.model.entity.Move;
 import com.github.dangelcrack.model.entity.Pokemon;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class FormPokemonController extends Controller implements Initializable {
+    @FXML
+    private VBox vbox;
     @FXML
     private TextField firstType;
     @FXML
@@ -20,6 +39,8 @@ public class FormPokemonController extends Controller implements Initializable {
     private TextField secondType;
     @FXML
     private TextField photo;
+    @FXML
+    private ImageView imageView;
     @FXML
     private TextField level;
     @FXML
@@ -59,7 +80,17 @@ public class FormPokemonController extends Controller implements Initializable {
     @FXML
     private TextField ev_speed;
 
+    @FXML
+    private ChoiceBox<Move> moveChoiceBox1;
 
+    @FXML
+    private ChoiceBox<Move> moveChoiceBox2;
+
+    @FXML
+    private ChoiceBox<Move> moveChoiceBox3;
+
+    @FXML
+    private ChoiceBox<Move> moveChoiceBox4;
     private MainController controller;
 
     @Override
@@ -74,8 +105,23 @@ public class FormPokemonController extends Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        URL imageUrl = getClass().getResource("/com/github/dangelcrack/media/img.jpg");
+        BackgroundImage backgroundImage = new BackgroundImage(
+                new Image(imageUrl.toExternalForm()),
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.DEFAULT,
+                new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false)
+        );
+        vbox.setBackground(new Background(backgroundImage));
+        List<Move> moves = MoveDAO.build().findAll();
+        ObservableList<Move> observableMoves = FXCollections.observableArrayList(moves);
+        moveChoiceBox1.setItems(observableMoves);
+        moveChoiceBox2.setItems(observableMoves);
+        moveChoiceBox3.setItems(observableMoves);
+        moveChoiceBox4.setItems(observableMoves);
     }
+
 
     @FXML
     private void closeWindow(Event event) {
@@ -98,10 +144,51 @@ public class FormPokemonController extends Controller implements Initializable {
         int evSpattackValue = Integer.parseInt(ev_spattack.getText());
         int evSpdefenseValue = Integer.parseInt(ev_spdefense.getText());
         int evSpeedValue = Integer.parseInt(ev_speed.getText());
+        Move move1 = moveChoiceBox1.getValue();
+        Move move2 = moveChoiceBox2.getValue();
+        Move move3 = moveChoiceBox3.getValue();
+        Move move4 = moveChoiceBox4.getValue();
+        List<Move> moves = new ArrayList<>();
+        if (move1 != null) moves.add(move1);
+        if (move2 != null) moves.add(move2);
+        if (move3 != null) moves.add(move3);
+        if (move4 != null) moves.add(move4);
         Pokemon pokemon = new Pokemon(name.getText(), firstType.getText(), secondType.getText(), photo.getText(), levelValue, hpValue, attackValue, defenseValue, spattackValue, spdefenseValue, speedValue,
                 ivHpValue, ivAttackValue, ivDefenseValue, ivSpattackValue, ivSpdefenseValue, ivSpeedValue,
-                evHpValue, evAttackValue, evDefenseValue, evSpattackValue, evSpdefenseValue, evSpeedValue);
+                evHpValue, evAttackValue, evDefenseValue, evSpattackValue, evSpdefenseValue, evSpeedValue,moves);
         this.controller.savePokemon(pokemon);
         ((Node) (event.getSource())).getScene().getWindow().hide();
     }
+
+    @FXML
+    private void selectPhoto() {
+        Stage stage = (Stage) photo.getScene().getWindow();
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select Photo");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
+        );
+        File selectedFile = fileChooser.showOpenDialog(stage);
+        if (selectedFile != null) {
+            String photoPath = selectedFile.getAbsolutePath();
+            photo.setText(photoPath);
+            String mediaPath = "src/main/resources/com/github/dangelcrack/media/";
+
+            File destinationFolder = new File(mediaPath);
+            if (!destinationFolder.exists()) {
+                destinationFolder.mkdirs();
+            }
+
+            File destinationFile = new File(destinationFolder.getAbsolutePath() + "/" + selectedFile.getName());
+            try {
+                Files.copy(selectedFile.toPath(), destinationFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                Image image = new Image(destinationFile.toURI().toString());
+                imageView.setImage(image);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
 }

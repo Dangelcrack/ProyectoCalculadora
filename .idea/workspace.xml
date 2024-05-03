@@ -5,37 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="63469422-25db-44e1-a049-4cbbe737eae6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DBPokedex.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/Ejecutable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/model/dao/DAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/model/dao/MoveDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/model/dao/ObjDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/model/dao/PokemonDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/model/entity/Move.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/model/entity/Obj.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/model/entity/Pokemon.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/test/loadConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/test/saveConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/AboutController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/FormPokemonController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/connection.xml" beforeDir="false" afterPath="$PROJECT_DIR$/connection.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/model/connection/ConnectionMariaDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/model/connection/ConnectionMariaDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/model/connection/ConnectionProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/model/connection/ConnectionProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DBPokedex.sql" beforeDir="false" afterPath="$PROJECT_DIR$/DBPokedex.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/model/dao/MoveDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/model/dao/MoveDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/model/dao/PokemonDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/model/dao/PokemonDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/model/entity/Move.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/model/entity/Move.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/model/entity/Pokemon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/model/entity/Pokemon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/AppController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/PrimaryController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/Scenes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/Scenes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/SecondaryController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/primary.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/secondary.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/view/about.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/view/about.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/view/formAuthor.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/view/formPokemon.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/view/layout.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/view/layout.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/FormPokemonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/FormPokemonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/view/formPokemon.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/view/formPokemon.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/view/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/view/main.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -72,27 +52,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "ramaprincipal",
-    "last_opened_file_path": "C:/Users/Yo/IdeaProjects/ProyectoCalculadora/src/main/resources/com/github/dangelcrack/view",
-    "settings.editor.selected.configurable": "preferences.JavaFX"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;ramaprincipal&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Yo/IdeaProjects/ProyectoCalculadora/src/main/resources/com/github/dangelcrack/view&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Yo\IdeaProjects\ProyectoCalculadora\src\main\resources\com\github\dangelcrack\view" />
       <recent name="C:\Users\yo\IdeaProjects\ProyectoCalculadora" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Yo\IdeaProjects\ProyectoCalculadora\src\main\resources\com\github\dangelcrack\media" />
       <recent name="C:\Users\Yo\IdeaProjects\ProyectoCalculadora" />
       <recent name="C:\Users\Yo\IdeaProjects\ProyectoCalculadora\src" />
       <recent name="C:\Users\Yo\IdeaProjects\ProyectoCalculadora\src\main" />
       <recent name="C:\Users\Yo\IdeaProjects\ProyectoCalculadora\src\main\java" />
-      <recent name="C:\Users\Yo\IdeaProjects\ProyectoCalculadora\src\main\java\com\github\dangelcrack" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.github.dangelcrack.view" />
@@ -121,11 +101,10 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="6" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/AppController.java</url>
-          <line>65</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.nio.file.FileAlreadyExistsException" package="java.nio.file" />
+          <option name="timeStamp" value="9" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
