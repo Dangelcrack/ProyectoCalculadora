@@ -57,7 +57,6 @@ public class AppController extends Controller implements Initializable {
 
     public static View loadFXML(Scenes scenes) throws IOException {
         String url = scenes.getURL();
-        System.out.println(url);
         FXMLLoader loader = new FXMLLoader(App.class.getResource(url));
         Parent p = loader.load();
         Controller c = loader.getController();
@@ -74,7 +73,6 @@ public class AppController extends Controller implements Initializable {
 
     @FXML
     private void goToAbout() throws IOException {
-        System.out.println(Scenes.ABOUT);
         changeScene(Scenes.ABOUT, null);
     }
 }

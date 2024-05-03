@@ -1,6 +1,7 @@
 package com.github.dangelcrack.model.dao;
 
 import com.github.dangelcrack.model.connection.ConnectionMariaDB;
+import com.github.dangelcrack.model.entity.Move;
 import com.github.dangelcrack.model.entity.Pokemon;
 
 import java.io.IOException;
@@ -22,7 +23,6 @@ public class PokemonDAO implements DAO<Pokemon,String> {
 
     private static final String FINDBYNAME="SELECT p.PokemonName, p.FirstType, p.SecondType FROM Pokemon AS p WHERE p.PokemonName=?";
     private static final String DELETE="DELETE FROM Pokemon AS p WHERE p.PokemonName=?";
-
     @Override
     public Pokemon save(Pokemon p) {
         Pokemon result = p;
@@ -33,6 +33,7 @@ public class PokemonDAO implements DAO<Pokemon,String> {
             if (existingPokemon == null) {
                 // INSERT
                 try (PreparedStatement pst = ConnectionMariaDB.getConnection().prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS)) {
+                    PreparedStatement pstMoves = ConnectionMariaDB.getConnection().prepareStatement("INSERT INTO PokemonMoves (PokemonName, MoveName) VALUES (?, ?)");
                     pst.setString(1, p.getPokemonName());
                     pst.setString(2, p.getFirstType());
                     pst.setString(3, p.getSecondType());
@@ -57,6 +58,14 @@ public class PokemonDAO implements DAO<Pokemon,String> {
                     pst.setInt(22, p.getEv_SpecialDefense());
                     pst.setInt(23, p.getEv_Speed());
                     pst.executeUpdate();
+                    if (p.getMoves() != null) {
+                        for (Move m : p.getMoves()) {
+                            pstMoves.setString(1, p.getPokemonName());
+                            pstMoves.setString(2, m.getNameMove());
+                            pstMoves.addBatch();
+                        }
+                        pstMoves.executeBatch();
+                    }
                 }
             } else {
                 // UPDATE
@@ -85,6 +94,18 @@ public class PokemonDAO implements DAO<Pokemon,String> {
                     pst.setInt(22, p.getEv_SpecialDefense());
                     pst.setInt(23, p.getEv_Speed());
                     pst.executeUpdate();
+                    if(p.getMoves()!=null){
+                        List<Move> movesBefore = MoveDAO.build().findByPokemon(p);
+                        List<Move> movesAfter = p.getMoves();
+                        List<Move> movesToBeRemoved = new ArrayList<>(movesBefore);
+                        movesToBeRemoved.removeAll(movesAfter);
+                        for(Move m:movesToBeRemoved){
+                            MoveDAO.build().delete(m);
+                        }
+                        for(Move m:movesAfter){
+                            MoveDAO.build().save(m);
+                        }
+                    }
                 }
             }
         } catch (SQLException e) {
