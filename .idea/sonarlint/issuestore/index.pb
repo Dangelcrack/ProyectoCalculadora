@@ -41,3 +41,5 @@ n
 >src/main/java/com/github/dangelcrack/model/dao/PokemonDAO.java,c\7\c7ee82d0b50ecf132792c26d262aa016b001ad1e
 i
 9src/main/java/com/github/dangelcrack/view/Controller.java,c\9\c9fb82dccc115c8bf638cd9146edc9b1004db75d
+m
+=src/main/java/com/github/dangelcrack/test/loadConnection.java,6\0\60d2b0e936b16bebfc46e3ca3f91c5df13b41914
