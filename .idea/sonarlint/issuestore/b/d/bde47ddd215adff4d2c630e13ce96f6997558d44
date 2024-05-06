@@ -1,22 +1,22 @@
 
 ”
-java:S1104"QMake scene a static final constant or non-public and provide accessors if needed.(äõ8ıÿ˜¡ô1J$278afd37-c17c-4dd7-92fa-4149278167db
+java:S1104"QMake scene a static final constant or non-public and provide accessors if needed.(äõ8ıÿ˜¡ô1J$7be502d1-029b-4081-8df7-a6588c25399b
 ”
-java:S1104"QMake stage a static final constant or non-public and provide accessors if needed.(œ‰à8şÿ˜¡ô1J$4755d5b5-2aab-4bb8-9483-8065e6660573
+java:S1104"QMake stage a static final constant or non-public and provide accessors if needed.(œ‰à8şÿ˜¡ô1J$5163f77f-1622-468e-99a7-661a221a71cf
  
-java:S1104"]Make currentController a static final constant or non-public and provide accessors if needed.(½«İ8şÿ˜¡ô1J$c2c698a6-e84d-48e6-a8eb-f2ccdc4dc65b
+java:S1104"]Make currentController a static final constant or non-public and provide accessors if needed.(½«İ8şÿ˜¡ô1J$a4e2ea6f-9e93-4c6e-ada8-5e59b51c5685
 n
-java:S1444"+Make this "public static scene" field final(äõ8ÿÿ˜¡ô1J$b6d98b06-aeb2-48de-a84a-14b3cbdca946
+java:S1444"+Make this "public static scene" field final(äõ8ÿÿ˜¡ô1J$906560e5-6e07-4305-b22b-ef10463362e0
 n
-java:S1444"+Make this "public static stage" field final(œ‰à8ÿÿ˜¡ô1J$206d2902-a3d1-41b1-986f-99f4e984b560
+java:S1444"+Make this "public static stage" field final(œ‰à8ÿÿ˜¡ô1J$fbc9f86c-8d20-4c9b-ab94-679a625c447d
 z
-java:S1444"7Make this "public static currentController" field final(½«İ8ÿÿ˜¡ô1J$f8f16f0e-f027-4ebc-88be-d1d9b00f864d
+java:S1444"7Make this "public static currentController" field final(½«İ8ÿÿ˜¡ô1J$bbe73607-1a65-44d9-9abd-4b634167d373
 y
-java:S2696"6Make the enclosing method "static" or remove this set.(úí¨ï8€™¡ô1J$c3e58d8f-2254-4a95-9abf-644110650b6d
+java:S2696"6Make the enclosing method "static" or remove this set.(úí¨ï8€™¡ô1J$d5d03ad3-d9ad-41c3-b5ce-20243f17e253
 ~
-java:S2696"6Make the enclosing method "static" or remove this set.(ßÆÎ­şÿÿÿÿ8ğó¢ô1J$49cc6cc0-325c-4a42-9cf3-92dbe262ad68
-~	java:S125$"<This block of commented-out lines of code should be removed.(ÃˆÀ‚8ÚŒØ¢ô1J$91167277-ace1-44a9-bfca-b5bdcf08d055
+java:S2696"6Make the enclosing method "static" or remove this set.(ßÆÎ­şÿÿÿÿ8ğó¢ô1J$5dc4ed2c-1027-4421-87a5-afc85ed10e58
+~	java:S125$"<This block of commented-out lines of code should be removed.(ÃˆÀ‚8ÚŒØ¢ô1J$777f6288-1ac7-47bd-b593-c60738bcc688
 {
-java:S1128"3Remove this unused import 'javafx.fxml.FXMLLoader'.(À‡ô³úÿÿÿÿ8ÛŒØ¢ô1J$3f431b86-ee73-4821-b993-303f97c1676d
+java:S1128"3Remove this unused import 'javafx.fxml.FXMLLoader'.(À‡ô³úÿÿÿÿ8ÛŒØ¢ô1J$8020936b-a3bb-43d2-8a64-33a7fa7a8ef5
 s
-java:S1128"0Remove this unused import 'javafx.scene.Parent'.(²ä¡È8ÛŒØ¢ô1J$3ab096c8-40e4-483f-a1b3-699a31de7114
+java:S1128"0Remove this unused import 'javafx.scene.Parent'.(²ä¡È8ÛŒØ¢ô1J$f668b3eb-ed4e-476b-a633-49141c501987
