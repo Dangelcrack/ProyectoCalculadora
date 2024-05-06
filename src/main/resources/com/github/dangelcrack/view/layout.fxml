@@ -5,21 +5,38 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.dangelcrack.view.AppController">
-   <top>
-      <MenuBar BorderPane.alignment="CENTER">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Open" />
-                  <MenuItem mnemonicParsing="false" onAction="#closeApp" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" onShown="#goToAbout" text="About">
-               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#goToAbout" text="Borrar" />
-               </items></Menu>
-        </menus>
-      </MenuBar>
-   </top>
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.dangelcrack.view.AppController">
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="Pokemon">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#addPokemon" text="Add Pokemon..." />
+                        <MenuItem mnemonicParsing="false" text="Delete Pokemon..." />
+                        <MenuItem mnemonicParsing="false" text="Edit Pokemon..." />
+                        <MenuItem mnemonicParsing="false" onAction="#closeApp" text="Close" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Moves">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Add Move..." />
+                        <MenuItem mnemonicParsing="false" text="Delete Move..." />
+                        <MenuItem mnemonicParsing="false" text="Edit Move..." />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Objects">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Add Move..." />
+                        <MenuItem mnemonicParsing="false" text="Delete Move..." />
+                        <MenuItem mnemonicParsing="false" text="Edit Move..." />
+                    </items>
+                </Menu>
+            <Menu mnemonicParsing="false" onAction="#goToAbout" text="About">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+              </items>
+            </Menu>
+            </menus>
+        </MenuBar>
+    </top>
 </BorderPane>

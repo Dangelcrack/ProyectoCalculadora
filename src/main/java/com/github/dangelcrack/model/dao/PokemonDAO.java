@@ -3,6 +3,7 @@ package com.github.dangelcrack.model.dao;
 import com.github.dangelcrack.model.connection.ConnectionMariaDB;
 import com.github.dangelcrack.model.entity.Move;
 import com.github.dangelcrack.model.entity.Pokemon;
+import com.github.dangelcrack.view.PokemonType;
 
 import java.io.IOException;
 import java.sql.PreparedStatement;
@@ -35,8 +36,9 @@ public class PokemonDAO implements DAO<Pokemon,String> {
                 try (PreparedStatement pst = ConnectionMariaDB.getConnection().prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS)) {
                     PreparedStatement pstMoves = ConnectionMariaDB.getConnection().prepareStatement("INSERT INTO PokemonMoves (PokemonName, MoveName) VALUES (?, ?)");
                     pst.setString(1, p.getPokemonName());
-                    pst.setString(2, p.getFirstType());
-                    pst.setString(3, p.getSecondType());
+                    pst.setString(2, p.getPokemonFirstType().toString());
+                    PokemonType secondType = p.getPokemonSecondType();
+                    pst.setString(3, (secondType != null) ? secondType.toString() : null);
                     pst.setString(4, p.getPhotoPokemon());
                     pst.setInt(5, p.getLevelCap());
                     pst.setInt(6, p.getHealth());
@@ -71,8 +73,9 @@ public class PokemonDAO implements DAO<Pokemon,String> {
                 // UPDATE
                 try (PreparedStatement pst = ConnectionMariaDB.getConnection().prepareStatement(UPDATE)) {
                     pst.setString(1, p.getPokemonName());
-                    pst.setString(2, p.getFirstType());
-                    pst.setString(3, p.getSecondType());
+                    pst.setString(2, p.getPokemonFirstType().toString());
+                    PokemonType secondType = p.getPokemonSecondType();
+                    pst.setString(3, (secondType != null) ? secondType.toString() : null);
                     pst.setString(4, p.getPhotoPokemon());
                     pst.setInt(5, p.getLevelCap());
                     pst.setInt(6, p.getHealth());
@@ -134,8 +137,12 @@ public class PokemonDAO implements DAO<Pokemon,String> {
                 if (res.next()) {
                     Pokemon pokemon = new Pokemon();
                     pokemon.setPokemonName(res.getString("PokemonName"));
-                    pokemon.setFirstType(res.getString("FirstType"));
-                    pokemon.setSecondType(res.getString("SecondType"));
+                    String firstTypeString = res.getString("FirstType");
+                    String secondTypeString = res.getString("SecondType");
+                    PokemonType firstType = PokemonType.valueOf(firstTypeString);
+                    pokemon.setPokemonFirstType(firstType);
+                    PokemonType secondType = (secondTypeString != null) ? PokemonType.valueOf(secondTypeString) : null;
+                    pokemon.setPokemonSecondType(secondType);
                     pokemon.setPhotoPokemon(res.getString("Photo"));
                     pokemon.setLevelCap(res.getInt("LEVELCAP"));
                     pokemon.setHealth(res.getInt("HP"));
@@ -156,6 +163,7 @@ public class PokemonDAO implements DAO<Pokemon,String> {
                     pokemon.setEv_SpecialAttack(res.getInt("EV_SpAttack"));
                     pokemon.setEv_SpecialDefense(res.getInt("EV_SpDefense"));
                     pokemon.setEv_Speed(res.getInt("EV_Speed"));
+                    pokemon.setMoves(MoveDAO.build().findByPokemon(pokemon));
                     result = pokemon;
                 }
             }
@@ -173,8 +181,12 @@ public class PokemonDAO implements DAO<Pokemon,String> {
                 while (res.next()) {
                     Pokemon pokemon = new Pokemon();
                     pokemon.setPokemonName(res.getString("PokemonName"));
-                    pokemon.setFirstType(res.getString("FirstType"));
-                    pokemon.setSecondType(res.getString("SecondType"));
+                    String firstTypeString = res.getString("FirstType");
+                    String secondTypeString = res.getString("SecondType");
+                    PokemonType firstType = PokemonType.valueOf(firstTypeString);
+                    pokemon.setPokemonFirstType(firstType);
+                    PokemonType secondType = (secondTypeString != null) ? PokemonType.valueOf(secondTypeString) : null;
+                    pokemon.setPokemonSecondType(secondType);
                     pokemon.setPhotoPokemon(res.getString("Photo"));
                     pokemon.setLevelCap(res.getInt("LEVELCAP"));
                     pokemon.setHealth(res.getInt("HP"));
@@ -195,6 +207,7 @@ public class PokemonDAO implements DAO<Pokemon,String> {
                     pokemon.setEv_SpecialAttack(res.getInt("EV_SpAttack"));
                     pokemon.setEv_SpecialDefense(res.getInt("EV_SpDefense"));
                     pokemon.setEv_Speed(res.getInt("EV_Speed"));
+                    pokemon.setMoves(MoveDAO.build().findByPokemon(pokemon));
                     result.add(pokemon);
                 }
             }

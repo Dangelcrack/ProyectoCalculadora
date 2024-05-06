@@ -1,0 +1,11 @@
+
+É
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¯®Òêúÿÿÿÿ8òŒ‹…ô1J$de06b074-1a23-4de5-825b-e06823691ee8
+É
+java:S1186#"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(•‘ÝŸüÿÿÿÿ8òŒ‹…ô1J$67aa86b5-50e0-4e0c-8838-c9335012c41f
+{
+java:S1450"YRemove the "controller" field and declare it as a local variable in the relevant methods.(í›¥‹úÿÿÿÿ8ÅÕ“†ô1
+R
+java:S1128	"0Remove this unused import 'java.io.IOException'.(ªº»Úýÿÿÿÿ8ÉÕ“†ô1
+P
+java:S1068".Remove this unused "controller" private field.(í›¥‹úÿÿÿÿ8×Õ“†ô1

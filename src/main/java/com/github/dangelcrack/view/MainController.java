@@ -57,8 +57,8 @@ public class MainController extends Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         tableView.setEditable(true);
         columnMoves.setCellValueFactory(pokemon -> new SimpleStringProperty(pokemon.getValue().getMovesNamesString(pokemon.getValue())));
-        columnFirstType.setCellValueFactory(pokemon -> new SimpleStringProperty(pokemon.getValue().getFirstType()));
-        columnsecondType.setCellValueFactory(pokemon -> new SimpleStringProperty(pokemon.getValue().getSecondType()));
+        columnFirstType.setCellValueFactory(pokemon -> new SimpleStringProperty(pokemon.getValue().getPokemonFirstType().toString()));
+        columnsecondType.setCellValueFactory(pokemon -> new SimpleStringProperty(pokemon.getValue().getPokemonSecondType() != null ? pokemon.getValue().getPokemonSecondType().toString() : ""));
         columnName.setCellValueFactory(pokemon -> new SimpleStringProperty(pokemon.getValue().getPokemonName()));
         columnName.setCellFactory(TextFieldTableCell.forTableColumn());
         columnName.setOnEditCommit(event -> {
@@ -75,13 +75,12 @@ public class MainController extends Controller implements Initializable {
                 alert.setContentText("¡Te has pasao!!!!");
                 alert.show();
             }
-            // Actualizar los datos
         });
     }
 
 
     @FXML
     private void agregaPokemon() throws IOException {
-        App.currentController.openModal(Scenes.FORMPOKEMON, "Agregando un Pokemon...", this, null);
+        App.currentController.openModal(Scenes.ADDPOKEMON, "Agregando un Pokemon...", this, null);
     }
 }

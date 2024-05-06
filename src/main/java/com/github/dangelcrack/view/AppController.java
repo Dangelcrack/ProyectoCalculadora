@@ -37,6 +37,7 @@ public class AppController extends Controller implements Initializable {
         Stage stage = new Stage();
         stage.setTitle(title);
         stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setResizable(false);
         stage.initOwner(App.stage);
         Scene _scene = new Scene(view.scene);
         stage.setScene(_scene);
@@ -75,4 +76,41 @@ public class AppController extends Controller implements Initializable {
     private void goToAbout() throws IOException {
         changeScene(Scenes.ABOUT, null);
     }
+    @FXML
+    private void addPokemon() throws IOException {
+        App.currentController.openModal(Scenes.ADDPOKEMON, "Agregando un Pokemon...", this, null);
+    }
+    @FXML
+    private void addMove() throws IOException {
+        App.currentController.openModal(Scenes.ADDMOVE, "Agregando un Movimiento...", this, null);
+    }
+    @FXML
+    private void addObjet() throws IOException {
+        App.currentController.openModal(Scenes.ADDOBJECT, "Agregando un Objeto...", this, null);
+    }
+    @FXML
+    private void deletePokemon() throws IOException {
+        App.currentController.openModal(Scenes.DELETEPOKEMON, "Borrando un Pokemon...", this, null);
+    }
+    @FXML
+    private void deleteMove() throws IOException {
+        App.currentController.openModal(Scenes.DELETEMOVE, "Borrando un Movimiento...", this, null);
+    }
+    @FXML
+    private void deleteObjet() throws IOException {
+        App.currentController.openModal(Scenes.DELETEOBJECT, "Borrando un Objeto...", this, null);
+    }
+    @FXML
+    private void editPokemon() throws IOException {
+        App.currentController.openModal(Scenes.EDITPOKEMON, "Editando un Pokemon...", this, null);
+    }
+    @FXML
+    private void editMove() throws IOException {
+        App.currentController.openModal(Scenes.EDITMOVE, "Editando un Movimiento...", this, null);
+    }
+    @FXML
+    private void editObjet() throws IOException {
+        App.currentController.openModal(Scenes.EDITOBJECT, "Editando un Objeto...", this, null);
+    }
+
 }

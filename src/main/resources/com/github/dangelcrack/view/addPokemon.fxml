@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox fx:id="vbox" alignment="CENTER" fillWidth="false" prefHeight="646.0" prefWidth="1147.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.dangelcrack.view.AddPokemonController">   <padding>
+      <Insets bottom="-20.0" left="20.0" right="20.0" top="60.0" />
+   </padding>
+   <children>
+      <HBox minWidth="-Infinity" prefHeight="122.0" prefWidth="660.0" spacing="20">
+         <VBox fillWidth="false" maxWidth="150.0" prefHeight="175.0" prefWidth="150.0">
+            <children>
+               <TextField fx:id="name" promptText="Name">
+                  <VBox.margin>
+                     <Insets bottom="20.0" />
+                  </VBox.margin></TextField>
+               <ChoiceBox fx:id="firstType" prefWidth="150.0">
+                  <opaqueInsets>
+                     <Insets />
+                  </opaqueInsets>
+                  <VBox.margin>
+                     <Insets bottom="20.0" />
+                  </VBox.margin>
+               </ChoiceBox>
+               <ChoiceBox fx:id="secondType" prefWidth="150.0">
+                  <opaqueInsets>
+                     <Insets />
+                  </opaqueInsets>
+                  <VBox.margin>
+                     <Insets bottom="20.0" />
+                  </VBox.margin>
+               </ChoiceBox>
+               <TextField fx:id="photo" promptText="Photo">
+                  <VBox.margin>
+                     <Insets bottom="20.0" />
+                  </VBox.margin></TextField>
+               <Button onAction="#selectPhoto" text="Select Photo">
+                  <VBox.margin>
+                     <Insets bottom="20.0" />
+                  </VBox.margin></Button>
+               <Label text="LEVEL" />
+               <VBox alignment="CENTER">
+                  <Slider fx:id="level" blockIncrement="1.0" min="1.0" value="1.0" />
+                  <Label fx:id="levelValue" />
+               </VBox>
+            </children>
+         </VBox>
+         <VBox fillWidth="false" maxWidth="150.0" prefHeight="421.0" prefWidth="214.0">
+            <children>
+               <Label text="HP" />
+               <VBox alignment="CENTER">
+                  <Slider fx:id="hp" blockIncrement="1.0" max="200.0" min="1.0" value="1.0">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Slider>
+                  <Label fx:id="hpValue" />
+               </VBox>
+               <Label text="Attack" />
+               <VBox alignment="CENTER">
+                  <Slider fx:id="attack" blockIncrement="1.0" max="200.0" min="1.0" value="1.0">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Slider>
+                  <Label fx:id="attackValue" />
+               </VBox>
+               <Label text="Defense" />
+               <VBox alignment="CENTER">
+                  <Slider fx:id="defense" blockIncrement="1.0" max="200.0" min="1.0" value="1.0">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Slider>
+                  <Label fx:id="defenseValue" />
+               </VBox>
+               <Label text="Special Attack" />
+               <VBox alignment="CENTER">
+                  <Slider fx:id="spattack" blockIncrement="1.0" max="200.0" min="1.0" value="1.0">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Slider>
+                  <Label fx:id="spattackValue" />
+               </VBox>
+               <Label text="Special Defense" />
+               <VBox alignment="CENTER">
+                  <Slider fx:id="spdefense" blockIncrement="1.0" max="200.0" min="1.0" value="1.0">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Slider>
+                  <Label fx:id="spdefenseValue" />
+               </VBox>
+               <Label text="Speed" />
+               <VBox alignment="CENTER">
+                  <Slider fx:id="speed" blockIncrement="1.0" max="200.0" min="1.0" value="1.0" />
+                  <Label fx:id="speedValue" />
+               </VBox>
+            </children>
+         </VBox>
+         <VBox fillWidth="false" maxWidth="150.0" prefHeight="278.0" prefWidth="150.0">
+            <children>
+               <Label text="IV_HP" />
+               <VBox alignment="CENTER">
+                  <Slider fx:id="iv_hp" blockIncrement="1.0" max="200.0" min="1.0" value="1.0">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Slider>
+                  <Label fx:id="iv_hpValue" />
+               </VBox>
+               <Label text="IV_Attack" />
+               <VBox alignment="CENTER">
+                  <Slider fx:id="iv_attack" blockIncrement="1.0" max="200.0" min="1.0" value="1.0">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Slider>
+                  <Label fx:id="iv_attackValue" />
+               </VBox>
+               <Label text="IV_Defense" />
+               <VBox alignment="CENTER">
+                  <Slider fx:id="iv_defense" blockIncrement="1.0" max="200.0" min="1.0" value="1.0">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Slider>
+                  <Label fx:id="iv_defenseValue" />
+               </VBox>
+               <Label text="IV_SpecialAttack" />
+               <VBox alignment="CENTER">
+                  <Slider fx:id="iv_spattack" blockIncrement="1.0" max="200.0" min="1.0" value="1.0">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Slider>
+                  <Label fx:id="iv_spattackValue" />
+               </VBox>
+               <Label text="IV_SpecialDefense" />
+               <VBox alignment="CENTER">
+                  <Slider fx:id="iv_spdefense" blockIncrement="1.0" max="200.0" min="1.0" value="1.0">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Slider>
+                  <Label fx:id="iv_spdefenseValue" />
+               </VBox>
+               <Label text="IV_Speed" />
+               <VBox alignment="CENTER">
+                  <Slider fx:id="iv_speed" blockIncrement="1.0" max="200.0" min="1.0" value="1.0" />
+                  <Label fx:id="iv_speedValue" />
+               </VBox>
+            </children>
+         </VBox>
+   
+         <VBox fillWidth="false" maxWidth="150.0" prefHeight="239.0" prefWidth="150.0">
+            <children>
+               <Label text="EV_HP" />
+               <VBox alignment="CENTER">
+                  <Slider fx:id="ev_hp" blockIncrement="1.0" max="200.0" min="1.0" value="1.0">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Slider>
+                  <Label fx:id="ev_hpValue" />
+               </VBox>
+               <Label text="EV_Attack" />
+               <VBox alignment="CENTER">
+                  <Slider fx:id="ev_attack" blockIncrement="1.0" max="200.0" min="1.0" value="1.0">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Slider>
+                  <Label fx:id="ev_attackValue" />
+               </VBox>
+               <Label text="EV_Defense" />
+               <VBox alignment="CENTER">
+                  <Slider fx:id="ev_defense" blockIncrement="1.0" max="200.0" min="1.0" value="1.0">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Slider>
+                  <Label fx:id="ev_defenseValue" />
+               </VBox>
+               <Label text="EV_SpecialAttack" />
+               <VBox alignment="CENTER">
+                  <Slider fx:id="ev_spattack" blockIncrement="1.0" max="200.0" min="1.0" value="1.0">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Slider>
+                  <Label fx:id="ev_spattackValue" />
+               </VBox>
+               <Label text="EV_SpecialDefense" />
+               <VBox alignment="CENTER">
+                  <Slider fx:id="ev_spdefense" blockIncrement="1.0" max="200.0" min="1.0" value="1.0">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Slider>
+                  <Label fx:id="ev_spdefenseValue" />
+               </VBox>
+               <Label text="EV_Speed" />
+               <VBox alignment="CENTER">
+                  <Slider fx:id="ev_speed" blockIncrement="1.0" max="200.0" min="1.0" value="1.0" />
+                  <Label fx:id="ev_speedValue" />
+               </VBox>
+            </children>
+         </VBox>
+      </HBox>
+
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Movimientos" />
+      <HBox alignment="CENTER" prefHeight="25.0">
+         <children>
+            <ChoiceBox fx:id="moveChoiceBox1" prefWidth="150.0">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </ChoiceBox>
+            <ChoiceBox fx:id="moveChoiceBox2" prefWidth="150.0">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </ChoiceBox>
+            <ChoiceBox fx:id="moveChoiceBox3" prefWidth="150.0">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </ChoiceBox>
+            <ChoiceBox fx:id="moveChoiceBox4" prefWidth="150.0" />
+         </children>
+      </HBox>
+      <Button mnemonicParsing="false" onAction="#closeWindow" text="Agregar" />
+      <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</VBox>
