@@ -1,8 +1,8 @@
 
-“	java:S117*"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(øî²ı8™ìü¤ô1J$40b1ca8c-1e4b-450c-9c22-06c1d00c5daa
+“	java:S117*"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(øî²ı8Šÿüäô1J$701da130-89ec-49d6-aa0e-cf847554b30b
 É
-java:S11867"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÛŒ¦…ıÿÿÿÿ8ØÅÁ ô1J$73366c0f-909b-4b54-b639-773101b0ed79
+java:S11867"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÛŒ¦…ıÿÿÿÿ8¡ÿüäô1J$201aa0c4-64ab-4105-abbf-19b508b7dcf9
 ¡
-java:S1450"_Remove the "centerController" field and declare it as a local variable in the relevant methods.(™•À%8ÙÅÁ ô1J$e459c63e-5e82-4556-8a67-be320a51d2f9
+java:S1450"_Remove the "centerController" field and declare it as a local variable in the relevant methods.(™•À%8ÙÅÁ ô1J$79c9dad9-5544-4dbf-9f08-6af21a92f3ca
 n
-java:S1172#"+Remove this unused method parameter "data".(»°À8¹ìü¤ô1J$71812dec-eb71-4312-9d13-1df9808c0714
+java:S1172#"+Remove this unused method parameter "data".(»°À8¹ìü¤ô1J$a2ccfb1e-eff0-4069-8ad2-ba9365225ce2
