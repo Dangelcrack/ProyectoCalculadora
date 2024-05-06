@@ -1,45 +1,45 @@
 
-—	java:S116Q"PRename this field "iv_hp" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”Òù½ıÿÿÿÿ8’Û¬ô1J$778c8e50-7150-4259-a6ef-525cc02a0f7d
-—	java:S116S"URename this field "iv_hpValue" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÒÜö‚8’Û¬ô1J$6eec61e0-3f56-427d-8802-8af3c6e8d6a8
-›	java:S116V"TRename this field "iv_attack" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¨°ñàøÿÿÿÿ8’Û¬ô1J$285daf4f-5df3-43c3-a16d-93e65f0c100d
- 	java:S116X"YRename this field "iv_attackValue" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(È¦Íÿÿÿÿÿ8’Û¬ô1J$c32c0aec-c41d-4467-9d35-e7ee9093fbd4
-œ	java:S116["URename this field "iv_defense" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ó©¹¡ÿÿÿÿÿ8’Û¬ô1J$3324ee60-5907-40ec-bd4d-0a3b12649fc2
-œ	java:S116]"ZRename this field "iv_defenseValue" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ï‰ï8“Û¬ô1J$88bc9bc6-4448-4908-8a60-8e6df267b9c5
-˜	java:S116`"VRename this field "iv_spattack" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ä°ê‰8“Û¬ô1J$af4cdcd3-944d-4c3a-8708-f88c90927106
-	java:S116b"[Rename this field "iv_spattackValue" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(÷†È¨8“Û¬ô1J$e38ac926-a580-414d-9ceb-03a68c6cf444
-	java:S116e"WRename this field "iv_spdefense" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Âßß¢ıÿÿÿÿ8“Û¬ô1J$fe6663ae-ed14-4a62-8dd0-fda08d8f008e
-£	java:S116g"\Rename this field "iv_spdefenseValue" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(…à®üÿÿÿÿ8“Û¬ô1J$8a5d8a1f-3d41-4f22-9a6a-ddf625ed7a73
-•	java:S116j"SRename this field "iv_speed" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ÿ¢àƒ8“Û¬ô1J$c369fa0d-0687-4b07-9e67-4b4a0181174b
-Ÿ	java:S116l"XRename this field "iv_speedValue" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(öÎËùÿÿÿÿ8“Û¬ô1J$83a5b2fa-b4d9-4f91-8e49-e89fa3b482b0
-—	java:S116o"PRename this field "ev_hp" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(åÖ½Çıÿÿÿÿ8“Û¬ô1J$a8d9a0d6-774b-4a30-a5c7-8ad5d4bcd523
-—	java:S116q"URename this field "ev_hpValue" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(îüÀÌ8”Û¬ô1J$5f8b4d59-ceeb-4778-973b-b399022d071f
-–	java:S116t"TRename this field "ev_attack" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(èşˆº8”Û¬ô1J$8af0989d-50ec-4348-8e6e-2aed48ff36f6
-›	java:S116v"YRename this field "ev_attackValue" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°ÍŸÀ8”Û¬ô1J$504341a7-312a-437d-81ba-612a81ec6096
-œ	java:S116y"URename this field "ev_defense" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”ç˜Îıÿÿÿÿ8”Û¬ô1J$980a7cb9-7f4c-40d5-b42f-7bb73f1b0879
-œ	java:S116{"ZRename this field "ev_defenseValue" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¦çÔô8–Û¬ô1J$9c7dbc01-b933-43ab-b8cc-70e2dd45df4d
-˜	java:S116~"VRename this field "ev_spattack" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬»Ù½8–Û¬ô1J$47ce275d-aa62-48ff-92fc-a7f403755c20
-	java:S116€"[Rename this field "ev_spattackValue" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äâ»š8–Û¬ô1J$14983d90-09cd-4546-9653-67fb3f702810
-š	java:S116ƒ"WRename this field "ev_spdefense" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ô„Éğ8–Û¬ô1J$9426b979-28b5-4e55-9b37-f054220915de
-¤	java:S116…"\Rename this field "ev_spdefenseValue" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«—¥Ûşÿÿÿÿ8–Û¬ô1J$d1fde90e-8a05-4bc7-bc4f-73a03c48c8a5
-–	java:S116ˆ"SRename this field "ev_speed" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(À§¹÷8–Û¬ô1J$feb23b83-e157-4fac-99e1-cf30edb19f85
-›	java:S116Š"XRename this field "ev_speedValue" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÏºÜÛ8–Û¬ô1J$9d37b37f-ad88-4749-b37f-77ab6683ecef
+—	java:S116Q"PRename this field "iv_hp" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”Òù½ıÿÿÿÿ8’Û¬ô1J$925f07eb-7015-4c64-a418-049a38140913
+—	java:S116S"URename this field "iv_hpValue" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÒÜö‚8’Û¬ô1J$b0060363-38ae-499e-8d9d-71b430508df2
+›	java:S116V"TRename this field "iv_attack" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¨°ñàøÿÿÿÿ8’Û¬ô1J$102551ae-79ce-4001-9dd5-4d8d9f5f334f
+ 	java:S116X"YRename this field "iv_attackValue" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(È¦Íÿÿÿÿÿ8’Û¬ô1J$a2f21d28-06ee-4b57-8928-e2f05937dccb
+œ	java:S116["URename this field "iv_defense" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ó©¹¡ÿÿÿÿÿ8’Û¬ô1J$3b73ebe9-0ed8-4f21-8342-2ea6094855cd
+œ	java:S116]"ZRename this field "iv_defenseValue" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ï‰ï8“Û¬ô1J$621e527b-69c9-4ff0-83a8-0c09751e0a69
+˜	java:S116`"VRename this field "iv_spattack" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ä°ê‰8“Û¬ô1J$29cce0c6-d1a9-4323-a3eb-b9d88b66c964
+	java:S116b"[Rename this field "iv_spattackValue" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(÷†È¨8“Û¬ô1J$08f6dd48-43ba-409d-94be-5e7a5a016672
+	java:S116e"WRename this field "iv_spdefense" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Âßß¢ıÿÿÿÿ8“Û¬ô1J$45576008-0004-4bff-af64-00e1af362f37
+£	java:S116g"\Rename this field "iv_spdefenseValue" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(…à®üÿÿÿÿ8“Û¬ô1J$8e0d2ad4-8791-494e-98d8-e2123a2e7c42
+•	java:S116j"SRename this field "iv_speed" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ÿ¢àƒ8“Û¬ô1J$211aa42b-3d59-4b10-bbfa-ae7f867b4a5b
+Ÿ	java:S116l"XRename this field "iv_speedValue" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(öÎËùÿÿÿÿ8“Û¬ô1J$0953159c-8cc1-4430-9a35-b0cb1077593d
+—	java:S116o"PRename this field "ev_hp" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(åÖ½Çıÿÿÿÿ8“Û¬ô1J$6e48be02-8a4c-462e-be86-794a7af18c71
+—	java:S116q"URename this field "ev_hpValue" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(îüÀÌ8”Û¬ô1J$4954bc24-dd33-4c42-8a5f-f228cf748d55
+–	java:S116t"TRename this field "ev_attack" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(èşˆº8”Û¬ô1J$1ce48523-f9f7-4a51-a4aa-4f76b7c7cf08
+›	java:S116v"YRename this field "ev_attackValue" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°ÍŸÀ8”Û¬ô1J$c1be7141-b5d0-454f-aa1b-07e3f22c7fb8
+œ	java:S116y"URename this field "ev_defense" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”ç˜Îıÿÿÿÿ8”Û¬ô1J$6cd7e124-1c37-4422-8277-2aaddf4b7acd
+œ	java:S116{"ZRename this field "ev_defenseValue" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¦çÔô8–Û¬ô1J$ec5de578-f6ba-486d-83eb-eead188ad00d
+˜	java:S116~"VRename this field "ev_spattack" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬»Ù½8–Û¬ô1J$aa295280-1c60-4bc3-9469-b10e0ef47541
+	java:S116€"[Rename this field "ev_spattackValue" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äâ»š8–Û¬ô1J$c7164c49-ae85-4de7-9668-c83b9092c771
+š	java:S116ƒ"WRename this field "ev_spdefense" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ô„Éğ8–Û¬ô1J$51692e1c-ab3d-4481-a14f-3aa36378c4f1
+¤	java:S116…"\Rename this field "ev_spdefenseValue" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«—¥Ûşÿÿÿÿ8–Û¬ô1J$daff35b5-2205-4497-b4bd-d58a61085b1c
+–	java:S116ˆ"SRename this field "ev_speed" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(À§¹÷8–Û¬ô1J$d0f150dd-ddac-4f4c-b5c4-dddf2336d6c7
+›	java:S116Š"XRename this field "ev_speedValue" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÏºÜÛ8–Û¬ô1J$7c0dd15b-75ff-4caf-8242-aa667f78ffc0
 Ê
-java:S1186Ÿ"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¯®Òêúÿÿÿÿ8˜İş™ô1J$031cfdb6-d9cf-4873-84ae-3aac1f553149
+java:S1186Ÿ"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¯®Òêúÿÿÿÿ8˜İş™ô1J$84389b2b-b264-4227-816d-d2b0df1a78a7
 ‡
-java:S1117Ğ">Rename "levelValue" which hides the field declared at line 47.(›­³ÿÿÿÿÿ8™È©ô1J$1b0e3d3a-639c-4bfc-bacc-508169be3f62
+java:S1117Ğ">Rename "levelValue" which hides the field declared at line 47.(›­³ÿÿÿÿÿ8™È©ô1J$63fc69fc-4d61-4b7e-9da7-c248cd2d6998
 „
-java:S1117Ñ";Rename "hpValue" which hides the field declared at line 52.(—Å —şÿÿÿÿ8‘Ã¯ô1J$d23cddc8-a933-4079-9d92-f1a1ce5b64ea
+java:S1117Ñ";Rename "hpValue" which hides the field declared at line 52.(—Å —şÿÿÿÿ8‘Ã¯ô1J$bda3a821-4185-4c4c-bfc9-3266260121ee
 ˆ
-java:S1117Ò"?Rename "attackValue" which hides the field declared at line 57.(ÿ´º¾øÿÿÿÿ8’Ã¯ô1J$c2477360-0004-47aa-8c24-7f82aff5b84b
+java:S1117Ò"?Rename "attackValue" which hides the field declared at line 57.(ÿ´º¾øÿÿÿÿ8’Ã¯ô1J$e988e1b6-ec0e-45c0-8ca8-f6ff595fbbba
 „
-java:S1117Ó"@Rename "defenseValue" which hides the field declared at line 62.(ıŠÈ¸8’Ã¯ô1J$28797ac8-6f05-4502-a011-b6eca5631beb
+java:S1117Ó"@Rename "defenseValue" which hides the field declared at line 62.(ıŠÈ¸8’Ã¯ô1J$3d77d4b9-9518-4e22-b0a0-4f172c3ffe12
 …
-java:S1117Ô"ARename "spattackValue" which hides the field declared at line 67.(¢Ÿ»É8’Ã¯ô1J$6f4e5be3-d904-4b76-9efb-cef81143d6fc
+java:S1117Ô"ARename "spattackValue" which hides the field declared at line 67.(¢Ÿ»É8’Ã¯ô1J$09945930-74a6-499a-8bc4-8f97fc06c30c
 †
-java:S1117Õ"BRename "spdefenseValue" which hides the field declared at line 72.(æÑ¶ğ8“Ã¯ô1J$b13583a1-48aa-4fd4-9c8f-834cbb85f74c
+java:S1117Õ"BRename "spdefenseValue" which hides the field declared at line 72.(æÑ¶ğ8“Ã¯ô1J$41f7a96c-15d5-44d1-9fec-10fcd9efe722
 ‚
-java:S1117Ö">Rename "speedValue" which hides the field declared at line 77.(µ¿¥Ğ8“Ã¯ô1J$d5904a00-e986-4417-b516-b42415e1fce5
+java:S1117Ö">Rename "speedValue" which hides the field declared at line 77.(µ¿¥Ğ8“Ã¯ô1J$c8ceb610-4a21-4218-a605-8aa00a27f1e9
 o
-java:S1075‰"&Remove this hard-coded path-delimiter.(ÈüŞ­ıÿÿÿÿ8Àİş™ô1J$706b3739-1368-4eed-b0e6-24768bc9f236
+java:S1075‰"&Remove this hard-coded path-delimiter.(ÈüŞ­ıÿÿÿÿ8Àİş™ô1J$dd7e95de-635f-408a-b7d7-1b45f9d6e95c
 ‚
-java:S1128":Remove this unused import 'javafx.beans.binding.Bindings'.(ÕÔ‡úÿÿÿÿ8¶óéäô1J$f01196ab-bcc3-41e2-9a09-44b934d8762d
+java:S1128":Remove this unused import 'javafx.beans.binding.Bindings'.(ÕÔ‡úÿÿÿÿ8¶óéäô1J$a1a00fbf-deb4-44ff-9cd4-b158b96caa53
