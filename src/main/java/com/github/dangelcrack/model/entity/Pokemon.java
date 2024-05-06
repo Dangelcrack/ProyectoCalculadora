@@ -1,6 +1,8 @@
 package com.github.dangelcrack.model.entity;
 
 
+import com.github.dangelcrack.view.PokemonType;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -8,8 +10,8 @@ import java.util.stream.Collectors;
 
 public class Pokemon {
     private String pokemonName;
-    private String firstType;
-    private String secondType;
+    private PokemonType pokemonFirstType;
+    private PokemonType pokemonSecondType;
     private String photoPokemon;
     private int levelCap;
     private int health;
@@ -32,14 +34,14 @@ public class Pokemon {
     private int ev_Speed;
     private List<Move> moves;
 
-    public Pokemon(String pokemonName, String firstType, String secondType, String photoPokemon, int levelCap,
+    public Pokemon(String pokemonName, PokemonType pokemonFirstType, PokemonType pokemonSecondType, String photoPokemon, int levelCap,
                    int health, int attack, int defense, int specialAttack, int specialDefense, int speed,
                    int iv_Health, int iv_Attack, int iv_Defense, int iv_SpecialAttack, int iv_SpecialDefense,
                    int iv_Speed, int ev_Health, int ev_Attack, int ev_Defense, int ev_SpecialAttack,
-                   int ev_SpecialDefense, int ev_Speed,List<Move> moves) {
+                   int ev_SpecialDefense, int ev_Speed, List<Move> moves) {
         this.pokemonName = pokemonName;
-        this.firstType = firstType;
-        this.secondType = secondType;
+        this.pokemonFirstType = pokemonFirstType;
+        this.pokemonSecondType = pokemonSecondType;
         this.photoPokemon = photoPokemon;
         this.levelCap = levelCap;
         this.health = health;
@@ -74,20 +76,20 @@ public class Pokemon {
         this.pokemonName = pokemonName;
     }
 
-    public String getFirstType() {
-        return firstType;
+    public PokemonType getPokemonFirstType() {
+        return pokemonFirstType;
     }
 
-    public void setFirstType(String firstType) {
-        this.firstType = firstType;
+    public void setPokemonFirstType(PokemonType pokemonFirstType) {
+        this.pokemonFirstType = pokemonFirstType;
     }
 
-    public String getSecondType() {
-        return secondType;
+    public PokemonType getPokemonSecondType() {
+        return pokemonSecondType;
     }
 
-    public void setSecondType(String secondType) {
-        this.secondType = secondType;
+    public void setPokemonSecondType(PokemonType pokemonSecondType) {
+        this.pokemonSecondType = pokemonSecondType;
     }
 
     public String getPhotoPokemon() {
@@ -295,7 +297,7 @@ public class Pokemon {
     public String toString() {
         return "Pokemon{" +
                 "\n   Name: '" + pokemonName + '\'' +
-                "\n   Type: " + firstType + (secondType != null ? "/" + secondType : "") +
+                "\n   Type: " + pokemonFirstType + (pokemonSecondType != null ? "/" + pokemonSecondType : "") +
                 "\n   Photo: '" + photoPokemon + '\'' +
                 "\n   Level Cap: " + levelCap +
                 "\n   Stats: {" +
