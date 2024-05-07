@@ -97,11 +97,9 @@ public class Move {
 
     @Override
     public String toString() {
-        return "Move{" +
-                "nameMove='" + nameMove + '\'' +
-                ", typeMove='" + typeMove + '\'' +
-                ", category='" + category + '\'' +
-                ", power=" + power +
-                '}';
+        return "Name: '" + nameMove + '\'' +
+                ", Type: '" + typeMove + '\'' +
+                ", Category: '" + category + '\'' +
+                ", Power: " + power;
     }
 }

@@ -10,10 +10,7 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -33,11 +30,11 @@ public class AddPokemonController extends Controller implements Initializable {
     @FXML
     private VBox vbox;
     @FXML
-    private ChoiceBox<PokemonType> firstType;
+    private ComboBox<PokemonType> firstType;
     @FXML
     private TextField name;
     @FXML
-    private ChoiceBox<PokemonType> secondType;
+    private ComboBox<PokemonType> secondType;
     @FXML
     private TextField photo;
     @FXML
@@ -138,16 +135,16 @@ public class AddPokemonController extends Controller implements Initializable {
     public Label ev_speedValue;
 
     @FXML
-    private ChoiceBox<Move> moveChoiceBox1;
+    private ComboBox<Move> moveChoiceBox1;
 
     @FXML
-    private ChoiceBox<Move> moveChoiceBox2;
+    private ComboBox<Move> moveChoiceBox2;
 
     @FXML
-    private ChoiceBox<Move> moveChoiceBox3;
+    private ComboBox<Move> moveChoiceBox3;
 
     @FXML
-    private ChoiceBox<Move> moveChoiceBox4;
+    private ComboBox<Move> moveChoiceBox4;
     private MainController controller;
 
     @Override
@@ -173,27 +170,27 @@ public class AddPokemonController extends Controller implements Initializable {
         vbox.setBackground(new Background(backgroundImage));
         firstType.setItems(FXCollections.observableArrayList(PokemonType.values()));
         secondType.setItems(FXCollections.observableArrayList(PokemonType.values()));
-        level.valueProperty().addListener((observable, oldValue, newValue) -> levelValue.setText("Level: " + newValue.intValue()));
-        hp.valueProperty().addListener((observable, oldValue, newValue) -> hpValue.setText("HP: " + newValue.intValue()));
-        attack.valueProperty().addListener((observable, oldValue, newValue) -> attackValue.setText("Attack: " + newValue.intValue()));
-        defense.valueProperty().addListener((observable, oldValue, newValue) -> defenseValue.setText("Defense: " + newValue.intValue()));
-        spattack.valueProperty().addListener((observable, oldValue, newValue) -> spattackValue.setText("Special Attack: " + newValue.intValue()));
-        spdefense.valueProperty().addListener((observable, oldValue, newValue) -> spdefenseValue.setText("Special Defense: " + newValue.intValue()));
-        speed.valueProperty().addListener((observable, oldValue, newValue) -> speedValue.setText("Speed: " + newValue.intValue()));
+        level.valueProperty().addListener((observable, oldValue, newValue) -> levelValue.setText(String.valueOf(newValue.intValue())));
+        hp.valueProperty().addListener((observable, oldValue, newValue) -> hpValue.setText(String.valueOf(newValue.intValue())));
+        attack.valueProperty().addListener((observable, oldValue, newValue) -> attackValue.setText(String.valueOf(newValue.intValue())));
+        defense.valueProperty().addListener((observable, oldValue, newValue) -> defenseValue.setText(String.valueOf(newValue.intValue())));
+        spattack.valueProperty().addListener((observable, oldValue, newValue) -> spattackValue.setText(String.valueOf(newValue.intValue())));
+        spdefense.valueProperty().addListener((observable, oldValue, newValue) -> spdefenseValue.setText(String.valueOf(newValue.intValue())));
+        speed.valueProperty().addListener((observable, oldValue, newValue) -> speedValue.setText(String.valueOf(newValue.intValue())));
 
-        iv_hp.valueProperty().addListener((observable, oldValue, newValue) -> iv_hpValue.setText("IV_HP: " + newValue.intValue()));
-        iv_attack.valueProperty().addListener((observable, oldValue, newValue) -> iv_attackValue.setText("IV_Attack: " + newValue.intValue()));
-        iv_defense.valueProperty().addListener((observable, oldValue, newValue) -> iv_defenseValue.setText("IV_Defense: " + newValue.intValue()));
-        iv_spattack.valueProperty().addListener((observable, oldValue, newValue) -> iv_spattackValue.setText("IV_SpecialAttack: " + newValue.intValue()));
-        iv_spdefense.valueProperty().addListener((observable, oldValue, newValue) -> iv_spdefenseValue.setText("IV_SpecialDefense: " + newValue.intValue()));
-        iv_speed.valueProperty().addListener((observable, oldValue, newValue) -> iv_speedValue.setText("IV_Speed: " + newValue.intValue()));
+        iv_hp.valueProperty().addListener((observable, oldValue, newValue) -> iv_hpValue.setText(String.valueOf(newValue.intValue())));
+        iv_attack.valueProperty().addListener((observable, oldValue, newValue) -> iv_attackValue.setText(String.valueOf(newValue.intValue())));
+        iv_defense.valueProperty().addListener((observable, oldValue, newValue) -> iv_defenseValue.setText(String.valueOf(newValue.intValue())));
+        iv_spattack.valueProperty().addListener((observable, oldValue, newValue) -> iv_spattackValue.setText(String.valueOf(newValue.intValue())));
+        iv_spdefense.valueProperty().addListener((observable, oldValue, newValue) -> iv_spdefenseValue.setText(String.valueOf(newValue.intValue())));
+        iv_speed.valueProperty().addListener((observable, oldValue, newValue) -> iv_speedValue.setText(String.valueOf(newValue.intValue())));
 
-        ev_hp.valueProperty().addListener((observable, oldValue, newValue) -> ev_hpValue.setText("EV_HP: " + newValue.intValue()));
-        ev_attack.valueProperty().addListener((observable, oldValue, newValue) -> ev_attackValue.setText("EV_Attack: " + newValue.intValue()));
-        ev_defense.valueProperty().addListener((observable, oldValue, newValue) -> ev_defenseValue.setText("EV_Defense: " + newValue.intValue()));
-        ev_spattack.valueProperty().addListener((observable, oldValue, newValue) -> ev_spattackValue.setText("EV_SpecialAttack: " + newValue.intValue()));
-        ev_spdefense.valueProperty().addListener((observable, oldValue, newValue) -> ev_spdefenseValue.setText("EV_SpecialDefense: " + newValue.intValue()));
-        ev_speed.valueProperty().addListener((observable, oldValue, newValue) -> ev_speedValue.setText("EV_Speed: " + newValue.intValue()));
+        ev_hp.valueProperty().addListener((observable, oldValue, newValue) -> ev_hpValue.setText(String.valueOf(newValue.intValue())));
+        ev_attack.valueProperty().addListener((observable, oldValue, newValue) -> ev_attackValue.setText(String.valueOf(newValue.intValue())));
+        ev_defense.valueProperty().addListener((observable, oldValue, newValue) -> ev_defenseValue.setText(String.valueOf(newValue.intValue())));
+        ev_spattack.valueProperty().addListener((observable, oldValue, newValue) -> ev_spattackValue.setText(String.valueOf(newValue.intValue())));
+        ev_spdefense.valueProperty().addListener((observable, oldValue, newValue) -> ev_spdefenseValue.setText(String.valueOf(newValue.intValue())));
+        ev_speed.valueProperty().addListener((observable, oldValue, newValue) -> ev_speedValue.setText(String.valueOf(newValue.intValue())));
         List<Move> moves = MoveDAO.build().findAll();
         ObservableList<Move> observableMoves = FXCollections.observableArrayList(moves);
         moveChoiceBox1.setItems(observableMoves);

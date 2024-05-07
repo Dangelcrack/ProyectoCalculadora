@@ -6,6 +6,7 @@ import com.github.dangelcrack.model.entity.Pokemon;
 import com.github.dangelcrack.view.PokemonType;
 
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,6 +25,7 @@ public class PokemonDAO implements DAO<Pokemon,String> {
 
     private static final String FINDBYNAME="SELECT p.PokemonName, p.FirstType, p.SecondType FROM Pokemon AS p WHERE p.PokemonName=?";
     private static final String DELETE="DELETE FROM Pokemon AS p WHERE p.PokemonName=?";
+    private static final String INSERTMOVESTOPOKEMON="INSERT INTO PokemonMoves (PokemonName, MoveName) VALUES (?, ?)";
     @Override
     public Pokemon save(Pokemon p) {
         Pokemon result = p;
@@ -34,12 +36,12 @@ public class PokemonDAO implements DAO<Pokemon,String> {
             if (existingPokemon == null) {
                 // INSERT
                 try (PreparedStatement pst = ConnectionMariaDB.getConnection().prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS)) {
-                    PreparedStatement pstMoves = ConnectionMariaDB.getConnection().prepareStatement("INSERT INTO PokemonMoves (PokemonName, MoveName) VALUES (?, ?)");
+                    PreparedStatement pstMoves = ConnectionMariaDB.getConnection().prepareStatement(INSERTMOVESTOPOKEMON);
                     pst.setString(1, p.getPokemonName());
                     pst.setString(2, p.getPokemonFirstType().toString());
                     PokemonType secondType = p.getPokemonSecondType();
                     pst.setString(3, (secondType != null) ? secondType.toString() : null);
-                    pst.setString(4, p.getPhotoPokemon());
+                    pst.setString(4, Paths.get(p.getPhotoPokemon()).getFileName().toString());
                     pst.setInt(5, p.getLevelCap());
                     pst.setInt(6, p.getHealth());
                     pst.setInt(7, p.getAttack());
