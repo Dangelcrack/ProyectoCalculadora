@@ -2,7 +2,9 @@ package com.github.dangelcrack.model.entity;
 
 
 import com.github.dangelcrack.view.PokemonType;
+import javafx.scene.image.Image;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -98,6 +100,10 @@ public class Pokemon {
 
     public void setPhotoPokemon(String photoPokemon) {
         this.photoPokemon = photoPokemon;
+    }
+    public Image getImage() {
+        File file = new File("src/main/resources/com/github/dangelcrack/media/" + getPhotoPokemon());
+        return new Image(file.toURI().toString());
     }
 
     public int getLevelCap() {

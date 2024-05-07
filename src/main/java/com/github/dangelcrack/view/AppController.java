@@ -21,7 +21,6 @@ public class AppController extends Controller implements Initializable {
 
     @Override
     public void onOpen(Object input) throws IOException {
-        //Al abrir este controlador que cargue main en el centro
         changeScene(Scenes.MAIN, null);
     }
 
