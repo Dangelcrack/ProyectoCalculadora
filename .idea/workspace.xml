@@ -5,17 +5,62 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="63469422-25db-44e1-a049-4cbbe737eae6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/EditMoveController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/EditObjectController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/EditPokemonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/model/dao/PokemonDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/model/dao/PokemonDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/model/entity/Move.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/model/entity/Move.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/model/entity/Pokemon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/model/entity/Pokemon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/AddPokemonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/AddPokemonController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/AppController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/DeletePokemonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/DeletePokemonController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/view/addPokemon.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/view/addPokemon.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/7e80aced47a82fa1b29c6e7b2446ee9d.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/;).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/BUG.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/TypesImage/BUG.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/DARK.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/TypesImage/DARK.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/DRAGON.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/TypesImage/DRAGON.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/Davis (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/Diagram 4.8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/ELECTRIC.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/TypesImage/ELECTRIC.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/FAIRY.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/TypesImage/FAIRY.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/FIGHTING.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/TypesImage/FIGHTING.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/FIRE.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/TypesImage/FIRE.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/FLYING.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/TypesImage/FLYING.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/FondoMain.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/ModalImageUtils/FondoMain.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/GHOST.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/TypesImage/GHOST.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/GRASS.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/TypesImage/GRASS.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/GROUND.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/TypesImage/GROUND.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/ICE.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/TypesImage/ICE.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/Logo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/Logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/ModalImageUtils/Logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/Minecraft26.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/NORMAL.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/TypesImage/NORMAL.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/POISON.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/TypesImage/POISON.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/PSYCHIC.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/TypesImage/PSYCHIC.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/Pichu.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/ROCK.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/TypesImage/ROCK.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/Raichu.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/STEEL.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/TypesImage/STEEL.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/SorteoÁngelDavidDiagramaSecuencia.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/WATER.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/TypesImage/WATER.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/boi.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/diana.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/img.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/ModalImageUtils/img.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/meme.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/miau.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/no.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/skin.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/skinmine.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/solo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/spiderm.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/swfde.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/trello.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/vamo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/media/weqfwq.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/view/deletePokemon.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/view/deletePokemon.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/view/editPokemon.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/view/editPokemon.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/view/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/view/main.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -72,11 +117,11 @@
       <recent name="C:\Users\yo\IdeaProjects\ProyectoCalculadora" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\yo\IdeaProjects\ProyectoCalculadora\src\main\resources\com\github\dangelcrack\media\ModalImageUtils" />
+      <recent name="C:\Users\yo\IdeaProjects\ProyectoCalculadora\src\main\resources\com\github\dangelcrack\media\TypesImage" />
       <recent name="C:\Users\Yo\IdeaProjects\ProyectoCalculadora\src\main\resources\com\github\dangelcrack\media" />
       <recent name="C:\Users\Yo\IdeaProjects\ProyectoCalculadora" />
       <recent name="C:\Users\Yo\IdeaProjects\ProyectoCalculadora\src" />
-      <recent name="C:\Users\Yo\IdeaProjects\ProyectoCalculadora\src\main" />
-      <recent name="C:\Users\Yo\IdeaProjects\ProyectoCalculadora\src\main\java" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.github.dangelcrack.view" />
@@ -102,10 +147,6 @@
           <option name="timeStamp" value="2" />
         </breakpoint>
         <breakpoint enabled="true" type="java-exception">
-          <properties class="java.lang.NullPointerException" package="java.lang" />
-          <option name="timeStamp" value="6" />
-        </breakpoint>
-        <breakpoint enabled="true" type="java-exception">
           <properties class="java.nio.file.FileAlreadyExistsException" package="java.nio.file" />
           <option name="timeStamp" value="9" />
         </breakpoint>
@@ -115,6 +156,7 @@
       <configuration name="Application">
         <watch expression="((NullPointerException)NullPointerException3158_DebugLabel).cause" custom="java.lang.NullPointerException" />
         <watch expression="((NullPointerException)NullPointerException3158_DebugLabel).cause" custom="java.lang.NullPointerException" />
+        <watch expression="((File)destinationFolder).listFiles()[1]" custom="java.io.File" />
       </configuration>
     </watches-manager>
   </component>

@@ -6,25 +6,44 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox fx:id="vbox" alignment="CENTER" prefHeight="347.0" prefWidth="729.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.dangelcrack.view.MainController">
     <children>
       <ImageView fitHeight="450.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../media/Logo.png" />
+            <Image url="@../media/ModalImageUtils/Logo.png" />
          </image>
       </ImageView>
-        <TableView fx:id="tableView" editable="true">
+        <TableView fx:id="tableView" editable="true" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;">
             <columns>
-                <TableColumn fx:id="imageViewTableColumn" prefWidth="100.0" text="Photo" />
-                <TableColumn fx:id="columnName" prefWidth="100.0" text="Nombre" />
-                <TableColumn fx:id="columnFirstType" prefWidth="100.0" text="Tipo1" />
-            <TableColumn fx:id="columnSecondType" prefWidth="100.0" text="Tipo2" />
+                <TableColumn fx:id="imageViewTableColumn" maxWidth="1000.0" prefWidth="100.0" resizable="false" text="Photo" />
+                <TableColumn fx:id="columnName" maxWidth="1000.0" prefWidth="100.0" text="Nombre" />
+                <TableColumn fx:id="columnFirstType" maxWidth="1000.0" prefWidth="100.0" text="Tipo1" />
+            <TableColumn fx:id="columnSecondType" maxWidth="1000.0" prefWidth="100.0" text="Tipo2" />
                 <TableColumn fx:id="columnMoves" prefWidth="100.0" text="Movimientos" />
             </columns>
         </TableView>
-        <Button mnemonicParsing="false" onAction="#agregaPokemon" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;" text="Agregar" />
+        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <children>
+                <Button mnemonicParsing="false" onAction="#agregaPokemon" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;" text="Agregar">
+                    <HBox.margin>
+                        <Insets />
+                    </HBox.margin>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#borrarPokemon" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;" text="Borrar">
+                    <HBox.margin>
+                        <Insets left="100.0" />
+                    </HBox.margin>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#editarPokemon" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;" text="Editar">
+                    <HBox.margin>
+                        <Insets left="100.0" />
+                    </HBox.margin>
+                </Button>
+            </children>
+        </HBox>
     </children>
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

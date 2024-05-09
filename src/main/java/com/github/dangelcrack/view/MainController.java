@@ -19,7 +19,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -38,7 +40,7 @@ public class MainController extends Controller implements Initializable {
     private TableColumn<Pokemon, String> columnName;
     @FXML
     private TableColumn<Pokemon, String> columnMoves;
-    private ObservableList<Pokemon> pokemons;
+    public ObservableList<Pokemon> pokemons;
 
     @Override
     public void onOpen(Object input) {
@@ -51,18 +53,24 @@ public class MainController extends Controller implements Initializable {
     public void onClose(Object output) {
 
     }
-
+    public void deleteOldPokemon(Pokemon oldPokemon){
+        this.pokemons.remove(oldPokemon);
+    }
     public void savePokemon(Pokemon newPokemon) {
         PokemonDAO.build().save(newPokemon);
         this.pokemons.add(newPokemon);
 
+    }
+    public void deletePokemon(Pokemon deletePokemon) throws SQLException {
+        PokemonDAO.build().delete(deletePokemon);
+        this.pokemons.remove(deletePokemon);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         tableView.setEditable(true);
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        URL imageUrl = getClass().getResource("/com/github/dangelcrack/media/FondoMain.png");
+        URL imageUrl = getClass().getResource("/com/github/dangelcrack/media/ModalImageUtils/FondoMain.png");
         BackgroundImage backgroundImage = new BackgroundImage(
                 new Image(imageUrl.toExternalForm()),
                 BackgroundRepeat.NO_REPEAT,
@@ -75,8 +83,10 @@ public class MainController extends Controller implements Initializable {
 
         imageViewTableColumn.setCellValueFactory(pokemon -> {
             String imageExtension = pokemon.getValue().getPhotoPokemon();
-            String imagePath = "/com/github/dangelcrack/media/" + imageExtension;
-            return new SimpleObjectProperty<>(new Image(getClass().getResourceAsStream(imagePath)));
+            String imagePath = "/com/github/dangelcrack/media/PokemonImages/" + imageExtension;
+            InputStream inputStream = getClass().getResourceAsStream(imagePath);
+            Image image = new Image(inputStream);
+            return new SimpleObjectProperty<>(image);
         });
         imageViewTableColumn.setCellFactory(column -> new TableCell<>() {
             private final ImageView imageView = new ImageView();
@@ -104,7 +114,7 @@ public class MainController extends Controller implements Initializable {
 
         columnFirstType.setCellValueFactory(pokemon -> {
             PokemonType firstType = pokemon.getValue().getPokemonFirstType();
-            Image firstTypeImage = new Image(getClass().getResourceAsStream("/com/github/dangelcrack/media/" + firstType + ".png"));
+            Image firstTypeImage = new Image(getClass().getResourceAsStream("/com/github/dangelcrack/media/TypesImage/" + firstType + ".png"));
             return new SimpleObjectProperty<>(firstTypeImage);
         });
         columnFirstType.setCellFactory(column -> new TableCell<>() {
@@ -132,7 +142,7 @@ public class MainController extends Controller implements Initializable {
             if (secondType == null) {
                 result = new SimpleObjectProperty<>();
             } else {
-                Image secondTypeImage = new Image(getClass().getResourceAsStream("/com/github/dangelcrack/media/" + secondType + ".png"));
+                Image secondTypeImage = new Image(getClass().getResourceAsStream("/com/github/dangelcrack/media/TypesImage/" + secondType + ".png"));
                 result = new SimpleObjectProperty<>(secondTypeImage);
             }
             return result;
@@ -182,5 +192,14 @@ public class MainController extends Controller implements Initializable {
     @FXML
     private void agregaPokemon() throws IOException {
         App.currentController.openModal(Scenes.ADDPOKEMON, "Agregando un Pokemon...", this, null);
+        //deberíamos saber si hemos agregado un pokemon nuevo o no para acatualizar la lista
+    }
+    @FXML
+    private void borrarPokemon() throws IOException{
+        App.currentController.openModal(Scenes.DELETEPOKEMON,"Borrando un Pokemon...",this,null);
+    }
+    @FXML
+    private void editarPokemon() throws IOException{
+        App.currentController.openModal(Scenes.EDITPOKEMON,"Editando un Pokemon...", this,null);
     }
 }

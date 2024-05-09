@@ -301,34 +301,6 @@ public class Pokemon {
 
     @Override
     public String toString() {
-        return "Pokemon{" +
-                "\n   Name: '" + pokemonName + '\'' +
-                "\n   Type: " + pokemonFirstType + (pokemonSecondType != null ? "/" + pokemonSecondType : "") +
-                "\n   Photo: '" + photoPokemon + '\'' +
-                "\n   Level Cap: " + levelCap +
-                "\n   Stats: {" +
-                "\n      Health: " + health +
-                "\n      Attack: " + attack +
-                "\n      Defense: " + defense +
-                "\n      Special Attack: " + specialAttack +
-                "\n      Special Defense: " + specialDefense +
-                "\n      Speed: " + speed +
-                "\n   }" +
-                "\n   IVs: {" +
-                "\n      Health: " + iv_Health +
-                "\n      Attack: " + iv_Attack +
-                "\n      Defense: " + iv_Defense +
-                "\n      Special Attack: " + iv_SpecialAttack +
-                "\n      Special Defense: " + iv_SpecialDefense +
-                "\n      Speed: " + iv_Speed +
-                "\n   }" +
-                "\n   EVs: {" +
-                "\n      Health: " + ev_Health +
-                "\n      Attack: " + ev_Attack +
-                "\n      Defense: " + ev_Defense +
-                "\n      Special Attack: " + ev_SpecialAttack +
-                "\n      Special Defense: " + ev_SpecialDefense +
-                "\n      Speed: " + ev_Speed +
-                "\n   }";
+        return pokemonName;
     }
 }
