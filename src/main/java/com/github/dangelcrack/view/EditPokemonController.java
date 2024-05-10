@@ -14,7 +14,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -27,6 +27,8 @@ import java.nio.file.StandardCopyOption;
 import java.util.*;
 
 public class EditPokemonController extends Controller implements Initializable {
+    @FXML
+    private VBox vbox;
     @FXML
     private ComboBox<Pokemon> pokemonComboBox;
     @FXML
@@ -157,6 +159,15 @@ public class EditPokemonController extends Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        URL imageUrl = getClass().getResource("/com/github/dangelcrack/media/ModalImageUtils/imgEditPokemon.jpg");
+        BackgroundImage backgroundImage = new BackgroundImage(
+                new Image(imageUrl.toExternalForm()),
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.DEFAULT,
+                new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false)
+        );
+        vbox.setBackground(new Background(backgroundImage));
         List<Pokemon> pokemons = PokemonDAO.build().findAll();
         ObservableList<Pokemon> observableNames = FXCollections.observableArrayList(pokemons);
         pokemonComboBox.setItems(observableNames);

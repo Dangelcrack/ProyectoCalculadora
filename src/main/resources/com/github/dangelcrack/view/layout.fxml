@@ -12,30 +12,30 @@
                 <Menu mnemonicParsing="false" text="Pokemon">
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#addPokemon" text="Add Pokemon..." />
-                        <MenuItem mnemonicParsing="false" text="Delete Pokemon..." />
-                        <MenuItem mnemonicParsing="false" text="Edit Pokemon..." />
+                        <MenuItem mnemonicParsing="false" onAction="#deletePokemon" text="Delete Pokemon..." />
+                        <MenuItem mnemonicParsing="false" onAction="#editPokemon" text="Edit Pokemon..." />
                         <MenuItem mnemonicParsing="false" onAction="#closeApp" text="Close" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Moves">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Add Move..." />
-                        <MenuItem mnemonicParsing="false" text="Delete Move..." />
-                        <MenuItem mnemonicParsing="false" text="Edit Move..." />
+                        <MenuItem mnemonicParsing="false" onAction="#addMove" text="Add Move..." />
+                        <MenuItem mnemonicParsing="false" onAction="#deleteMove" text="Delete Move..." />
+                        <MenuItem mnemonicParsing="false" onAction="#editMove" text="Edit Move..." />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Objects">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Add Move..." />
-                        <MenuItem mnemonicParsing="false" text="Delete Move..." />
-                        <MenuItem mnemonicParsing="false" text="Edit Move..." />
+                        <MenuItem mnemonicParsing="false" onAction="#addObjet" text="Add Object..." />
+                        <MenuItem mnemonicParsing="false" onAction="#deleteObjet" text="Delete Object..." />
+                        <MenuItem mnemonicParsing="false" onAction="#editObjet" text="Edit Object..." />
                     </items>
                 </Menu>
-            <Menu mnemonicParsing="false" onAction="#goToAbout" text="About">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-              </items>
-            </Menu>
+                <Menu mnemonicParsing="false" onAction="#goToAbout" text="About">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                    </items>
+                </Menu>
             </menus>
         </MenuBar>
     </top>

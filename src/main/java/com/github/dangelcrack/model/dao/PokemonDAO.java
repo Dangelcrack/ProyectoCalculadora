@@ -130,42 +130,34 @@ public class PokemonDAO implements DAO<Pokemon, String> {
     @Override
     public Pokemon delete(Pokemon p) {
         if (p == null || p.getPokemonName() == null) return p;
-        Connection conn = ConnectionMariaDB.getConnection();
-        try {
-            conn.setAutoCommit(false); // Desactiva el auto-commit
-            try (PreparedStatement pstMoves = conn.prepareStatement(DELETE_MOVES)) {
-                pstMoves.setString(1, p.getPokemonName());
-                pstMoves.executeUpdate();
-            }
+
+        try (Connection conn = ConnectionMariaDB.getConnection();
+             PreparedStatement pstMoves = conn.prepareStatement(DELETE_MOVES);
+             PreparedStatement pstPokemon = conn.prepareStatement(DELETE_POKEMON)) {
+            conn.setAutoCommit(false);
+            pstMoves.setString(1, p.getPokemonName());
+            pstMoves.executeUpdate();
             String photoName = p.getPhotoPokemon();
-            if (photoName != null && !photoName.isEmpty()) {
+            List<Pokemon> existingPokemon = PokemonDAO.build().findAll();
+            // Se inicializa una variable booleana para almacenar el resultado de la búsqueda
+            boolean foundSamePhoto =existingPokemon.stream() // Se convierte la lista existingPokemon en un stream(lazy)
+                            .anyMatch(pokemon -> // Se verifica si algún elemento del stream cumple con la condición
+                                    pokemon.getPhotoPokemon() != null && // Verifica si la foto del pokemon no es nula
+                                    pokemon.getPhotoPokemon().equals(photoName) // Verifica si el nombre de la foto es igual al proporcionado
+                            );
+            if (!foundSamePhoto) {
                 String mediaPath = "src/main/resources/com/github/dangelcrack/media/PokemonImages/";
                 Files.deleteIfExists(Paths.get(mediaPath + photoName));
             }
-            try (PreparedStatement pstPokemon = conn.prepareStatement(DELETE_POKEMON)) {
-                pstPokemon.setString(1, p.getPokemonName());
-                pstPokemon.executeUpdate();
-            }
+            pstPokemon.setString(1, p.getPokemonName());
+            pstPokemon.executeUpdate();
             conn.commit();
-        } catch (SQLException ex) {
-            try {
-                conn.rollback();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+        } catch (SQLException | IOException ex) {
             ex.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                conn.setAutoCommit(true);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
+
         return p;
     }
-
 
     @Override
     public Pokemon findByName(String pokemonName) {

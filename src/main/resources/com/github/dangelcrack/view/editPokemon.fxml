@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox fx:id="vbox" alignment="CENTER" fillWidth="false" prefHeight="646.0" prefWidth="1147.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.dangelcrack.view.EditPokemonController">
+<VBox fx:id="vbox" alignment="CENTER" fillWidth="false" prefHeight="600.0" prefWidth="1099.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.dangelcrack.view.EditPokemonController">
    <padding>
       <Insets bottom="-20.0" left="20.0" right="20.0" top="60.0" />
    </padding>
@@ -61,7 +61,7 @@
          </VBox>
          <VBox fillWidth="false" maxWidth="150.0" prefHeight="421.0" prefWidth="214.0">
             <children>
-               <Label text="HP">
+               <Label text="HP" textFill="WHITE">
                   <font>
                      <Font name="Arial Bold Italic" size="15.0" />
                   </font>
@@ -78,7 +78,7 @@
                      </font>
                   </Label>
                </VBox>
-               <Label text="Attack">
+               <Label text="Attack" textFill="WHITE">
                   <font>
                      <Font name="System Bold Italic" size="15.0" />
                   </font>
@@ -95,7 +95,7 @@
                      </font>
                   </Label>
                </VBox>
-               <Label text="Defense">
+               <Label text="Defense" textFill="WHITE">
                   <font>
                      <Font name="Arial Bold Italic" size="15.0" />
                   </font>
@@ -112,7 +112,7 @@
                      </font>
                   </Label>
                </VBox>
-               <Label text="Special Attack">
+               <Label text="Special Attack" textFill="WHITE">
                   <font>
                      <Font name="Arial Bold Italic" size="15.0" />
                   </font>
@@ -130,7 +130,7 @@
                   </Label>
 
                </VBox>
-               <Label text="Special Defense">
+               <Label text="Special Defense" textFill="WHITE">
                   <font>
                      <Font name="Arial Bold Italic" size="15.0" />
                   </font>
@@ -147,7 +147,7 @@
                      </font>
                   </Label>
                </VBox>
-               <Label text="Speed">
+               <Label text="Speed" textFill="WHITE">
                   <font>
                      <Font name="Arial Bold Italic" size="15.0" />
                   </font>
@@ -164,7 +164,7 @@
          </VBox>
          <VBox fillWidth="false" maxWidth="150.0" prefHeight="278.0" prefWidth="150.0">
             <children>
-               <Label text="IV_HP">
+               <Label text="IV_HP" textFill="WHITE">
                   <font>
                      <Font name="Arial Bold Italic" size="15.0" />
                   </font>
@@ -185,7 +185,7 @@
                      </font>
                   </Label>
                </VBox>
-               <Label text="IV_Attack">
+               <Label text="IV_Attack" textFill="WHITE">
                   <font>
                      <Font name="Arial Bold Italic" size="15.0" />
                   </font>
@@ -202,7 +202,7 @@
                      </font>
                   </Label>
                </VBox>
-               <Label text="IV_Defense">
+               <Label text="IV_Defense" textFill="WHITE">
                   <font>
                      <Font name="Arial Bold Italic" size="15.0" />
                   </font>
@@ -219,7 +219,7 @@
                      </font>
                   </Label>
                </VBox>
-               <Label text="IV_SpecialAttack">
+               <Label text="IV_SpecialAttack" textFill="WHITE">
                   <font>
                      <Font name="Arial Bold Italic" size="15.0" />
                   </font>
@@ -236,7 +236,7 @@
                      </font>
                   </Label>
                </VBox>
-               <Label text="IV_SpecialDefense">
+               <Label text="IV_SpecialDefense" textFill="WHITE">
                   <font>
                      <Font name="Arial Bold Italic" size="15.0" />
                   </font>
@@ -256,7 +256,7 @@
                      </font>
                   </Label>
                </VBox>
-               <Label text="IV_Speed">
+               <Label text="IV_Speed" textFill="WHITE">
                   <font>
                      <Font name="Arial Bold Italic" size="15.0" />
                   </font>
@@ -274,7 +274,7 @@
 
          <VBox fillWidth="false" maxWidth="211.0" prefHeight="292.0" prefWidth="211.0">
             <children>
-               <Label text="EV_HP">
+               <Label text="EV_HP" textFill="WHITE">
                   <font>
                      <Font name="Arial Bold Italic" size="15.0" />
                   </font>
@@ -291,7 +291,7 @@
                      </font>
                   </Label>
                </VBox>
-               <Label text="EV_Attack">
+               <Label text="EV_Attack" textFill="WHITE">
                   <font>
                      <Font name="Arial Bold Italic" size="15.0" />
                   </font>
@@ -308,7 +308,7 @@
                      </font>
                   </Label>
                </VBox>
-               <Label text="EV_Defense">
+               <Label text="EV_Defense" textFill="WHITE">
                   <font>
                      <Font name="Arial Bold Italic" size="15.0" />
                   </font>
@@ -325,7 +325,7 @@
                      </font>
                   </Label>
                </VBox>
-               <Label text="EV_SpecialAttack">
+               <Label text="EV_SpecialAttack" textFill="WHITE">
                   <font>
                      <Font name="Arial Bold Italic" size="15.0" />
                   </font>
@@ -342,7 +342,7 @@
                      </font>
                   </Label>
                </VBox>
-               <Label text="EV_SpecialDefense">
+               <Label text="EV_SpecialDefense" textFill="WHITE">
                   <font>
                      <Font name="Arial Bold Italic" size="15.0" />
                   </font>
@@ -359,7 +359,7 @@
                      </font>
                   </Label>
                </VBox>
-               <Label text="EV_Speed">
+               <Label text="EV_Speed" textFill="WHITE">
                   <font>
                      <Font name="Arial Bold Italic" size="15.0" />
                   </font>
@@ -376,7 +376,7 @@
          </VBox>
       </HBox>
 
-      <Text fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Movimientos">
+      <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Movimientos">
          <font>
             <Font name="Arial Bold Italic" size="15.0" />
          </font>
