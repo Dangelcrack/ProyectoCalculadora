@@ -25,7 +25,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class MainController extends Controller implements Initializable {
+public class PokemonController extends Controller implements Initializable {
     @FXML
     private VBox vbox;
     @FXML
@@ -61,7 +61,7 @@ public class MainController extends Controller implements Initializable {
         this.pokemons.add(newPokemon);
 
     }
-    public void deletePokemon(Pokemon deletePokemon) throws SQLException {
+    public void deletePokemon(Pokemon deletePokemon) {
         PokemonDAO.build().delete(deletePokemon);
         this.pokemons.remove(deletePokemon);
     }
@@ -113,7 +113,7 @@ public class MainController extends Controller implements Initializable {
 
 
         columnFirstType.setCellValueFactory(pokemon -> {
-            PokemonType firstType = pokemon.getValue().getPokemonFirstType();
+            Types firstType = pokemon.getValue().getPokemonFirstType();
             Image firstTypeImage = new Image(getClass().getResourceAsStream("/com/github/dangelcrack/media/TypesImage/" + firstType + ".png"));
             return new SimpleObjectProperty<>(firstTypeImage);
         });
@@ -138,7 +138,7 @@ public class MainController extends Controller implements Initializable {
         });
         columnSecondType.setCellValueFactory(pokemon -> {
             SimpleObjectProperty result;
-            PokemonType secondType = pokemon.getValue().getPokemonSecondType();
+            Types secondType = pokemon.getValue().getPokemonSecondType();
             if (secondType == null) {
                 result = new SimpleObjectProperty<>();
             } else {

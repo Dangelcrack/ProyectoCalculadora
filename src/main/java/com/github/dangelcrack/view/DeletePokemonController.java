@@ -16,7 +16,6 @@ import javafx.scene.layout.*;
 import java.io.InputStream;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -28,11 +27,11 @@ public class DeletePokemonController extends Controller implements Initializable
     private ImageView imageView;
     @FXML
     private ComboBox<Pokemon> pokemonComboBox;
-    private MainController controller;
+    private PokemonController controller;
 
     @Override
     public void onOpen(Object input) {
-        this.controller = (MainController) input;
+        this.controller = (PokemonController) input;
     }
 
     @Override
@@ -46,7 +45,8 @@ public class DeletePokemonController extends Controller implements Initializable
                 new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false)
         );
         vbox.setBackground(new Background(backgroundImage));
-        List<Pokemon> pokemons = PokemonDAO.build().findAll();
+        List<Pokemon> pokemons;
+        pokemons = PokemonDAO.build().findAll();
         ObservableList<Pokemon> observableNames = FXCollections.observableArrayList(pokemons);
         pokemonComboBox.setItems(observableNames);
         pokemonComboBox.setOnAction(event -> {
@@ -70,7 +70,6 @@ public class DeletePokemonController extends Controller implements Initializable
                 this.controller.deletePokemon(pokemon);
             }
         }
-        //Antes de cerrar notificamos a nuestro parent que hay un pokemon nuevo
         ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 

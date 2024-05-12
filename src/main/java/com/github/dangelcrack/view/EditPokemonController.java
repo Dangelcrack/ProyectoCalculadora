@@ -5,7 +5,6 @@ import com.github.dangelcrack.model.dao.PokemonDAO;
 import com.github.dangelcrack.model.entity.Move;
 import com.github.dangelcrack.model.entity.Pokemon;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -32,9 +31,9 @@ public class EditPokemonController extends Controller implements Initializable {
     @FXML
     private ComboBox<Pokemon> pokemonComboBox;
     @FXML
-    private ComboBox<PokemonType> firstType;
+    private ComboBox<Types> firstType;
     @FXML
-    private ComboBox<PokemonType> secondType;
+    private ComboBox<Types> secondType;
     @FXML
     private TextField photo;
     @FXML
@@ -145,11 +144,11 @@ public class EditPokemonController extends Controller implements Initializable {
 
     @FXML
     private ComboBox<Move> moveChoiceBox4;
-    private MainController controller;
+    private PokemonController controller;
 
     @Override
     public void onOpen(Object input) {
-        this.controller = (MainController) input;
+        this.controller = (PokemonController) input;
     }
 
     @Override
@@ -217,8 +216,8 @@ public class EditPokemonController extends Controller implements Initializable {
         ev_speed.setValue(pokemon.getEv_Speed());
         firstType.setValue(pokemon.getPokemonFirstType());
         secondType.setValue(pokemon.getPokemonSecondType());
-        firstType.setItems(FXCollections.observableArrayList(PokemonType.values()));
-        secondType.setItems(FXCollections.observableArrayList(PokemonType.values()));
+        firstType.setItems(FXCollections.observableArrayList(Types.values()));
+        secondType.setItems(FXCollections.observableArrayList(Types.values()));
         if (pokemon.getMoves() != null && !pokemon.getMoves().isEmpty()) {
             // Limpiar los items anteriores
             moveChoiceBox1.getItems().clear();
@@ -268,8 +267,8 @@ public class EditPokemonController extends Controller implements Initializable {
         int evSpattackValue = (int) ev_spattack.getValue();
         int evSpdefenseValue = (int) ev_spdefense.getValue();
         int evSpeedValue = (int) ev_speed.getValue();
-        PokemonType firstTypeValue = firstType.getValue();
-        PokemonType secondTypeValue = secondType.getValue();
+        Types firstTypeValue = firstType.getValue();
+        Types secondTypeValue = secondType.getValue();
         Move move1 = moveChoiceBox1.getValue();
         Move move2 = moveChoiceBox2.getValue();
         Move move3 = moveChoiceBox3.getValue();

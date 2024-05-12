@@ -3,7 +3,7 @@ package com.github.dangelcrack.model.dao;
 import com.github.dangelcrack.model.connection.ConnectionMariaDB;
 import com.github.dangelcrack.model.entity.Move;
 import com.github.dangelcrack.model.entity.Pokemon;
-import com.github.dangelcrack.view.PokemonType;
+import com.github.dangelcrack.view.Types;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -33,7 +33,6 @@ public class PokemonDAO implements DAO<Pokemon, String> {
     public Pokemon save(Pokemon p) {
         Pokemon result = p;
         if (p == null || p.getPokemonName() == null) return result;
-
         try {
             Pokemon existingPokemon = findByName(p.getPokemonName());
             if (existingPokemon == null) {
@@ -42,7 +41,7 @@ public class PokemonDAO implements DAO<Pokemon, String> {
                     PreparedStatement pstMoves = ConnectionMariaDB.getConnection().prepareStatement(INSERTMOVESTOPOKEMON);
                     pst.setString(1, p.getPokemonName());
                     pst.setString(2, p.getPokemonFirstType().toString());
-                    PokemonType secondType = p.getPokemonSecondType();
+                    Types secondType = p.getPokemonSecondType();
                     pst.setString(3, (secondType != null) ? secondType.toString() : null);
                     pst.setString(4, p.getPhotoPokemon());
                     pst.setInt(5, p.getLevelCap());
@@ -80,7 +79,7 @@ public class PokemonDAO implements DAO<Pokemon, String> {
                 try (PreparedStatement pst = ConnectionMariaDB.getConnection().prepareStatement(UPDATE)) {
                     PreparedStatement pstMoves = ConnectionMariaDB.getConnection().prepareStatement(INSERTMOVESTOPOKEMON);
                     pst.setString(1, p.getPokemonFirstType().toString());
-                    PokemonType secondType = p.getPokemonSecondType();
+                    Types secondType = p.getPokemonSecondType();
                     pst.setString(2, (secondType != null) ? secondType.toString() : null);
                     pst.setString(3, p.getPhotoPokemon());
                     pst.setInt(4, p.getLevelCap());
@@ -131,15 +130,12 @@ public class PokemonDAO implements DAO<Pokemon, String> {
     public Pokemon delete(Pokemon p) {
         if (p == null || p.getPokemonName() == null) return p;
 
-        try (Connection conn = ConnectionMariaDB.getConnection();
-             PreparedStatement pstMoves = conn.prepareStatement(DELETE_MOVES);
-             PreparedStatement pstPokemon = conn.prepareStatement(DELETE_POKEMON)) {
-            conn.setAutoCommit(false);
+        try (PreparedStatement pstMoves = ConnectionMariaDB.getConnection().prepareStatement(DELETE_MOVES);
+             PreparedStatement pstPokemon = ConnectionMariaDB.getConnection().prepareStatement(DELETE_POKEMON)) {
             pstMoves.setString(1, p.getPokemonName());
             pstMoves.executeUpdate();
             String photoName = p.getPhotoPokemon();
             List<Pokemon> existingPokemon = PokemonDAO.build().findAll();
-            // Se inicializa una variable booleana para almacenar el resultado de la búsqueda
             boolean foundSamePhoto =existingPokemon.stream() // Se convierte la lista existingPokemon en un stream(lazy)
                             .anyMatch(pokemon -> // Se verifica si algún elemento del stream cumple con la condición
                                     pokemon.getPhotoPokemon() != null && // Verifica si la foto del pokemon no es nula
@@ -151,7 +147,6 @@ public class PokemonDAO implements DAO<Pokemon, String> {
             }
             pstPokemon.setString(1, p.getPokemonName());
             pstPokemon.executeUpdate();
-            conn.commit();
         } catch (SQLException | IOException ex) {
             ex.printStackTrace();
         }
@@ -190,9 +185,9 @@ public class PokemonDAO implements DAO<Pokemon, String> {
                     pokemon.setPokemonName(res.getString("PokemonName"));
                     String firstTypeString = res.getString("FirstType");
                     String secondTypeString = res.getString("SecondType");
-                    PokemonType firstType = PokemonType.valueOf(firstTypeString);
+                    Types firstType = Types.valueOf(firstTypeString);
                     pokemon.setPokemonFirstType(firstType);
-                    PokemonType secondType = (secondTypeString != null) ? PokemonType.valueOf(secondTypeString) : null;
+                    Types secondType = (secondTypeString != null) ? Types.valueOf(secondTypeString) : null;
                     pokemon.setPokemonSecondType(secondType);
                     pokemon.setPhotoPokemon(res.getString("Photo"));
                     pokemon.setLevelCap(res.getInt("LEVELCAP"));
@@ -224,8 +219,7 @@ public class PokemonDAO implements DAO<Pokemon, String> {
 
         return result;
     }
-
-    @Override
+        @Override
     public void close() throws IOException {
 
     }

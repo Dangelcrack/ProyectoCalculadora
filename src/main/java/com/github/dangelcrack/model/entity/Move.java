@@ -1,16 +1,19 @@
 package com.github.dangelcrack.model.entity;
+import com.github.dangelcrack.view.Category;
+import com.github.dangelcrack.view.Types;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class Move {
     private String nameMove;
-    private String typeMove;
-    private String category;
+    private Types typeMove;
+    private Category category;
     private int power;
     private List<Pokemon> pokemonCanLearn;
 
-    public Move(String nameMove, String typeMove, String category, int power, ArrayList<Pokemon> pokemonCanLearn) {
+    public Move(String nameMove, Types typeMove, Category category, int power, ArrayList<Pokemon> pokemonCanLearn) {
         this.nameMove = nameMove;
         this.typeMove = typeMove;
         this.category = category;
@@ -29,19 +32,19 @@ public class Move {
         this.nameMove = nameMove;
     }
 
-    public String getTypeMove() {
+    public Types getTypeMove() {
         return typeMove;
     }
 
-    public void setTypeMove(String typeMove) {
+    public void setTypeMove(Types typeMove) {
         this.typeMove = typeMove;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 

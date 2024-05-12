@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class AppController extends Controller implements Initializable {
@@ -20,8 +21,8 @@ public class AppController extends Controller implements Initializable {
     private Controller centerController;
 
     @Override
-    public void onOpen(Object input) throws IOException {
-        changeScene(Scenes.MAIN, null);
+    public void onOpen(Object input) throws IOException{
+        changeScene(Scenes.PokemonList, null);
     }
 
     public void changeScene(Scenes scene, Object data) throws IOException {
@@ -67,49 +68,23 @@ public class AppController extends Controller implements Initializable {
     }
 
     @FXML
-    private void closeApp() {
-        System.exit(0);
-    }
-
-    @FXML
     private void goToAbout() throws IOException {
         changeScene(Scenes.ABOUT, null);
     }
     @FXML
-    private void addPokemon() throws IOException {
-        App.currentController.openModal(Scenes.ADDPOKEMON, "Agregando un Pokemon...", this, null);
+    private void goToPokemon() throws IOException {
+        changeScene(Scenes.PokemonList,null);
     }
     @FXML
-    private void addMove() throws IOException {
-        App.currentController.openModal(Scenes.ADDMOVE, "Agregando un Movimiento...", this, null);
+    private void goToMoves() throws IOException{
+        changeScene(Scenes.MOVESLIST,null);
     }
     @FXML
-    private void addObjet() throws IOException {
-        App.currentController.openModal(Scenes.ADDOBJECT, "Agregando un Objeto...", this, null);
+    private void goToObjects() throws IOException{
+        changeScene(Scenes.OBJECTSLIST,null);
     }
     @FXML
-    private void deletePokemon() throws IOException {
-        App.currentController.openModal(Scenes.DELETEPOKEMON, "Borrando un Pokemon...", this, null);
+    private void goToCombats() throws IOException{
+        changeScene(Scenes.COMBATS,null);
     }
-    @FXML
-    private void deleteMove() throws IOException {
-        App.currentController.openModal(Scenes.DELETEMOVE, "Borrando un Movimiento...", this, null);
-    }
-    @FXML
-    private void deleteObjet() throws IOException {
-        App.currentController.openModal(Scenes.DELETEOBJECT, "Borrando un Objeto...", this, null);
-    }
-    @FXML
-    private void editPokemon() throws IOException {
-        App.currentController.openModal(Scenes.EDITPOKEMON, "Editando un Pokemon...", this, null);
-    }
-    @FXML
-    private void editMove() throws IOException {
-        App.currentController.openModal(Scenes.EDITMOVE, "Editando un Movimiento...", this, null);
-    }
-    @FXML
-    private void editObjet() throws IOException {
-        App.currentController.openModal(Scenes.EDITOBJECT, "Editando un Objeto...", this, null);
-    }
-
 }

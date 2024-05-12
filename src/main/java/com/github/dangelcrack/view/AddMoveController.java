@@ -6,7 +6,6 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -19,11 +18,11 @@ public class AddMoveController extends Controller implements Initializable {
     private ChoiceBox<String> category;
     @FXML
     private Slider power;
-    private MainController controller;
+    private PokemonController controller;
 
     @Override
     public void onOpen(Object input){
-        this.controller = (MainController) input;
+        this.controller = (PokemonController) input;
     }
 
     @Override

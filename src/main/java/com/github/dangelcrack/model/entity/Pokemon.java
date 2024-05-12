@@ -1,7 +1,7 @@
 package com.github.dangelcrack.model.entity;
 
 
-import com.github.dangelcrack.view.PokemonType;
+import com.github.dangelcrack.view.Types;
 import javafx.scene.image.Image;
 
 import java.io.File;
@@ -12,8 +12,8 @@ import java.util.stream.Collectors;
 
 public class Pokemon {
     private String pokemonName;
-    private PokemonType pokemonFirstType;
-    private PokemonType pokemonSecondType;
+    private Types pokemonFirstType;
+    private Types pokemonSecondType;
     private String photoPokemon;
     private int levelCap;
     private int health;
@@ -36,7 +36,7 @@ public class Pokemon {
     private int ev_Speed;
     private List<Move> moves;
 
-    public Pokemon(String pokemonName, PokemonType pokemonFirstType, PokemonType pokemonSecondType, String photoPokemon, int levelCap,
+    public Pokemon(String pokemonName, Types pokemonFirstType, Types pokemonSecondType, String photoPokemon, int levelCap,
                    int health, int attack, int defense, int specialAttack, int specialDefense, int speed,
                    int iv_Health, int iv_Attack, int iv_Defense, int iv_SpecialAttack, int iv_SpecialDefense,
                    int iv_Speed, int ev_Health, int ev_Attack, int ev_Defense, int ev_SpecialAttack,
@@ -78,19 +78,19 @@ public class Pokemon {
         this.pokemonName = pokemonName;
     }
 
-    public PokemonType getPokemonFirstType() {
+    public Types getPokemonFirstType() {
         return pokemonFirstType;
     }
 
-    public void setPokemonFirstType(PokemonType pokemonFirstType) {
+    public void setPokemonFirstType(Types pokemonFirstType) {
         this.pokemonFirstType = pokemonFirstType;
     }
 
-    public PokemonType getPokemonSecondType() {
+    public Types getPokemonSecondType() {
         return pokemonSecondType;
     }
 
-    public void setPokemonSecondType(PokemonType pokemonSecondType) {
+    public void setPokemonSecondType(Types pokemonSecondType) {
         this.pokemonSecondType = pokemonSecondType;
     }
 

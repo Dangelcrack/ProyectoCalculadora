@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class AboutController extends Controller implements Initializable {
@@ -25,7 +26,7 @@ public class AboutController extends Controller implements Initializable {
     }
 
     @FXML
-    private void goToMain() throws IOException {
-        App.currentController.changeScene(Scenes.MAIN,null);
+    private void goToMain() throws IOException, SQLException {
+        App.currentController.changeScene(Scenes.PokemonList,null);
     }
 }

@@ -32,11 +32,11 @@ public class AddPokemonController extends Controller implements Initializable {
     @FXML
     private VBox vbox;
     @FXML
-    private ComboBox<PokemonType> firstType;
+    private ComboBox<Types> firstType;
     @FXML
     private TextField name;
     @FXML
-    private ComboBox<PokemonType> secondType;
+    private ComboBox<Types> secondType;
     @FXML
     private TextField photo;
     @FXML
@@ -147,11 +147,11 @@ public class AddPokemonController extends Controller implements Initializable {
 
     @FXML
     private ComboBox<Move> moveChoiceBox4;
-    private MainController controller;
+    private PokemonController controller;
 
     @Override
     public void onOpen(Object input) {
-        this.controller = (MainController) input;
+        this.controller = (PokemonController) input;
     }
 
     @Override
@@ -170,8 +170,8 @@ public class AddPokemonController extends Controller implements Initializable {
                 new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false)
         );
         vbox.setBackground(new Background(backgroundImage));
-        firstType.setItems(FXCollections.observableArrayList(PokemonType.values()));
-        secondType.setItems(FXCollections.observableArrayList(PokemonType.values()));
+        firstType.setItems(FXCollections.observableArrayList(Types.values()));
+        secondType.setItems(FXCollections.observableArrayList(Types.values()));
         level.valueProperty().addListener((observable, oldValue, newValue) -> levelValue.setText(String.valueOf(newValue.intValue())));
         hp.valueProperty().addListener((observable, oldValue, newValue) -> hpValue.setText(String.valueOf(newValue.intValue())));
         attack.valueProperty().addListener((observable, oldValue, newValue) -> attackValue.setText(String.valueOf(newValue.intValue())));
@@ -224,8 +224,8 @@ public class AddPokemonController extends Controller implements Initializable {
         int evSpdefenseValue = (int) ev_spdefense.getValue();
         int evSpeedValue = (int) ev_speed.getValue();
 
-        PokemonType firstTypeValue = firstType.getValue();
-        PokemonType secondTypeValue = secondType.getValue();
+        Types firstTypeValue = firstType.getValue();
+        Types secondTypeValue = secondType.getValue();
         Move move1 = moveChoiceBox1.getValue();
         Move move2 = moveChoiceBox2.getValue();
         Move move3 = moveChoiceBox3.getValue();
