@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 public class MoveDAO implements DAO<Move,String> {
     private static final String FINDALL ="SELECT m.Name, m.Type, m.Category, m.Power FROM moves AS m";
-    private static final String FINDBYNAME ="SELECT m.Name FROM moves WHERE m.Name=?";
+    private static final String FINDBYNAME ="SELECT Name FROM Moves WHERE Name=?";
     private static final String INSERT ="INSERT INTO moves (Name,Type,Category,Power) VALUES (?,?,?,?)";
     private static final String UPDATE ="UPDATE moves SET Type = ?, Category = ?, Power = ? WHERE Name = ?";
     private static final String DELETE ="DELETE FROM moves WHERE Name=?";
