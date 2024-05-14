@@ -68,6 +68,7 @@ public class PokemonController extends Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        tableView.refresh();
         tableView.setEditable(true);
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         URL imageUrl = getClass().getResource("/com/github/dangelcrack/media/ModalImageUtils/FondoMain.png");
@@ -167,8 +168,7 @@ public class PokemonController extends Controller implements Initializable {
             }
         });
 
-
-        columnName.setCellValueFactory(pokemon -> new SimpleStringProperty(pokemon.getValue().getPokemonName()));
+        columnName.setCellValueFactory(pokemon -> new SimpleStringProperty(pokemon.getValue().getPokemonName().toString()));
         columnName.setCellFactory(TextFieldTableCell.forTableColumn());
         columnName.setOnEditCommit(event ->
 

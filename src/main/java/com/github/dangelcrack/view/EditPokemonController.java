@@ -170,7 +170,7 @@ public class EditPokemonController extends Controller implements Initializable {
         List<Pokemon> pokemons = PokemonDAO.build().findAll();
         ObservableList<Pokemon> observableNames = FXCollections.observableArrayList(pokemons);
         pokemonComboBox.setItems(observableNames);
-        pokemonComboBox.setCellFactory(lv -> new ListCell<Pokemon>() {
+        pokemonComboBox.setCellFactory(lv -> new ListCell<>() {
             @Override
             protected void updateItem(Pokemon item, boolean empty) {
                 super.updateItem(item, empty);
@@ -278,8 +278,6 @@ public class EditPokemonController extends Controller implements Initializable {
         if (move2 != null) moves.add(move2);
         if (move3 != null) moves.add(move3);
         if (move4 != null) moves.add(move4);
-
-        // Aquí necesitas obtener el Pokemon que se está editando
         Pokemon pokemonBeingEdited = pokemonComboBox.getValue();
         pokemonBeingEdited.setPokemonName(pokemonComboBox.getValue().getPokemonName());
         pokemonBeingEdited.setLevelCap(levelValue);

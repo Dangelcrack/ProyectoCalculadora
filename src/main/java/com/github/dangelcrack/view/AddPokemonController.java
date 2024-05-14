@@ -26,6 +26,7 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class AddPokemonController extends Controller implements Initializable {
@@ -240,6 +241,9 @@ public class AddPokemonController extends Controller implements Initializable {
                 evHpValue, evAttackValue, evDefenseValue, evSpattackValue, evSpdefenseValue, evSpeedValue, moves);
 
         pokemon.setPhotoPokemon(pokemon.getPhotoPokemon());
+        if(Objects.equals(pokemon.getPokemonName(), name.getText())){
+            this.controller.deletePokemon(pokemon);
+        }
         this.controller.savePokemon(pokemon);
         //Antes de cerrar notificamos a nuestro parent que hay un pokemon nuevo
         ((Node) (event.getSource())).getScene().getWindow().hide();

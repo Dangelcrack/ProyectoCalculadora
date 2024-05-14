@@ -5,51 +5,91 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="vbox" alignment="CENTER" fillWidth="false" prefHeight="466.0" prefWidth="854.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.dangelcrack.view.AddMoveController">
-   <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-   </padding>
+<HBox fx:id="hBox" alignment="CENTER" prefHeight="637.0" prefWidth="1147.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.dangelcrack.view.AddMoveController">
    <children>
-      <TextField fx:id="name" promptText="Enter Pokemon name" style="-fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0; -fx-background-color: -fx-focus-color, -fx-background;">
-         <VBox.margin>
-            <Insets bottom="20.0" top="10.0" />
-         </VBox.margin>
-         <font>
-            <Font name="Arial Bold Italic" size="15.0" />
-         </font>
-      </TextField>
-      <ComboBox fx:id="type" prefHeight="27.0" prefWidth="204.0" promptText="TYPE" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;">
-         <VBox.margin>
-            <Insets bottom="20.0" />
-         </VBox.margin>
-      </ComboBox>
-      <ComboBox fx:id="category" prefHeight="27.0" prefWidth="204.0" promptText="CATEGORY" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;" />
-      <VBox fillWidth="false" maxWidth="193.0" prefHeight="244.0" prefWidth="193.0">
+      <VBox prefHeight="426.0" prefWidth="884.0">
          <children>
-            <Label text="POWER">
-               <font>
-                  <Font name="Arial Bold Italic" size="15.0" />
-               </font>
-            </Label>
-            <HBox alignment="CENTER">
-               <Slider fx:id="power" blockIncrement="0.0" max="200.0">
-                  <VBox.margin>
-                     <Insets />
-                  </VBox.margin>
-               </Slider>
-               <Label fx:id="powerValue" style="-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10;">
-                  <font>
-                     <Font name="Arial Bold Italic" size="15.0" />
-                  </font>
-               </Label>
+            <HBox prefHeight="453.0" prefWidth="922.0">
+               <children>
+                  <VBox alignment="TOP_CENTER" prefHeight="399.0" prefWidth="236.0" spacing="10.0">
+                     <children>
+                        <TextField fx:id="name" maxWidth="448.0" minWidth="204.0" prefHeight="27.0" prefWidth="357.0" promptText="Enter Move name" style="-fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0; -fx-background-color: -fx-focus-color, -fx-background;">
+                           <font>
+                              <Font name="Arial Bold Italic" size="15.0" />
+                           </font>
+                        </TextField>
+
+                        <ComboBox fx:id="pokemonCanLearn" prefHeight="27.0" prefWidth="204.0" promptText="POKEMON" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;" />
+                        <Button fx:id="addPokemon" mnemonicParsing="false" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;" text="Agregar" />
+                        <ComboBox fx:id="type" prefHeight="27.0" prefWidth="204.0" promptText="TYPE" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </ComboBox>
+                        <ComboBox fx:id="category" prefHeight="27.0" prefWidth="204.0" promptText="CATEGORY" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </ComboBox>
+                        <VBox fillWidth="false" maxWidth="193.0" prefHeight="97.0" prefWidth="193.0">
+                           <children>
+                              <Label text="POWER">
+                                 <font>
+                                    <Font name="Arial Bold Italic" size="15.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <HBox alignment="CENTER">
+                                 <Slider fx:id="power" blockIncrement="0.0" max="200.0">
+                                    <VBox.margin>
+                                       <Insets />
+                                    </VBox.margin>
+                                 </Slider>
+                                 <Label fx:id="powerValue" style="-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10;">
+                                    <font>
+                                       <Font name="Arial Bold Italic" size="15.0" />
+                                    </font>
+                                 </Label>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="100.0" right="100.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" spacing="10.0">
+                     <children>
+                        <TableView fx:id="tableView" prefHeight="410.0" prefWidth="420.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;">
+                           <columns>
+                              <TableColumn fx:id="imageViewTableColumn" maxWidth="1000.0" minWidth="100.0" prefWidth="100.0" resizable="false" text="Pokemon" />
+                              <TableColumn fx:id="columnName" prefWidth="75.0" text="Name" />
+                              <TableColumn fx:id="columnFirstType" editable="false" prefWidth="114.0" sortable="false" text="Type" />
+                              <TableColumn fx:id="columnSecondType" prefWidth="104.0" text="Type" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="40.0" left="40.0" right="40.0" top="80.0" />
+               </VBox.margin>
             </HBox>
+            <Button mnemonicParsing="false" onAction="#closeWindow" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;" text="Añadir Movimiento">
+               <VBox.margin>
+                  <Insets bottom="60.0" left="340.0" />
+               </VBox.margin>
+            </Button>
          </children>
       </VBox>
-      <Button mnemonicParsing="false" onAction="#closeWindow" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;" text="Agregar" />
    </children>
-</VBox>
+</HBox>

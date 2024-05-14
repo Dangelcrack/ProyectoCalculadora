@@ -62,7 +62,7 @@ public class DeletePokemonController extends Controller implements Initializable
     }
 
     @FXML
-    private void closeWindow(Event event) throws SQLException {
+    private void closeWindow(Event event) {
         String pokemonName = pokemonComboBox.getValue().getPokemonName();
         if (pokemonName != null) {
             Pokemon pokemon = PokemonDAO.build().findByName(pokemonName);

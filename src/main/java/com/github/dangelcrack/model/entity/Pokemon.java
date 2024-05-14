@@ -64,7 +64,7 @@ public class Pokemon {
         this.ev_SpecialAttack = ev_SpecialAttack;
         this.ev_SpecialDefense = ev_SpecialDefense;
         this.ev_Speed = ev_Speed;
-        this.moves=moves;
+        this.moves = moves;
     }
 
     public Pokemon() {

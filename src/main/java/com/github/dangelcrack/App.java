@@ -26,7 +26,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException{
         //view/layout.fxml
         View view = AppController.loadFXML(Scenes.ROOT);
-        scene = new Scene(view.scene, 1105, 647);
+        scene = new Scene(view.scene, 1105, 654);
         currentController = (AppController) view.controller;
         currentController.onOpen(null);
         stage.setResizable(false);

@@ -1,4 +1,5 @@
 package com.github.dangelcrack.model.entity;
+
 import com.github.dangelcrack.view.Category;
 import com.github.dangelcrack.view.Types;
 
@@ -13,7 +14,7 @@ public class Move {
     private int power;
     private List<Pokemon> pokemonCanLearn;
 
-    public Move(String nameMove, Types typeMove, Category category, int power, ArrayList<Pokemon> pokemonCanLearn) {
+    public Move(String nameMove, Types typeMove, Category category, int power, List<Pokemon> pokemonCanLearn) {
         this.nameMove = nameMove;
         this.typeMove = typeMove;
         this.category = category;
@@ -63,22 +64,25 @@ public class Move {
     public void setPokemonCanLearn(List<Pokemon> pokemonCanLearn) {
         this.pokemonCanLearn = pokemonCanLearn;
     }
-    public void addPokemon(Pokemon pokemon){
-        if (pokemonCanLearn==null){
+
+    public void addPokemon(Pokemon pokemon) {
+        if (pokemonCanLearn == null) {
             pokemonCanLearn = new ArrayList<>();
         }
-        if (!pokemonCanLearn.contains(pokemon)){
+        if (!pokemonCanLearn.contains(pokemon)) {
             pokemonCanLearn.add(pokemon);
         }
     }
-    public void removePokemon(Pokemon pokemon){
-        if(pokemonCanLearn!=null){
+
+    public void removePokemon(Pokemon pokemon) {
+        if (pokemonCanLearn != null) {
             pokemonCanLearn.remove(pokemon);
         }
     }
-    public Pokemon getMove(Pokemon pokemon){
+
+    public Pokemon getMove(Pokemon pokemon) {
         Pokemon result = null;
-        if(pokemonCanLearn!=null){
+        if (pokemonCanLearn != null) {
             int i = pokemonCanLearn.indexOf(pokemon);
             result = pokemonCanLearn.get(i);
         }

@@ -27,7 +27,11 @@ public class PokemonDAO implements DAO<Pokemon, String> {
     private static final String DELETE_POKEMON = "DELETE FROM Pokemon WHERE PokemonName = ?";
     private static final String INSERTMOVESTOPOKEMON = "INSERT INTO PokemonMoves (PokemonName, MoveName) VALUES (?, ?)";
     private static final String DELETEOLDMOVES = "DELETE FROM PokemonMoves WHERE PokemonName = ?";
-
+    private static final  String FIND_BY_MOVE_NAME = "SELECT p.* FROM Pokemon p INNER JOIN PokemonMoves pm ON p.PokemonName = pm.PokemonName WHERE pm.MoveName = ?";
+    private Connection conn;
+    public PokemonDAO() {
+        conn = ConnectionMariaDB.getConnection();
+    }
 
     @Override
     public Pokemon save(Pokemon p) {
@@ -37,8 +41,8 @@ public class PokemonDAO implements DAO<Pokemon, String> {
             Pokemon existingPokemon = findByName(p.getPokemonName());
             if (existingPokemon == null) {
                 // INSERT
-                try (PreparedStatement pst = ConnectionMariaDB.getConnection().prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS)) {
-                    PreparedStatement pstMoves = ConnectionMariaDB.getConnection().prepareStatement(INSERTMOVESTOPOKEMON);
+                try (PreparedStatement pst = conn.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS)) {
+                    PreparedStatement pstMoves = conn.prepareStatement(INSERTMOVESTOPOKEMON);
                     pst.setString(1, p.getPokemonName());
                     pst.setString(2, p.getPokemonFirstType().toString());
                     Types secondType = p.getPokemonSecondType();
@@ -76,8 +80,8 @@ public class PokemonDAO implements DAO<Pokemon, String> {
                 }
             } else {
                 // UPDATE
-                try (PreparedStatement pst = ConnectionMariaDB.getConnection().prepareStatement(UPDATE)) {
-                    PreparedStatement pstMoves = ConnectionMariaDB.getConnection().prepareStatement(INSERTMOVESTOPOKEMON);
+                try (PreparedStatement pst = conn.prepareStatement(UPDATE)) {
+                    PreparedStatement pstMoves = conn.prepareStatement(INSERTMOVESTOPOKEMON);
                     pst.setString(1, p.getPokemonFirstType().toString());
                     Types secondType = p.getPokemonSecondType();
                     pst.setString(2, (secondType != null) ? secondType.toString() : null);
@@ -103,7 +107,7 @@ public class PokemonDAO implements DAO<Pokemon, String> {
                     pst.setInt(22, p.getEv_Speed());
                     pst.setString(23, p.getPokemonName());
                     pst.executeUpdate();
-                    try (PreparedStatement pstDeleteMoves = ConnectionMariaDB.getConnection().prepareStatement(DELETEOLDMOVES)) {
+                    try (PreparedStatement pstDeleteMoves = conn.prepareStatement(DELETEOLDMOVES)) {
                         pstDeleteMoves.setString(1, p.getPokemonName());
                         pstDeleteMoves.executeUpdate();
                     }
@@ -174,7 +178,31 @@ public class PokemonDAO implements DAO<Pokemon, String> {
         return result;
     }
 
+    public List<Pokemon> findPokemonByMoveName(String moveName) {
+        List<Pokemon> pokemonList = new ArrayList<>();
 
+        try (PreparedStatement pst = conn.prepareStatement(FIND_BY_MOVE_NAME)) {
+            pst.setString(1, moveName);
+            try (ResultSet rs = pst.executeQuery()) {
+                while (rs.next()) {
+                    Pokemon pokemon = new Pokemon();
+                    pokemon.setPokemonName(rs.getString("PokemonName"));
+                    String firstTypeString = rs.getString("FirstType");
+                    String secondTypeString = rs.getString("SecondType");
+                    pokemon.setPhotoPokemon(rs.getString("Photo"));
+                    Types firstType = Types.valueOf(firstTypeString);
+                    pokemon.setPokemonFirstType(firstType);
+                    Types secondType = (secondTypeString != null) ? Types.valueOf(secondTypeString) : null;
+                    pokemon.setPokemonSecondType(secondType);
+                    pokemonList.add(pokemon);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return pokemonList;
+    }
     @Override
     public List<Pokemon> findAll() {
         List<Pokemon> result = new ArrayList<>();

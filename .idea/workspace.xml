@@ -6,8 +6,23 @@
   <component name="ChangeListManager">
     <list default="true" id="63469422-25db-44e1-a049-4cbbe737eae6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/model/dao/MoveDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/model/dao/MoveDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/model/dao/PokemonDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/model/dao/PokemonDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/model/entity/Move.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/model/entity/Move.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/model/entity/Pokemon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/model/entity/Pokemon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/AddMoveController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/AddMoveController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/AddPokemonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/AddPokemonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/DeleteMoveController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/DeleteMoveController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/DeletePokemonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/DeletePokemonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/EditMoveController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/EditMoveController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/EditPokemonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/EditPokemonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/MovesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/MovesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/PokemonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/view/PokemonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/view/MovesLIst.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/view/MovesLIst.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/view/PokemonList.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/view/PokemonList.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/view/addMove.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/view/addMove.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/view/deleteMove.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/view/deleteMove.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/view/editMove.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/view/editMove.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
