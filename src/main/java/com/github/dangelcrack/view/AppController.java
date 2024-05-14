@@ -37,7 +37,6 @@ public class AppController extends Controller implements Initializable {
         Stage stage = new Stage();
         stage.setTitle(title);
         stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setResizable(false);
         stage.initOwner(App.stage);
         Scene _scene = new Scene(view.scene);
         stage.setScene(_scene);

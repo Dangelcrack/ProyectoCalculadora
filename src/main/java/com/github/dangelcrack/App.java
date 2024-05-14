@@ -29,7 +29,6 @@ public class App extends Application {
         scene = new Scene(view.scene, 1105, 654);
         currentController = (AppController) view.controller;
         currentController.onOpen(null);
-        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }

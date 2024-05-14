@@ -42,7 +42,7 @@ public class DeletePokemonController extends Controller implements Initializable
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.DEFAULT,
-                new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false)
+                new BackgroundSize(100, 100, true, true, false, true)
         );
         vbox.setBackground(new Background(backgroundImage));
         List<Pokemon> pokemons;

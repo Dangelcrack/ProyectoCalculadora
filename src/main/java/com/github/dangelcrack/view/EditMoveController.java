@@ -88,15 +88,17 @@ private HBox hBox;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        URL imageUrl = getClass().getResource("/com/github/dangelcrack/media/ModalImageUtils/imgAddPokemon.png");
+        URL imageUrl = getClass().getResource("/com/github/dangelcrack/media/ModalImageUtils/pokestop.jpg");
         BackgroundImage backgroundImage = new BackgroundImage(
                 new Image(imageUrl.toExternalForm()),
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.DEFAULT,
-                new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false)
+                // Ajusta el tamaño de fondo para que se estire tanto en ancho como en alto
+                new BackgroundSize(100, 100, true, true, false, true)
         );
         hBox.setBackground(new Background(backgroundImage));
+
         imageViewTableColumn.setCellValueFactory(pokemon -> {
             String imageExtension = pokemon.getValue().getPhotoPokemon();
             String imagePath = "/com/github/dangelcrack/media/PokemonImages/" + imageExtension;
