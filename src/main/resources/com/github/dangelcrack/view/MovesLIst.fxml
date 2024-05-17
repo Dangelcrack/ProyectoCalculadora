@@ -4,21 +4,28 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="vbox" alignment="CENTER" prefHeight="347.0" prefWidth="729.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.dangelcrack.view.MovesController">
+<VBox fx:id="vbox" alignment="CENTER" prefHeight="347.0" prefWidth="729.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.dangelcrack.view.MovesController">
     <children>
-        <ImageView fitHeight="82.0" fitWidth="242.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="157.0" fitWidth="208.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../media/ModalImageUtils/PokemonLogoMoves.png" />
+                <Image url="@../media/ModalImageUtils/Logo.png" />
             </image>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <effect>
+            <Glow level="0.5" />
+         </effect>
         </ImageView>
-        <HBox spacing="100.0">
+        <HBox alignment="CENTER" spacing="100.0" HBox.hgrow="ALWAYS">
             <!-- Primera tabla -->
-            <TableView fx:id="tableView" editable="true" prefHeight="291.0" prefWidth="446.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;">
+            <TableView fx:id="tableView" editable="true" maxHeight="291.0" maxWidth="446.0" minHeight="291.0" minWidth="446.0" prefHeight="291.0" prefWidth="446.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;" HBox.hgrow="ALWAYS">
                 <columns>
                     <TableColumn fx:id="columnName" maxWidth="1000.0" minWidth="100.0" prefWidth="100.0" resizable="false" text="Nombre" />
                     <TableColumn fx:id="columnType" maxWidth="1000.0" minWidth="100.0" prefWidth="100.0" resizable="false" text="Tipo" />
@@ -28,17 +35,20 @@
             </TableView>
 
             <!-- Segunda tabla -->
-            <TableView fx:id="tableView2" editable="true" prefHeight="158.0" prefWidth="480.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;">
+            <TableView fx:id="tableView2" editable="true" maxHeight="291.0" maxWidth="446.0" minHeight="291.0" minWidth="446.0" prefHeight="291.0" prefWidth="446.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;">
                 <columns>
                <TableColumn fx:id="imageViewTableColumn" maxWidth="1000.0" minWidth="100.0" prefWidth="100.0" resizable="false" text="Pokemon" />
-                    <TableColumn fx:id="pokemonNames" maxWidth="1000.0" minWidth="100.0" prefWidth="100.0" resizable="false" text="Nombre" />
-                    <TableColumn fx:id="columnTypesPokemon" maxWidth="1000.0" minWidth="50.0" prefWidth="139.0" resizable="false" text="Tipo" />
-               <TableColumn fx:id="columnTypesPokemon2" maxWidth="1000.0" minWidth="50.0" prefWidth="139.0" resizable="false" text="Tipo 2" />
+                    <TableColumn fx:id="pokemonNames" maxWidth="1000.0" minWidth="110.0" prefWidth="110.0" resizable="false" text="Nombre" />
+                    <TableColumn fx:id="columnTypesPokemon" maxWidth="1000.0" minWidth="117.0" prefWidth="117.0" resizable="false" text="Tipo" />
+               <TableColumn fx:id="columnTypesPokemon2" maxWidth="1000.0" minWidth="117.0" prefWidth="117.0" resizable="false" text="Tipo 2" />
                 </columns>
             </TableView>
          <VBox.margin>
             <Insets />
          </VBox.margin>
+         <padding>
+            <Insets left="20.0" right="20.0" top="20.0" />
+         </padding>
         </HBox>
 
         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
@@ -59,9 +69,9 @@
                     </HBox.margin>
                 </Button>
             </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
         </HBox>
     </children>
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
 </VBox>

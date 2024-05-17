@@ -3,6 +3,7 @@ package com.github.dangelcrack.view;
 import com.github.dangelcrack.model.dao.MoveDAO;
 import com.github.dangelcrack.model.dao.PokemonDAO;
 import com.github.dangelcrack.model.entity.Move;
+import com.github.dangelcrack.model.entity.Obj;
 import com.github.dangelcrack.model.entity.Pokemon;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -248,6 +249,8 @@ public class EditPokemonController extends Controller implements Initializable {
 
     @FXML
     private void closeWindow(Event event) {
+        String nameValue = pokemonComboBox.getValue().getPokemonName();
+        String photoValue= photo.getText();
         int levelValue = (int) level.getValue();
         int hpValue = (int) hp.getValue();
         int attackValue = (int) attack.getValue();
@@ -267,6 +270,7 @@ public class EditPokemonController extends Controller implements Initializable {
         int evSpattackValue = (int) ev_spattack.getValue();
         int evSpdefenseValue = (int) ev_spdefense.getValue();
         int evSpeedValue = (int) ev_speed.getValue();
+        Obj obj = null;
         Types firstTypeValue = firstType.getValue();
         Types secondTypeValue = secondType.getValue();
         Move move1 = moveChoiceBox1.getValue();
@@ -278,30 +282,12 @@ public class EditPokemonController extends Controller implements Initializable {
         if (move2 != null) moves.add(move2);
         if (move3 != null) moves.add(move3);
         if (move4 != null) moves.add(move4);
-        Pokemon pokemonBeingEdited = pokemonComboBox.getValue();
-        pokemonBeingEdited.setPokemonName(pokemonComboBox.getValue().getPokemonName());
-        pokemonBeingEdited.setLevelCap(levelValue);
-        pokemonBeingEdited.setHealth(hpValue);
-        pokemonBeingEdited.setAttack(attackValue);
-        pokemonBeingEdited.setDefense(defenseValue);
-        pokemonBeingEdited.setSpecialAttack(spattackValue);
-        pokemonBeingEdited.setSpecialDefense(spdefenseValue);
-        pokemonBeingEdited.setSpeed(speedValue);
-        pokemonBeingEdited.setIv_Health(ivHpValue);
-        pokemonBeingEdited.setIv_Attack(ivAttackValue);
-        pokemonBeingEdited.setIv_Defense(ivDefenseValue);
-        pokemonBeingEdited.setIv_SpecialAttack(ivSpattackValue);
-        pokemonBeingEdited.setIv_SpecialDefense(ivSpdefenseValue);
-        pokemonBeingEdited.setIv_Speed(ivSpeedValue);
-        pokemonBeingEdited.setEv_Health(evHpValue);
-        pokemonBeingEdited.setEv_Attack(evAttackValue);
-        pokemonBeingEdited.setEv_Defense(evDefenseValue);
-        pokemonBeingEdited.setEv_SpecialAttack(evSpattackValue);
-        pokemonBeingEdited.setEv_SpecialDefense(evSpdefenseValue);
-        pokemonBeingEdited.setEv_SpecialAttack(evSpeedValue);
-        pokemonBeingEdited.setPokemonFirstType(firstTypeValue);
-        pokemonBeingEdited.setPokemonSecondType(secondTypeValue);
-        pokemonBeingEdited.setMoves(moves);
+        Pokemon pokemonBeingEdited = new Pokemon(
+                nameValue, firstTypeValue, secondTypeValue, photoValue, levelValue, hpValue, attackValue, defenseValue,
+                spattackValue, spdefenseValue, speedValue, ivHpValue, ivAttackValue, ivDefenseValue, ivSpattackValue,
+                ivSpdefenseValue, ivSpeedValue, evHpValue, evAttackValue, evDefenseValue, evSpattackValue, evSpdefenseValue,
+                evSpeedValue, moves, obj
+        );
         if (!photo.getText().isEmpty()) {
             pokemonBeingEdited.setPhotoPokemon(photo.getText());
         }

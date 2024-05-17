@@ -14,7 +14,7 @@
 
 <VBox fx:id="vbox" alignment="CENTER" fillWidth="false" prefHeight="637.0" prefWidth="1147.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.dangelcrack.view.AddPokemonController">
     <padding>
-        <Insets bottom="-20.0" left="20.0" right="20.0" top="60.0" />
+        <Insets bottom="-20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
     <children>
         <HBox minWidth="-Infinity" prefHeight="292.0" prefWidth="773.0" spacing="20">
@@ -408,7 +408,22 @@
             <ComboBox fx:id="moveChoiceBox4" prefHeight="27.0" prefWidth="200.0" promptText="4º MOVE" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;" />
             </children>
         </HBox>
-        <Button mnemonicParsing="false" onAction="#closeWindow" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;" text="Agregar" />
-        <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+      <HBox fillHeight="false" prefHeight="100.0" prefWidth="200.0" spacing="100.0">
+         <children>
+            <VBox fillWidth="false" maxHeight="200.0" maxWidth="100.0" minHeight="29.0" minWidth="100.0" prefHeight="29.0" prefWidth="100.0">
+               <children>
+                    <Button maxHeight="27.0" maxWidth="111.0" minHeight="27.0" minWidth="111.0" mnemonicParsing="false" onAction="#closeWindow" prefHeight="27.0" prefWidth="111.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;" text="Agregar" />
+               </children>
+            </VBox>
+            <VBox fillWidth="false" maxHeight="200.0" maxWidth="100.0" minHeight="109.0" minWidth="100.0" prefHeight="109.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+               <children>
+                    <ImageView fx:id="imageView" fitHeight="127.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets left="40.0" top="40.0" />
+         </padding>
+      </HBox>
     </children>
 </VBox>

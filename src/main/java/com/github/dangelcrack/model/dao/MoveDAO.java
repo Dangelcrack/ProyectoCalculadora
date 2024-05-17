@@ -6,9 +6,6 @@ import com.github.dangelcrack.model.entity.Pokemon;
 import com.github.dangelcrack.view.Category;
 import com.github.dangelcrack.view.Types;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,14 +18,12 @@ public class MoveDAO implements DAO<Move, String> {
     private static final String FINDBYNAME = "SELECT Name FROM Moves WHERE Name=?";
     private static final String INSERT = "INSERT INTO moves (Name,Type,Category,Power) VALUES (?,?,?,?)";
     private static final String UPDATE = "UPDATE moves SET Type = ?, Category = ?, Power = ? WHERE Name = ?";
-    private static final String DELETE_MOVES = "DELETE FROM PokemonMoves WHERE MoveName = ?";
-    private static final String DELETE_POKEMON = "DELETE FROM Moves WHERE Name = ?";
+    private static final String DELETE_MOVE = "DELETE FROM Moves WHERE Name = ?";
     private static final String FINDBYPOKEMON = "SELECT m.Name, m.Type, m.Category, m.Power\n" +
             "FROM Moves AS m\n" +
             "INNER JOIN PokemonMoves AS pm ON m.Name = pm.MoveName\n" +
             "WHERE pm.PokemonName = ?;";
     private static final String INSERTMOVESTOPOKEMON = "INSERT INTO PokemonMoves (PokemonName, MoveName) VALUES (?, ?)";
-    private static final String MOVES_CAN_LEARN_POKEMON = "SELECT COUNT(*) FROM PokemonMoves WHERE PokemonName = ? AND MoveName = ?";
     private static final String DELETE_OLD_MOVE = "DELETE FROM PokemonMoves WHERE MoveName = ?;";
 
 
@@ -41,7 +36,6 @@ public class MoveDAO implements DAO<Move, String> {
     @Override
     public Move save(Move m) {
         if (m == null || m.getNameMove() == null || m.getNameMove().isEmpty()) {
-            // Manejar caso de entrada inválida
             return null;
         }
 
@@ -99,35 +93,13 @@ public class MoveDAO implements DAO<Move, String> {
 
         return m;
     }
-    // Método para verificar si el movimiento ya existe para el Pokémon
-    private boolean checkIfMoveExists(Connection conn, String pokemonName, String moveName) {
-        // El resultado de la consulta
-        boolean exists = false;
-        try {
-            // Preparar la declaración
-            PreparedStatement pst = conn.prepareStatement(MOVES_CAN_LEARN_POKEMON);
-            // Establecer los parámetros de la consulta
-            pst.setString(1, pokemonName);
-            pst.setString(2, moveName);
-            // Ejecutar la consulta
-            ResultSet rs = pst.executeQuery();
-            // Si hay un resultado, entonces el movimiento ya existe
-            if (rs.next()) {
-                exists = rs.getInt(1) > 0;
-            }
-        } catch (SQLException e) {
-            // Manejar la excepción SQL
-            e.printStackTrace();
-        }
-        // Retornar el resultado de la consulta
-        return exists;
-    }
+
     @Override
     public Move delete(Move m) {
         if (m == null || m.getNameMove() == null) return m;
 
-        try (PreparedStatement pstMoves = ConnectionMariaDB.getConnection().prepareStatement(DELETE_MOVES);
-             PreparedStatement pstPokemon = ConnectionMariaDB.getConnection().prepareStatement(DELETE_POKEMON)) {
+        try (PreparedStatement pstMoves = conn.prepareStatement(DELETE_OLD_MOVE);
+             PreparedStatement pstPokemon = conn.prepareStatement(DELETE_MOVE)) {
             pstMoves.setString(1, m.getNameMove());
             pstMoves.executeUpdate();
             pstPokemon.setString(1, m.getNameMove());
@@ -140,12 +112,11 @@ public class MoveDAO implements DAO<Move, String> {
     }
 
 
-
     @Override
-    public Move findByName(String key) {
+    public Move findByName(String nameMove) {
         Move result = null;
         try (PreparedStatement pst = conn.prepareStatement(FINDBYNAME)) {
-            pst.setString(1, key);
+            pst.setString(1, nameMove);
             try (ResultSet res = pst.executeQuery()) {
                 if (res.next()) {
                     Move move = new Move();
@@ -162,41 +133,23 @@ public class MoveDAO implements DAO<Move, String> {
     @Override
     public List<Move> findAll() {
         List<Move> result = new ArrayList<>();
-        PreparedStatement pst = null;
-        ResultSet res = null;
-
-        try {
-            pst = conn.prepareStatement(FINDALL);
-            res = pst.executeQuery();
-
-            while (res.next()) {
-                Move move = new Move();
-                move.setNameMove(res.getString("Name"));
-
-                String TypeString = res.getString("Type");
-                Types Type = Types.valueOf(TypeString);
-                move.setTypeMove(Type);
-
-                String CategoryString = res.getString("Category");
-                Category category = Category.valueOf(CategoryString);
-                move.setCategory(category);
-
-                move.setPower(res.getInt("Power"));
-                result.add(move);
+        try (PreparedStatement pst = conn.prepareStatement(FINDALL)) {
+            try (ResultSet res = pst.executeQuery()) {
+                while (res.next()) {
+                    Move move = new Move();
+                    move.setNameMove(res.getString("Name"));
+                    String TypeString = res.getString("Type");
+                    Types Type = Types.valueOf(TypeString);
+                    move.setTypeMove(Type);
+                    String CategoryString = res.getString("Category");
+                    Category category = Category.valueOf(CategoryString);
+                    move.setCategory(category);
+                    move.setPower(res.getInt("Power"));
+                    result.add(move);
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                if (res != null) {
-                    res.close();
-                }
-                if (pst != null) {
-                    pst.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
 
         return result;
@@ -215,7 +168,6 @@ public class MoveDAO implements DAO<Move, String> {
                     m.setCategory(Category.valueOf(res.getString("Category")));
                     m.setPower(res.getInt("Power"));
                     result.add(m);
-
                 }
             } catch (SQLException e) {
                 e.printStackTrace();

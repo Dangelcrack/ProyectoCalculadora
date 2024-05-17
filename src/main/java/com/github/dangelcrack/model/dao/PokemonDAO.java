@@ -2,6 +2,7 @@ package com.github.dangelcrack.model.dao;
 
 import com.github.dangelcrack.model.connection.ConnectionMariaDB;
 import com.github.dangelcrack.model.entity.Move;
+import com.github.dangelcrack.model.entity.Obj;
 import com.github.dangelcrack.model.entity.Pokemon;
 import com.github.dangelcrack.view.Types;
 
@@ -22,12 +23,15 @@ public class PokemonDAO implements DAO<Pokemon, String> {
 
     private static final String FINDALL = "SELECT p.PokemonName, p.FirstType, p.SecondType, p.Photo, p.LEVELCAP, p.HP, p.Attack, p.Defense, p.SpAttack, p.SpDefense, p.Speed, p.Iv_HP, p.Iv_Attack, p.Iv_Defense, p.Iv_SpAttack, p.Iv_SpDefense, p.Iv_Speed, p.Ev_HP, p.Ev_Attack, p.Ev_Defense, p.Ev_SpAttack, p.Ev_SpDefense, p.Ev_Speed FROM Pokemon p";
 
-    private static final String FINDBYNAME = "SELECT p.PokemonName, p.Photo FROM Pokemon AS p WHERE p.PokemonName=?\n";
-    private static final String DELETE_MOVES = "DELETE FROM PokemonMoves WHERE PokemonName = ?";
+    private static final String FINDBYNAME = "SELECT PokemonName FROM Pokemon WHERE PokemonName=?";
     private static final String DELETE_POKEMON = "DELETE FROM Pokemon WHERE PokemonName = ?";
     private static final String INSERTMOVESTOPOKEMON = "INSERT INTO PokemonMoves (PokemonName, MoveName) VALUES (?, ?)";
     private static final String DELETEOLDMOVES = "DELETE FROM PokemonMoves WHERE PokemonName = ?";
+    private static final String REMOVE_POKEMON_OBJECT = "UPDATE Pokemon SET Object_Name = NULL WHERE PokemonName = ?";
     private static final  String FIND_BY_MOVE_NAME = "SELECT p.* FROM Pokemon p INNER JOIN PokemonMoves pm ON p.PokemonName = pm.PokemonName WHERE pm.MoveName = ?";
+    private static final String FIND_BY_OBJ_NAME = "SELECT p.* FROM Pokemon p INNER JOIN Objects o ON p.Object_Name = o.Name WHERE o.Name = ?";
+    //esque debería de ser la tabla pokemon con un atributo objeto y una foranea en objetos que tenga muchos pokemon y que tanto el objeto de pokemon pueda ser null y la lista de pokemon asocia
+    //dos a ese objeto tambien pueda ser null
     private Connection conn;
     public PokemonDAO() {
         conn = ConnectionMariaDB.getConnection();
@@ -68,6 +72,7 @@ public class PokemonDAO implements DAO<Pokemon, String> {
                     pst.setInt(22, p.getEv_SpecialDefense());
                     pst.setInt(23, p.getEv_Speed());
                     pst.setString(24, p.getPokemonName());
+                    pst.setString(25, p.getObj().getNameObject());
                     pst.executeUpdate();
                     if (p.getMoves() != null) {
                         for (Move m : p.getMoves()) {
@@ -119,6 +124,13 @@ public class PokemonDAO implements DAO<Pokemon, String> {
                         }
                         pstMoves.executeBatch();
                     }
+                    try (PreparedStatement pstRemovePokemonObject = conn.prepareStatement(REMOVE_POKEMON_OBJECT)) {
+                        pstRemovePokemonObject.setString(1, p.getPokemonName());
+                        pstRemovePokemonObject.executeUpdate();
+                    }
+                    if(p.getObj()!=null){
+                        pst.setString(25, p.getObj().getNameObject());
+                    }
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -134,24 +146,16 @@ public class PokemonDAO implements DAO<Pokemon, String> {
     public Pokemon delete(Pokemon p) {
         if (p == null || p.getPokemonName() == null) return p;
 
-        try (PreparedStatement pstMoves = ConnectionMariaDB.getConnection().prepareStatement(DELETE_MOVES);
-             PreparedStatement pstPokemon = ConnectionMariaDB.getConnection().prepareStatement(DELETE_POKEMON)) {
+        try (PreparedStatement pstMoves = conn.prepareStatement(DELETEOLDMOVES);
+             PreparedStatement pstRemovePokemonObject = conn.prepareStatement(REMOVE_POKEMON_OBJECT);
+             PreparedStatement pstPokemon = conn.prepareStatement(DELETE_POKEMON)) {
+            pstRemovePokemonObject.setString(1, p.getPokemonName());
+            pstRemovePokemonObject.executeUpdate();
             pstMoves.setString(1, p.getPokemonName());
             pstMoves.executeUpdate();
-            String photoName = p.getPhotoPokemon();
-            List<Pokemon> existingPokemon = PokemonDAO.build().findAll();
-            boolean foundSamePhoto =existingPokemon.stream() // Se convierte la lista existingPokemon en un stream(lazy)
-                            .anyMatch(pokemon -> // Se verifica si algún elemento del stream cumple con la condición
-                                    pokemon.getPhotoPokemon() != null && // Verifica si la foto del pokemon no es nula
-                                    pokemon.getPhotoPokemon().equals(photoName) // Verifica si el nombre de la foto es igual al proporcionado
-                            );
-            if (!foundSamePhoto) {
-                String mediaPath = "src/main/resources/com/github/dangelcrack/media/PokemonImages/";
-                Files.deleteIfExists(Paths.get(mediaPath + photoName));
-            }
             pstPokemon.setString(1, p.getPokemonName());
             pstPokemon.executeUpdate();
-        } catch (SQLException | IOException ex) {
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
 
@@ -159,16 +163,16 @@ public class PokemonDAO implements DAO<Pokemon, String> {
     }
 
     @Override
-    public Pokemon findByName(String pokemonName) {
+    public Pokemon findByName(String namePokemon) {
         Pokemon result = null;
-        try (PreparedStatement pst = ConnectionMariaDB.getConnection().prepareStatement(FINDBYNAME)) {
-            pst.setString(1, pokemonName);
+        try (PreparedStatement pst = conn.prepareStatement(FINDBYNAME)) {
+            pst.setString(1, namePokemon);
             try (ResultSet res = pst.executeQuery()) {
                 if (res.next()) {
                     Pokemon pokemon = new Pokemon();
                     pokemon.setPokemonName(res.getString("PokemonName"));
-                    pokemon.setPhotoPokemon(res.getString("Photo"));
                     pokemon.setMoves(MoveDAO.build().findByPokemon(pokemon));
+                    pokemon.setObj(ObjDAO.build().findByPokemon(pokemon));
                     result = pokemon;
                 }
             }
@@ -178,11 +182,35 @@ public class PokemonDAO implements DAO<Pokemon, String> {
         return result;
     }
 
-    public List<Pokemon> findPokemonByMoveName(String moveName) {
+    public List<Pokemon> findPokemonByMoveName(String nameMove) {
         List<Pokemon> pokemonList = new ArrayList<>();
 
         try (PreparedStatement pst = conn.prepareStatement(FIND_BY_MOVE_NAME)) {
-            pst.setString(1, moveName);
+            pst.setString(1, nameMove);
+            try (ResultSet rs = pst.executeQuery()) {
+                while (rs.next()) {
+                    Pokemon pokemon = new Pokemon();
+                    pokemon.setPokemonName(rs.getString("PokemonName"));
+                    String firstTypeString = rs.getString("FirstType");
+                    String secondTypeString = rs.getString("SecondType");
+                    pokemon.setPhotoPokemon(rs.getString("Photo"));
+                    Types firstType = Types.valueOf(firstTypeString);
+                    pokemon.setPokemonFirstType(firstType);
+                    Types secondType = (secondTypeString != null) ? Types.valueOf(secondTypeString) : null;
+                    pokemon.setPokemonSecondType(secondType);
+                    pokemonList.add(pokemon);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return pokemonList;
+    }
+    public List<Pokemon> findPokemonByObj(Obj o) {
+        List<Pokemon> pokemonList = new ArrayList<>();
+        try (PreparedStatement pst = conn.prepareStatement(FIND_BY_OBJ_NAME)) {
+            pst.setString(1, o.getNameObject());
             try (ResultSet rs = pst.executeQuery()) {
                 while (rs.next()) {
                     Pokemon pokemon = new Pokemon();
@@ -206,7 +234,7 @@ public class PokemonDAO implements DAO<Pokemon, String> {
     @Override
     public List<Pokemon> findAll() {
         List<Pokemon> result = new ArrayList<>();
-        try (PreparedStatement pst = ConnectionMariaDB.getConnection().prepareStatement(FINDALL)) {
+        try (PreparedStatement pst = conn.prepareStatement(FINDALL)) {
             try (ResultSet res = pst.executeQuery()) {
                 while (res.next()) {
                     Pokemon pokemon = new Pokemon();
@@ -238,6 +266,7 @@ public class PokemonDAO implements DAO<Pokemon, String> {
                     pokemon.setEv_SpecialDefense(res.getInt("EV_SpDefense"));
                     pokemon.setEv_Speed(res.getInt("EV_Speed"));
                     pokemon.setMoves(MoveDAO.build().findByPokemon(pokemon));
+                    pokemon.setObj(ObjDAO.build().findByPokemon(pokemon));
                     result.add(pokemon);
                 }
             }

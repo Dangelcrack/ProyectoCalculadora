@@ -39,6 +39,8 @@ public class AddMoveController extends Controller implements Initializable {
     @FXML
     private Button addPokemon;
     @FXML
+    private Button deletePokemon;
+    @FXML
     private Slider power;
     @FXML
     public Label powerValue;
@@ -50,7 +52,7 @@ public class AddMoveController extends Controller implements Initializable {
     private TableColumn<Pokemon, Image> columnFirstType;
     @FXML
     private TableColumn<Pokemon, Image> columnSecondType;
-    private ObservableList<Pokemon> pokemonList = FXCollections.observableArrayList();;
+    private ObservableList<Pokemon> pokemonList = FXCollections.observableArrayList();
     private MovesController controller;
 
     @Override
@@ -113,6 +115,17 @@ public class AddMoveController extends Controller implements Initializable {
         category.setItems(FXCollections.observableArrayList(Category.values()));
         power.valueProperty().addListener((observable, oldValue, newValue) -> powerValue.setText(String.valueOf(newValue.intValue())));
         pokemonCanLearn.setItems(FXCollections.observableArrayList(PokemonDAO.build().findAll()));
+        deletePokemon.setOnAction(event -> {
+            Pokemon selectedPokemon = pokemonCanLearn.getValue();
+            if (selectedPokemon != null && pokemonList.contains(selectedPokemon)) {
+                pokemonList.remove(selectedPokemon);
+                if (tableView != null) {
+                    tableView.setItems(null);
+                    tableView.setItems(pokemonList);
+                    tableView.refresh();
+                }
+            }
+        });
         addPokemon.setOnAction(event -> {
             Pokemon selectedPokemon = pokemonCanLearn.getValue();
             if (selectedPokemon != null && (!pokemonList.contains(selectedPokemon))) {

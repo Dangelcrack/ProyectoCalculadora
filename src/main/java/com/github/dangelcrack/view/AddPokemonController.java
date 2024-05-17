@@ -2,6 +2,7 @@ package com.github.dangelcrack.view;
 
 import com.github.dangelcrack.model.dao.MoveDAO;
 import com.github.dangelcrack.model.entity.Move;
+import com.github.dangelcrack.model.entity.Obj;
 import com.github.dangelcrack.model.entity.Pokemon;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -236,11 +237,11 @@ public class AddPokemonController extends Controller implements Initializable {
         if (move2 != null) moves.add(move2);
         if (move3 != null) moves.add(move3);
         if (move4 != null) moves.add(move4);
+        Obj obj = new Obj();
         Pokemon pokemon = new Pokemon(name.getText(), firstTypeValue, secondTypeValue, photo.getText(), levelValue, hpValue, attackValue, defenseValue, spattackValue, spdefenseValue, speedValue,
                 ivHpValue, ivAttackValue, ivDefenseValue, ivSpattackValue, ivSpdefenseValue, ivSpeedValue,
-                evHpValue, evAttackValue, evDefenseValue, evSpattackValue, evSpdefenseValue, evSpeedValue, moves);
+                evHpValue, evAttackValue, evDefenseValue, evSpattackValue, evSpdefenseValue, evSpeedValue, moves, obj);
 
-        pokemon.setPhotoPokemon(pokemon.getPhotoPokemon());
         if(Objects.equals(pokemon.getPokemonName(), name.getText())){
             this.controller.deletePokemon(pokemon);
         }

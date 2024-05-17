@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -40,6 +41,11 @@ public class AppController extends Controller implements Initializable {
         stage.initOwner(App.stage);
         Scene _scene = new Scene(view.scene);
         stage.setScene(_scene);
+        try {
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("/com/github/dangelcrack/media/ModalImageUtils/iconPokemon.png")));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         view.controller.onOpen(parent);
         stage.showAndWait();
     }

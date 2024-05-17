@@ -35,12 +35,12 @@ public class Pokemon {
     private int ev_SpecialDefense;
     private int ev_Speed;
     private List<Move> moves;
-
+    private Obj obj;
     public Pokemon(String pokemonName, Types pokemonFirstType, Types pokemonSecondType, String photoPokemon, int levelCap,
                    int health, int attack, int defense, int specialAttack, int specialDefense, int speed,
                    int iv_Health, int iv_Attack, int iv_Defense, int iv_SpecialAttack, int iv_SpecialDefense,
                    int iv_Speed, int ev_Health, int ev_Attack, int ev_Defense, int ev_SpecialAttack,
-                   int ev_SpecialDefense, int ev_Speed, List<Move> moves) {
+                   int ev_SpecialDefense, int ev_Speed, List<Move> moves, Obj obj) {
         this.pokemonName = pokemonName;
         this.pokemonFirstType = pokemonFirstType;
         this.pokemonSecondType = pokemonSecondType;
@@ -65,6 +65,7 @@ public class Pokemon {
         this.ev_SpecialDefense = ev_SpecialDefense;
         this.ev_Speed = ev_Speed;
         this.moves = moves;
+        this.obj = obj;
     }
 
     public Pokemon() {
@@ -264,7 +265,9 @@ public class Pokemon {
                         .map(Move::getNameMove)
                         .collect(Collectors.joining(", "));
     }
-
+    public String getObjString(Pokemon pokemon){
+        return String.valueOf(pokemon.getObj());
+    }
     public List<Move> getMoves(){
         return moves;
     }
@@ -284,6 +287,14 @@ public class Pokemon {
             result = moves.get(i);
         }
         return result;
+    }
+
+    public Obj getObj() {
+        return obj;
+    }
+
+    public void setObj(Obj obj) {
+        this.obj = obj;
     }
 
     @Override

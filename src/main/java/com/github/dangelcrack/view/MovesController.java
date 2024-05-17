@@ -48,9 +48,6 @@ public class MovesController extends Controller implements Initializable {
     private TableColumn<Pokemon, Image> columnTypesPokemon2;
     @FXML
     private TableColumn<Pokemon, String> pokemonNames;
-    @FXML
-    private TableColumn<Move, String> columnListPokemonCanLearn;
-
     public ObservableList<Move> moves;
 
     @Override
@@ -85,7 +82,7 @@ public class MovesController extends Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tableView.setEditable(true);
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        URL imageUrl = getClass().getResource("/com/github/dangelcrack/media/ModalImageUtils/FondoMain.png");
+        URL imageUrl = getClass().getResource("/com/github/dangelcrack/media/ModalImageUtils/fondonegro.jpg");
         BackgroundImage backgroundImage = new BackgroundImage(
                 new Image(imageUrl.toExternalForm()),
                 BackgroundRepeat.NO_REPEAT,
@@ -101,8 +98,9 @@ public class MovesController extends Controller implements Initializable {
                 return;
             }
 
-            if (event.getNewValue().length() <= 60) {
+            if (event.getNewValue().length() <= 20) {
                 Move move = event.getRowValue();
+                MoveDAO.build().delete(move);
                 move.setNameMove(event.getNewValue());
                 MoveDAO.build().save(move);
             } else {
@@ -204,7 +202,7 @@ public class MovesController extends Controller implements Initializable {
                     private final ImageView imageView = new ImageView();
 
                     {
-                        imageView.setFitWidth(100);
+                        imageView.setFitWidth(50);
                         imageView.setPreserveRatio(true);
                     }
 

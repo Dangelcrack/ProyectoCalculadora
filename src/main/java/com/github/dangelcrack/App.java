@@ -7,6 +7,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -30,6 +31,12 @@ public class App extends Application {
         currentController = (AppController) view.controller;
         currentController.onOpen(null);
         stage.setScene(scene);
+        try {
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("/com/github/dangelcrack/media/ModalImageUtils/iconPokemon.png")));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        stage.setTitle("Pokemon Calculator");
         stage.show();
     }
 

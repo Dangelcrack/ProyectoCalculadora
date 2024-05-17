@@ -2,6 +2,7 @@ package com.github.dangelcrack.view;
 
 import com.github.dangelcrack.App;
 import com.github.dangelcrack.model.dao.PokemonDAO;
+import com.github.dangelcrack.model.entity.Obj;
 import com.github.dangelcrack.model.entity.Pokemon;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -40,6 +41,8 @@ public class PokemonController extends Controller implements Initializable {
     private TableColumn<Pokemon, String> columnName;
     @FXML
     private TableColumn<Pokemon, String> columnMoves;
+    @FXML
+    private TableColumn<Pokemon , String> pokemonHolds;
     public ObservableList<Pokemon> pokemons;
 
     @Override
@@ -71,7 +74,7 @@ public class PokemonController extends Controller implements Initializable {
         tableView.refresh();
         tableView.setEditable(true);
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        URL imageUrl = getClass().getResource("/com/github/dangelcrack/media/ModalImageUtils/FondoMain.png");
+        URL imageUrl = getClass().getResource("/com/github/dangelcrack/media/ModalImageUtils/fondonegro.jpg");
         BackgroundImage backgroundImage = new BackgroundImage(
                 new Image(imageUrl.toExternalForm()),
                 BackgroundRepeat.NO_REPEAT,
@@ -112,7 +115,10 @@ public class PokemonController extends Controller implements Initializable {
 
         columnMoves.setCellValueFactory(pokemon -> new SimpleStringProperty(pokemon.getValue().getMovesNamesString(pokemon.getValue())));
 
-
+        pokemonHolds.setCellValueFactory(pokemon -> {
+            Obj obj = pokemon.getValue().getObj();
+            return new SimpleStringProperty(obj != null ? obj.getNameObject() : "");
+        });
         columnFirstType.setCellValueFactory(pokemon -> {
             Types firstType = pokemon.getValue().getPokemonFirstType();
             Image firstTypeImage = new Image(getClass().getResourceAsStream("/com/github/dangelcrack/media/TypesImage/" + firstType + ".png"));
@@ -167,7 +173,6 @@ public class PokemonController extends Controller implements Initializable {
                 }
             }
         });
-
         columnName.setCellValueFactory(pokemon -> new SimpleStringProperty(pokemon.getValue().getPokemonName().toString()));
         columnName.setCellFactory(TextFieldTableCell.forTableColumn());
         columnName.setOnEditCommit(event ->
@@ -177,8 +182,9 @@ public class PokemonController extends Controller implements Initializable {
                 return;
             }
 
-            if (event.getNewValue().length() <= 60) {
+            if (event.getNewValue().length() <= 20) {
                 Pokemon pokemon = event.getRowValue();
+                PokemonDAO.build().delete(pokemon);
                 pokemon.setPokemonName(event.getNewValue());
                 PokemonDAO.build().save(pokemon);
             } else {

@@ -98,7 +98,6 @@ private HBox hBox;
                 new BackgroundSize(100, 100, true, true, false, true)
         );
         hBox.setBackground(new Background(backgroundImage));
-
         imageViewTableColumn.setCellValueFactory(pokemon -> {
             String imageExtension = pokemon.getValue().getPhotoPokemon();
             String imagePath = "/com/github/dangelcrack/media/PokemonImages/" + imageExtension;
