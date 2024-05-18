@@ -1,6 +1,7 @@
 package com.github.dangelcrack.model.entity;
 
 
+import com.github.dangelcrack.view.Nature;
 import com.github.dangelcrack.view.Types;
 import javafx.scene.image.Image;
 
@@ -36,11 +37,12 @@ public class Pokemon {
     private int ev_Speed;
     private List<Move> moves;
     private Obj obj;
+    private Nature nature;
     public Pokemon(String pokemonName, Types pokemonFirstType, Types pokemonSecondType, String photoPokemon, int levelCap,
                    int health, int attack, int defense, int specialAttack, int specialDefense, int speed,
                    int iv_Health, int iv_Attack, int iv_Defense, int iv_SpecialAttack, int iv_SpecialDefense,
                    int iv_Speed, int ev_Health, int ev_Attack, int ev_Defense, int ev_SpecialAttack,
-                   int ev_SpecialDefense, int ev_Speed, List<Move> moves, Obj obj) {
+                   int ev_SpecialDefense, int ev_Speed, List<Move> moves, Obj obj, Nature nature) {
         this.pokemonName = pokemonName;
         this.pokemonFirstType = pokemonFirstType;
         this.pokemonSecondType = pokemonSecondType;
@@ -66,9 +68,14 @@ public class Pokemon {
         this.ev_Speed = ev_Speed;
         this.moves = moves;
         this.obj = obj;
+        this.nature = nature;
     }
 
     public Pokemon() {
+    }
+
+    public Pokemon(Nature nature) {
+        this.nature=nature;
     }
 
     public String getPokemonName() {
@@ -295,6 +302,14 @@ public class Pokemon {
 
     public void setObj(Obj obj) {
         this.obj = obj;
+    }
+
+    public Nature getNature() {
+        return nature;
+    }
+
+    public void setNature(Nature nature) {
+        this.nature = nature;
     }
 
     @Override

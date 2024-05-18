@@ -2,48 +2,287 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox fx:id="vbox" alignment="CENTER" prefHeight="347.0" prefWidth="729.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.dangelcrack.view.CombatsController">
+<VBox fx:id="vbox" alignment="CENTER" prefHeight="512.0" prefWidth="1093.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.dangelcrack.view.CombatsController">
     <children>
-      <ImageView fitHeight="450.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../media/ModalImageUtils/Logo.png" />
-         </image>
-      </ImageView>
-        <TableView fx:id="tableView" editable="true" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;">
-            <columns>
-                <TableColumn fx:id="imageViewTableColumn" maxWidth="1000.0" prefWidth="100.0" resizable="false" text="Photo" />
-                <TableColumn fx:id="columnName" maxWidth="1000.0" prefWidth="100.0" text="Nombre" />
-                <TableColumn fx:id="columnFirstType" maxWidth="1000.0" prefWidth="100.0" text="Tipo1" />
-            <TableColumn fx:id="columnSecondType" maxWidth="1000.0" prefWidth="100.0" text="Tipo2" />
-                <TableColumn fx:id="columnMoves" prefWidth="100.0" text="Movimientos" />
-            </columns>
-        </TableView>
-        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-            <children>
-                <Button mnemonicParsing="false" onAction="#agregaPokemon" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;" text="Agregar">
-                    <HBox.margin>
-                        <Insets />
-                    </HBox.margin>
-                </Button>
-                <Button mnemonicParsing="false" onAction="#borrarPokemon" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;" text="Borrar">
-                    <HBox.margin>
-                        <Insets left="100.0" />
-                    </HBox.margin>
-                </Button>
-                <Button mnemonicParsing="false" onAction="#editarPokemon" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;" text="Editar">
-                    <HBox.margin>
-                        <Insets left="100.0" />
-                    </HBox.margin>
-                </Button>
-            </children>
-        </HBox>
+      <HBox prefHeight="340.0" prefWidth="855.0">
+         <children>
+            <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="340.0" prefWidth="1053.0">
+               <children>
+                  <HBox fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="50.0">
+                     <children>
+                        <VBox fillWidth="false" maxWidth="150.0" prefHeight="421.0" prefWidth="214.0">
+                           <children>
+                              <Label text="LEVEL">
+                                 <font>
+                                    <Font name="Arial Bold Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <VBox>
+                                 <children>
+                                    <Label fx:id="levelValue1" style="-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10;">
+                                       <font>
+                                          <Font name="Arial Bold Italic" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <Label text="HP">
+                                 <font>
+                                    <Font name="Arial Bold Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <VBox alignment="CENTER">
+                                 <children>
+                                    <Label fx:id="hpValue1" style="-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10;">
+                                       <font>
+                                          <Font name="Arial Bold Italic" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <Label text="Attack">
+                                 <font>
+                                    <Font name="System Bold Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <VBox alignment="CENTER">
+                                 <children>
+                                    <Label fx:id="attackValue1" style="-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10;">
+                                       <font>
+                                          <Font name="Arial Bold Italic" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <Label text="Defense">
+                                 <font>
+                                    <Font name="Arial Bold Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <VBox alignment="CENTER">
+                                 <children>
+                                    <Label fx:id="defenseValue1" style="-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10;">
+                                       <font>
+                                          <Font name="Arial Bold Italic" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <Label text="Special Attack">
+                                 <font>
+                                    <Font name="Arial Bold Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <VBox alignment="CENTER">
+                                 <children>
+                                    <Label fx:id="spattackValue1" style="-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10;">
+                                       <font>
+                                          <Font name="Arial Bold Italic" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <Label text="Special Defense">
+                                 <font>
+                                    <Font name="Arial Bold Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <VBox alignment="CENTER">
+                                 <children>
+                                    <Label fx:id="spdefenseValue1" style="-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10;">
+                                       <font>
+                                          <Font name="Arial Bold Italic" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <Label text="Speed">
+                                 <font>
+                                    <Font name="Arial Bold Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <VBox alignment="CENTER">
+                                 <children>
+                                    <Label fx:id="speedValue1" style="-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10;">
+                                       <font>
+                                          <Font name="Arial Bold Italic" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="340.0" prefWidth="241.0" spacing="20.0">
+                           <children>
+                              <ComboBox fx:id="pokemon1ComboBox" prefHeight="27.0" prefWidth="200.0" promptText="Pokemon" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;" />
+                              <ComboBox fx:id="moveChoiceBoxPokemon1" prefHeight="27.0" prefWidth="200.0" promptText="MOVE" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;" />
+                              <ComboBox fx:id="objChoiceBoxPokemon1" prefHeight="27.0" prefWidth="200.0" promptText="Objeto" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;" />
+                              <ImageView fx:id="imageViewPokemon1" fitHeight="187.0" fitWidth="247.0" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </VBox>
+                        <VBox fillWidth="false" maxWidth="175.0" prefHeight="293.0" prefWidth="175.0">
+                           <children>
+                              <VBox alignment="CENTER" />
+                              <Label text="LEVEL">
+                                 <font>
+                                    <Font name="Arial Bold Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <VBox>
+                                 <children>
+                                    <Label fx:id="levelValue2" style="-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10;">
+                                       <font>
+                                          <Font name="Arial Bold Italic" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <Label text="HP">
+                                 <font>
+                                    <Font name="Arial Bold Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <VBox>
+                                 <children>
+                                    <Label fx:id="hpValue2" style="-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10;">
+                                       <font>
+                                          <Font name="Arial Bold Italic" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <Label text="Attack">
+                                 <font>
+                                    <Font name="System Bold Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <VBox alignment="CENTER">
+                                 <children>
+                                    <Label fx:id="attackValue2" style="-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10;">
+                                       <font>
+                                          <Font name="Arial Bold Italic" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <Label text="Defense">
+                                 <font>
+                                    <Font name="Arial Bold Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <VBox alignment="CENTER">
+                                 <children>
+                                    <Label fx:id="defenseValue2" style="-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10;">
+                                       <font>
+                                          <Font name="Arial Bold Italic" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <Label text="Special Attack">
+                                 <font>
+                                    <Font name="Arial Bold Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <VBox alignment="CENTER">
+                                 <children>
+                                    <Label fx:id="spattackValue2" style="-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10;">
+                                       <font>
+                                          <Font name="Arial Bold Italic" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <Label text="Special Defense">
+                                 <font>
+                                    <Font name="Arial Bold Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <VBox alignment="CENTER">
+                                 <children>
+                                    <Label fx:id="spdefenseValue2" style="-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10;">
+                                       <font>
+                                          <Font name="Arial Bold Italic" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <Label text="Speed">
+                                 <font>
+                                    <Font name="Arial Bold Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <VBox alignment="CENTER">
+                                 <children>
+                                    <Label fx:id="speedValue2" style="-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10;">
+                                       <font>
+                                          <Font name="Arial Bold Italic" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+                           <children>
+                              <ComboBox fx:id="pokemon2ComboBox" prefHeight="27.0" prefWidth="200.0" promptText="Pokemon" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;" />
+                              <ComboBox fx:id="moveChoiceBoxPokemon2" prefHeight="27.0" prefWidth="200.0" promptText="MOVE" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;" />
+                              <ComboBox fx:id="objChoiceBoxPokemon2" prefHeight="27.0" prefWidth="200.0" promptText="Objeto" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;" />
+                              <ImageView fx:id="imageViewPokemon2" fitHeight="187.0" fitWidth="247.0" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </VBox>
+                     </children></HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="56.0" prefWidth="1053.0" spacing="100.0">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="20.0" prefWidth="199.0">
+               <children>
+                  <Label text="HP">
+                     <font>
+                        <Font name="Arial Bold Italic" size="15.0" />
+                     </font>
+                  </Label>
+                  <ProgressBar fx:id="barraVidaPokemon1" prefWidth="200.0" progress="0.0" />
+                  <Label fx:id="labelVidaRestantePokemon1" style="-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10;">
+                     <font>
+                        <Font name="Arial Bold Italic" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <Button fx:id="btnCalcularVida" mnemonicParsing="false" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;" text="COMBAT!">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Button>
+            <VBox alignment="CENTER" prefHeight="56.0" prefWidth="205.0">
+               <children>
+                  <Label text="HP">
+                     <font>
+                        <Font name="Arial Bold Italic" size="15.0" />
+                     </font>
+                  </Label>
+                  <ProgressBar fx:id="barraVidaPokemon2" prefWidth="200.0" progress="0.0" />
+                  <Label fx:id="labelVidaRestantePokemon2" style="-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10;">
+                     <font>
+                        <Font name="Arial Bold Italic" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
     </children>
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

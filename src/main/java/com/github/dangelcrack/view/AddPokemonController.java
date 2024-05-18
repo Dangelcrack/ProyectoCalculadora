@@ -47,7 +47,8 @@ public class AddPokemonController extends Controller implements Initializable {
     private Slider level;
     @FXML
     public Label levelValue;
-
+    @FXML
+    private ComboBox<Nature> nature;
     @FXML
     private Slider hp;
     @FXML
@@ -174,6 +175,7 @@ public class AddPokemonController extends Controller implements Initializable {
         vbox.setBackground(new Background(backgroundImage));
         firstType.setItems(FXCollections.observableArrayList(Types.values()));
         secondType.setItems(FXCollections.observableArrayList(Types.values()));
+        nature.setItems(FXCollections.observableArrayList(Nature.values()));
         level.valueProperty().addListener((observable, oldValue, newValue) -> levelValue.setText(String.valueOf(newValue.intValue())));
         hp.valueProperty().addListener((observable, oldValue, newValue) -> hpValue.setText(String.valueOf(newValue.intValue())));
         attack.valueProperty().addListener((observable, oldValue, newValue) -> attackValue.setText(String.valueOf(newValue.intValue())));
@@ -228,6 +230,7 @@ public class AddPokemonController extends Controller implements Initializable {
 
         Types firstTypeValue = firstType.getValue();
         Types secondTypeValue = secondType.getValue();
+        Nature natureValue = nature.getValue();
         Move move1 = moveChoiceBox1.getValue();
         Move move2 = moveChoiceBox2.getValue();
         Move move3 = moveChoiceBox3.getValue();
@@ -240,13 +243,12 @@ public class AddPokemonController extends Controller implements Initializable {
         Obj obj = new Obj();
         Pokemon pokemon = new Pokemon(name.getText(), firstTypeValue, secondTypeValue, photo.getText(), levelValue, hpValue, attackValue, defenseValue, spattackValue, spdefenseValue, speedValue,
                 ivHpValue, ivAttackValue, ivDefenseValue, ivSpattackValue, ivSpdefenseValue, ivSpeedValue,
-                evHpValue, evAttackValue, evDefenseValue, evSpattackValue, evSpdefenseValue, evSpeedValue, moves, obj);
+                evHpValue, evAttackValue, evDefenseValue, evSpattackValue, evSpdefenseValue, evSpeedValue, moves, obj, natureValue);
 
         if(Objects.equals(pokemon.getPokemonName(), name.getText())){
             this.controller.deletePokemon(pokemon);
         }
         this.controller.savePokemon(pokemon);
-        //Antes de cerrar notificamos a nuestro parent que hay un pokemon nuevo
         ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 

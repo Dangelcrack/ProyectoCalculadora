@@ -36,6 +36,8 @@ public class EditPokemonController extends Controller implements Initializable {
     @FXML
     private ComboBox<Types> secondType;
     @FXML
+    private ComboBox<Nature> nature;
+    @FXML
     private TextField photo;
     @FXML
     private ImageView imageView;
@@ -197,28 +199,68 @@ public class EditPokemonController extends Controller implements Initializable {
         Image image = new Image(inputStream);
         imageView.setImage(image);
         level.setValue(pokemon.getLevelCap());
+        levelValue.setText(String.valueOf((int)level.getValue()));
         hp.setValue(pokemon.getHealth());
+        hpValue.setText(String.valueOf((int)hp.getValue()));
         attack.setValue(pokemon.getAttack());
+        attackValue.setText(String.valueOf((int)attack.getValue()));
         defense.setValue(pokemon.getDefense());
+        defenseValue.setText(String.valueOf((int)defense.getValue()));
         spattack.setValue(pokemon.getSpecialAttack());
+        spattackValue.setText(String.valueOf((int)spattack.getValue()));
         spdefense.setValue(pokemon.getSpecialDefense());
+        spdefenseValue.setText(String.valueOf((int)spdefense.getValue()));
         speed.setValue(pokemon.getSpeed());
+        speedValue.setText(String.valueOf((int)speed.getValue()));
         iv_hp.setValue(pokemon.getIv_Health());
+        iv_hpValue.setText(String.valueOf((int)iv_hp.getValue()));
         iv_attack.setValue(pokemon.getIv_Attack());
+        iv_attackValue.setText(String.valueOf((int)iv_attack.getValue()));
         iv_defense.setValue(pokemon.getIv_Defense());
+        iv_defenseValue.setText(String.valueOf((int)iv_defense.getValue()));
         iv_spattack.setValue(pokemon.getIv_SpecialAttack());
+        iv_spattackValue.setText(String.valueOf((int)iv_spattack.getValue()));
         iv_spdefense.setValue(pokemon.getIv_SpecialDefense());
+        iv_spdefenseValue.setText(String.valueOf((int)iv_spdefense.getValue()));
         iv_speed.setValue(pokemon.getIv_Speed());
+        iv_speedValue.setText(String.valueOf((int)iv_speed.getValue()));
         ev_hp.setValue(pokemon.getEv_Health());
+        ev_hpValue.setText(String.valueOf((int)ev_hp.getValue()));
         ev_attack.setValue(pokemon.getEv_Attack());
+        ev_attackValue.setText(String.valueOf((int)ev_attack.getValue()));
         ev_defense.setValue(pokemon.getEv_Defense());
+        ev_defenseValue.setText(String.valueOf((int)ev_defense.getValue()));
         ev_spattack.setValue(pokemon.getEv_SpecialAttack());
+        ev_spattackValue.setText(String.valueOf((int)ev_spattack.getValue()));
         ev_spdefense.setValue(pokemon.getEv_SpecialDefense());
+        ev_spdefenseValue.setText(String.valueOf((int)ev_spdefense.getValue()));
         ev_speed.setValue(pokemon.getEv_Speed());
+        ev_speedValue.setText(String.valueOf((int)ev_speed.getValue()));
+        level.valueProperty().addListener((observable, oldValue, newValue) -> levelValue.setText(String.valueOf(newValue.intValue())));
+        hp.valueProperty().addListener((observable, oldValue, newValue) -> hpValue.setText(String.valueOf(newValue.intValue())));
+        attack.valueProperty().addListener((observable, oldValue, newValue) -> attackValue.setText(String.valueOf(newValue.intValue())));
+        defense.valueProperty().addListener((observable, oldValue, newValue) -> defenseValue.setText(String.valueOf(newValue.intValue())));
+        spattack.valueProperty().addListener((observable, oldValue, newValue) -> spattackValue.setText(String.valueOf(newValue.intValue())));
+        spdefense.valueProperty().addListener((observable, oldValue, newValue) -> spdefenseValue.setText(String.valueOf(newValue.intValue())));
+        speed.valueProperty().addListener((observable, oldValue, newValue) -> speedValue.setText(String.valueOf(newValue.intValue())));
+        iv_hp.valueProperty().addListener((observable, oldValue, newValue) -> iv_hpValue.setText(String.valueOf(newValue.intValue())));
+        iv_attack.valueProperty().addListener((observable, oldValue, newValue) -> iv_attackValue.setText(String.valueOf(newValue.intValue())));
+        iv_defense.valueProperty().addListener((observable, oldValue, newValue) -> iv_defenseValue.setText(String.valueOf(newValue.intValue())));
+        iv_spattack.valueProperty().addListener((observable, oldValue, newValue) -> iv_spattackValue.setText(String.valueOf(newValue.intValue())));
+        iv_spdefense.valueProperty().addListener((observable, oldValue, newValue) -> iv_spdefenseValue.setText(String.valueOf(newValue.intValue())));
+        iv_speed.valueProperty().addListener((observable, oldValue, newValue) -> iv_speedValue.setText(String.valueOf(newValue.intValue())));
+        ev_hp.valueProperty().addListener((observable, oldValue, newValue) -> ev_hpValue.setText(String.valueOf(newValue.intValue())));
+        ev_attack.valueProperty().addListener((observable, oldValue, newValue) -> ev_attackValue.setText(String.valueOf(newValue.intValue())));
+        ev_defense.valueProperty().addListener((observable, oldValue, newValue) -> ev_defenseValue.setText(String.valueOf(newValue.intValue())));
+        ev_spattack.valueProperty().addListener((observable, oldValue, newValue) -> ev_spattackValue.setText(String.valueOf(newValue.intValue())));
+        ev_spdefense.valueProperty().addListener((observable, oldValue, newValue) -> ev_spdefenseValue.setText(String.valueOf(newValue.intValue())));
+        ev_speed.valueProperty().addListener((observable, oldValue, newValue) -> ev_speedValue.setText(String.valueOf(newValue.intValue())));
         firstType.setValue(pokemon.getPokemonFirstType());
         secondType.setValue(pokemon.getPokemonSecondType());
         firstType.setItems(FXCollections.observableArrayList(Types.values()));
         secondType.setItems(FXCollections.observableArrayList(Types.values()));
+        nature.setValue(pokemon.getNature());
+        nature.setItems(FXCollections.observableArrayList(Nature.values()));
         if (pokemon.getMoves() != null && !pokemon.getMoves().isEmpty()) {
             // Limpiar los items anteriores
             moveChoiceBox1.getItems().clear();
@@ -273,6 +315,7 @@ public class EditPokemonController extends Controller implements Initializable {
         Obj obj = null;
         Types firstTypeValue = firstType.getValue();
         Types secondTypeValue = secondType.getValue();
+        Nature natureValue = nature.getValue();
         Move move1 = moveChoiceBox1.getValue();
         Move move2 = moveChoiceBox2.getValue();
         Move move3 = moveChoiceBox3.getValue();
@@ -286,8 +329,7 @@ public class EditPokemonController extends Controller implements Initializable {
                 nameValue, firstTypeValue, secondTypeValue, photoValue, levelValue, hpValue, attackValue, defenseValue,
                 spattackValue, spdefenseValue, speedValue, ivHpValue, ivAttackValue, ivDefenseValue, ivSpattackValue,
                 ivSpdefenseValue, ivSpeedValue, evHpValue, evAttackValue, evDefenseValue, evSpattackValue, evSpdefenseValue,
-                evSpeedValue, moves, obj
-        );
+                evSpeedValue, moves, obj, natureValue);
         if (!photo.getText().isEmpty()) {
             pokemonBeingEdited.setPhotoPokemon(photo.getText());
         }

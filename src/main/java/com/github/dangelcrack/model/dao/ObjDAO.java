@@ -73,8 +73,10 @@ public class ObjDAO implements DAO<Obj, String> {
                     pst.setString(10, nameObj);
                     pst.setString(1, o.getDescription());
                     pst.setString(2, o.getPhotoObj());
-                    pst.setString(3, o.getBoostType().toString());
-                    pst.setString(4, o.getBoostCategory().toString());
+                    Types BoostType = o.getBoostType();
+                    pst.setString(3, (BoostType != null) ? BoostType.toString() : null);
+                    Category BoostCategory = o.getBoostCategory();
+                    pst.setString(4, (BoostCategory != null) ? BoostCategory.toString() : null);
                     pst.setInt(5, o.getAttackBoost());
                     pst.setInt(6, o.getDefenseBoost());
                     pst.setInt(7, o.getSpAttackBoost());

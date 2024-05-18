@@ -19,21 +19,26 @@
    <children>
       <ComboBox fx:id="pokemonComboBox" prefHeight="27.0" prefWidth="200.0" promptText="Pokemon" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;" />
       <HBox minWidth="-Infinity" prefHeight="292.0" prefWidth="773.0" spacing="20">
-         <VBox fillWidth="false" maxWidth="256.0" prefHeight="292.0" prefWidth="204.0">
+         <VBox fillWidth="false" maxWidth="256.0" prefHeight="292.0" prefWidth="204.0" spacing="20.0">
             <children>
                <ComboBox fx:id="firstType" prefHeight="27.0" prefWidth="204.0" promptText="FIRST TYPE" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;">
                   <VBox.margin>
-                     <Insets bottom="20.0" />
+                     <Insets />
                   </VBox.margin>
                </ComboBox>
                <ComboBox fx:id="secondType" prefHeight="27.0" prefWidth="200.0" promptText="SECOND TYPE" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;">
                   <VBox.margin>
-                     <Insets bottom="20.0" />
+                     <Insets />
+                  </VBox.margin>
+               </ComboBox>
+               <ComboBox fx:id="nature" prefHeight="27.0" prefWidth="200.0" promptText="NATURE" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;">
+                  <VBox.margin>
+                     <Insets />
                   </VBox.margin>
                </ComboBox>
                <TextField fx:id="photo" promptText="Photo" style="-fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0; -fx-background-color: -fx-focus-color, -fx-background;">
                   <VBox.margin>
-                     <Insets bottom="20.0" />
+                     <Insets />
                   </VBox.margin>
                   <font>
                      <Font name="Arial Bold Italic" size="15.0" />
@@ -41,7 +46,7 @@
                </TextField>
                <Button onAction="#selectPhoto" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;" text="Select Photo">
                   <VBox.margin>
-                     <Insets bottom="20.0" />
+                     <Insets />
                   </VBox.margin>
                </Button>
                <Label text="LEVEL" textFill="WHITE">

@@ -94,7 +94,6 @@ private HBox hBox;
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.DEFAULT,
-                // Ajusta el tamaño de fondo para que se estire tanto en ancho como en alto
                 new BackgroundSize(100, 100, true, true, false, true)
         );
         hBox.setBackground(new Background(backgroundImage));

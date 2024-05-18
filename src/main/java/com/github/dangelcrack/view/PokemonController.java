@@ -68,7 +68,6 @@ public class PokemonController extends Controller implements Initializable {
         PokemonDAO.build().delete(deletePokemon);
         this.pokemons.remove(deletePokemon);
     }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         tableView.refresh();
@@ -111,10 +110,7 @@ public class PokemonController extends Controller implements Initializable {
                 }
             }
         });
-
-
         columnMoves.setCellValueFactory(pokemon -> new SimpleStringProperty(pokemon.getValue().getMovesNamesString(pokemon.getValue())));
-
         pokemonHolds.setCellValueFactory(pokemon -> {
             Obj obj = pokemon.getValue().getObj();
             return new SimpleStringProperty(obj != null ? obj.getNameObject() : "");

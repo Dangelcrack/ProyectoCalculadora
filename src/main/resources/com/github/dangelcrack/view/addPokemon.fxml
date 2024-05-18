@@ -38,6 +38,11 @@
                             <Insets bottom="20.0" />
                         </VBox.margin>
                     </ComboBox>
+               <ComboBox fx:id="nature" prefHeight="27.0" prefWidth="200.0" promptText="NATURE" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;">
+                  <VBox.margin>
+                     <Insets bottom="20.0" />
+                  </VBox.margin>
+               </ComboBox>
                     <TextField fx:id="photo" promptText="Photo" style="-fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0; -fx-background-color: -fx-focus-color, -fx-background;">
                         <VBox.margin>
                             <Insets bottom="20.0" />

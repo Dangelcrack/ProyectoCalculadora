@@ -57,7 +57,7 @@
                           </ComboBox>
                           <VBox fillWidth="false" maxWidth="193.0" prefHeight="97.0" prefWidth="193.0">
                               <children>
-                                  <Label text="POWER">
+                                  <Label text="POWER" textFill="WHITE">
                                       <font>
                                           <Font name="Arial Bold Italic" size="15.0" />
                                       </font>

@@ -4,6 +4,7 @@ import com.github.dangelcrack.model.connection.ConnectionMariaDB;
 import com.github.dangelcrack.model.entity.Move;
 import com.github.dangelcrack.model.entity.Obj;
 import com.github.dangelcrack.model.entity.Pokemon;
+import com.github.dangelcrack.view.Nature;
 import com.github.dangelcrack.view.Types;
 
 import java.io.IOException;
@@ -14,14 +15,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PokemonDAO implements DAO<Pokemon, String> {
-    private static final String INSERT = "INSERT INTO Pokemon (PokemonName, FirstType, SecondType, Photo, LEVELCAP, HP, Attack, Defense, SpAttack, SpDefense, Speed, Iv_HP, Iv_Attack, Iv_Defense, Iv_SpAttack, Iv_SpDefense, Iv_Speed, Ev_HP, Ev_Attack, Ev_Defense, Ev_SpAttack, Ev_SpDefense, Ev_Speed) " +
-            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String INSERT = "INSERT INTO Pokemon (PokemonName, FirstType, SecondType, Photo, LEVELCAP, HP, Attack, Defense, SpAttack, SpDefense, Speed, Iv_HP, Iv_Attack, Iv_Defense, Iv_SpAttack, Iv_SpDefense, Iv_Speed, Ev_HP, Ev_Attack, Ev_Defense, Ev_SpAttack, Ev_SpDefense, Ev_Speed, Nature) " +
+            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     private static final String UPDATE = "UPDATE Pokemon\n" +
-            "SET FirstType = ?, SecondType = ?, Photo = ?, LEVELCAP = ?, HP = ?, Attack = ?, Defense = ?, SpAttack = ?, SpDefense = ?, Speed = ?, Iv_HP = ?, Iv_Attack = ?, Iv_Defense = ?, Iv_SpAttack = ?, Iv_SpDefense = ?, Iv_Speed = ?, Ev_HP = ?, Ev_Attack = ?, Ev_Defense = ?, Ev_SpAttack = ?, Ev_SpDefense = ?, Ev_Speed = ? " +
+            "SET FirstType = ?, SecondType = ?, Photo = ?, LEVELCAP = ?, HP = ?, Attack = ?, Defense = ?, SpAttack = ?, SpDefense = ?, Speed = ?, Iv_HP = ?, Iv_Attack = ?, Iv_Defense = ?, Iv_SpAttack = ?, Iv_SpDefense = ?, Iv_Speed = ?, Ev_HP = ?, Ev_Attack = ?, Ev_Defense = ?, Ev_SpAttack = ?, Ev_SpDefense = ?, Ev_Speed = ?, Nature = ? " +
             "WHERE PokemonName = ?";
 
-    private static final String FINDALL = "SELECT p.PokemonName, p.FirstType, p.SecondType, p.Photo, p.LEVELCAP, p.HP, p.Attack, p.Defense, p.SpAttack, p.SpDefense, p.Speed, p.Iv_HP, p.Iv_Attack, p.Iv_Defense, p.Iv_SpAttack, p.Iv_SpDefense, p.Iv_Speed, p.Ev_HP, p.Ev_Attack, p.Ev_Defense, p.Ev_SpAttack, p.Ev_SpDefense, p.Ev_Speed FROM Pokemon p";
+    private static final String FINDALL = "SELECT p.PokemonName, p.FirstType, p.SecondType, p.Photo, p.LEVELCAP, p.HP, p.Attack, p.Defense, p.SpAttack, p.SpDefense, p.Speed, p.Iv_HP, p.Iv_Attack, p.Iv_Defense, p.Iv_SpAttack, p.Iv_SpDefense, p.Iv_Speed, p.Ev_HP, p.Ev_Attack, p.Ev_Defense, p.Ev_SpAttack, p.Ev_SpDefense, p.Ev_Speed, p.Nature FROM Pokemon p";
 
     private static final String FINDBYNAME = "SELECT PokemonName FROM Pokemon WHERE PokemonName=?";
     private static final String DELETE_POKEMON = "DELETE FROM Pokemon WHERE PokemonName = ?";
@@ -30,8 +31,6 @@ public class PokemonDAO implements DAO<Pokemon, String> {
     private static final String REMOVE_POKEMON_OBJECT = "UPDATE Pokemon SET Object_Name = NULL WHERE PokemonName = ?";
     private static final  String FIND_BY_MOVE_NAME = "SELECT p.* FROM Pokemon p INNER JOIN PokemonMoves pm ON p.PokemonName = pm.PokemonName WHERE pm.MoveName = ?";
     private static final String FIND_BY_OBJ_NAME = "SELECT p.* FROM Pokemon p INNER JOIN Objects o ON p.Object_Name = o.Name WHERE o.Name = ?";
-    //esque debería de ser la tabla pokemon con un atributo objeto y una foranea en objetos que tenga muchos pokemon y que tanto el objeto de pokemon pueda ser null y la lista de pokemon asocia
-    //dos a ese objeto tambien pueda ser null
     private Connection conn;
     public PokemonDAO() {
         conn = ConnectionMariaDB.getConnection();
@@ -71,8 +70,7 @@ public class PokemonDAO implements DAO<Pokemon, String> {
                     pst.setInt(21, p.getEv_SpecialAttack());
                     pst.setInt(22, p.getEv_SpecialDefense());
                     pst.setInt(23, p.getEv_Speed());
-                    pst.setString(24, p.getPokemonName());
-                    pst.setString(25, p.getObj().getNameObject());
+                    pst.setString(24,p.getNature().toString());
                     pst.executeUpdate();
                     if (p.getMoves() != null) {
                         for (Move m : p.getMoves()) {
@@ -110,7 +108,8 @@ public class PokemonDAO implements DAO<Pokemon, String> {
                     pst.setInt(20, p.getEv_SpecialAttack());
                     pst.setInt(21, p.getEv_SpecialDefense());
                     pst.setInt(22, p.getEv_Speed());
-                    pst.setString(23, p.getPokemonName());
+                    pst.setString(23,p.getNature().toString());
+                    pst.setString(24, p.getPokemonName());
                     pst.executeUpdate();
                     try (PreparedStatement pstDeleteMoves = conn.prepareStatement(DELETEOLDMOVES)) {
                         pstDeleteMoves.setString(1, p.getPokemonName());
@@ -245,6 +244,9 @@ public class PokemonDAO implements DAO<Pokemon, String> {
                     pokemon.setPokemonFirstType(firstType);
                     Types secondType = (secondTypeString != null) ? Types.valueOf(secondTypeString) : null;
                     pokemon.setPokemonSecondType(secondType);
+                    String natureString = res.getString("Nature");
+                    Nature nature = Nature.valueOf(natureString);
+                    pokemon.setNature(nature);
                     pokemon.setPhotoPokemon(res.getString("Photo"));
                     pokemon.setLevelCap(res.getInt("LEVELCAP"));
                     pokemon.setHealth(res.getInt("HP"));
