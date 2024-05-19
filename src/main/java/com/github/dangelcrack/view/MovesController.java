@@ -50,6 +50,12 @@ public class MovesController extends Controller implements Initializable {
     private TableColumn<Pokemon, String> pokemonNames;
     public ObservableList<Move> moves;
 
+    /**
+     * Called when the controller is opened.
+     * Retrieves all moves from the database, updates the observable list, and refreshes the table view.
+     *
+     * @param input The input object, not used in this method.
+     */
     @Override
     public void onOpen(Object input) {
         List<Move> moves = MoveDAO.build().findAll();
@@ -58,26 +64,52 @@ public class MovesController extends Controller implements Initializable {
         tableView.setItems(this.moves);
     }
 
+    /**
+     * Deletes the specified old move from the observable list.
+     *
+     * @param oldMove The move to be deleted.
+     */
     public void deleteOldMove(Move oldMove) {
         this.moves.remove(oldMove);
     }
 
+    /**
+     * Saves the new move to the database and adds it to the observable list.
+     *
+     * @param newMove The move to be saved.
+     */
     public void saveMove(Move newMove) {
         MoveDAO.build().save(newMove);
         this.moves.add(newMove);
-
     }
 
+    /**
+     * Deletes the specified move from the database and removes it from the observable list.
+     *
+     * @param deleteMove The move to be deleted.
+     */
     public void deleteMove(Move deleteMove) {
         MoveDAO.build().delete(deleteMove);
         this.moves.remove(deleteMove);
     }
 
+    /**
+     * Called when the controller is closed.
+     *
+     * @param output The output object, not used in this method.
+     */
     @Override
     public void onClose(Object output) {
-
+        // No action needed on close
     }
 
+    /**
+     * Initializes the TableView and its columns with appropriate cell factories.
+     * Also sets listeners for TableView selection changes.
+     *
+     * @param url            The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resourceBundle The resources used to localize the root object, or null if the root object was not localized.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tableView.setEditable(true);
@@ -97,7 +129,6 @@ public class MovesController extends Controller implements Initializable {
             if (event.getNewValue().equals(event.getOldValue())) {
                 return;
             }
-
             if (event.getNewValue().length() <= 20) {
                 Move move = event.getRowValue();
                 MoveDAO.build().delete(move);

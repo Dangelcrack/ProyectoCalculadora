@@ -29,7 +29,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
-
+/**
+ * The AddPokemonController class is responsible for handling the UI logic for adding pokemon in the application.
+ * It implements the Initializable interface to initialize the controller after its root element has been completely processed.
+ */
 public class AddPokemonController extends Controller implements Initializable {
     @FXML
     private VBox vbox;
@@ -151,17 +154,23 @@ public class AddPokemonController extends Controller implements Initializable {
     @FXML
     private ComboBox<Move> moveChoiceBox4;
     private PokemonController controller;
-
+    /**
+     * This method is called when the controller is opened. It sets the controller reference.
+     */
     @Override
     public void onOpen(Object input) {
         this.controller = (PokemonController) input;
     }
-
+    /**
+     * This method is called when the controller is closed. Currently, it has no implementation.
+     */
     @Override
     public void onClose(Object output) {
 
     }
-
+    /**
+     * Initializes the controller class. This method is automatically called after the FXML file has been loaded.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         URL imageUrl = getClass().getResource("/com/github/dangelcrack/media/ModalImageUtils/imgAddPokemon.png");
@@ -204,8 +213,9 @@ public class AddPokemonController extends Controller implements Initializable {
         moveChoiceBox3.setItems(observableMoves);
         moveChoiceBox4.setItems(observableMoves);
     }
-
-
+    /**
+     * Handles the closing of the window. It saves the Pokémon details and hides the window.
+     */
     @FXML
     private void closeWindow(Event event) {
         int levelValue = (int) level.getValue();
@@ -251,7 +261,9 @@ public class AddPokemonController extends Controller implements Initializable {
         this.controller.savePokemon(pokemon);
         ((Node) (event.getSource())).getScene().getWindow().hide();
     }
-
+    /**
+     * Allows the user to select a photo from their file system and display it in the UI.
+     */
     @FXML
     private void selectPhoto() {
         Stage stage = (Stage) photo.getScene().getWindow();

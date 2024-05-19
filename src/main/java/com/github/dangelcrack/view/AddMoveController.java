@@ -22,7 +22,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
-
+/**
+ * The AddMoveController class is responsible for handling the UI logic for adding moves in the application.
+ * It implements the Initializable interface to initialize the controller after its root element has been completely processed.
+ */
 public class AddMoveController extends Controller implements Initializable {
     @FXML
     private HBox hBox;
@@ -54,7 +57,9 @@ public class AddMoveController extends Controller implements Initializable {
     private TableColumn<Pokemon, Image> columnSecondType;
     private ObservableList<Pokemon> pokemonList = FXCollections.observableArrayList();
     private MovesController controller;
-
+    /**
+     * This method is called when the controller is opened. It initializes the list of Pokemon and sets the controller reference.
+     */
     @Override
     public void onOpen(Object input) {
         List<Pokemon> pokemons = new ArrayList<>();
@@ -64,11 +69,16 @@ public class AddMoveController extends Controller implements Initializable {
 
     }
 
+    /**
+     * This method is called when the controller is closed. Currently, it has no implementation.
+     */
     @Override
     public void onClose(Object output) {
 
     }
-
+    /**
+     * Initializes the controller class. This method is automatically called after the FXML file has been loaded.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         URL imageUrl = getClass().getResource("/com/github/dangelcrack/media/ModalImageUtils/imgAddPokemon.png");
@@ -189,7 +199,9 @@ public class AddMoveController extends Controller implements Initializable {
                 tableView.refresh();
         });
     }
-
+    /**
+     * Handles the closing of the window. It saves the move details and hides the window.
+     */
     @FXML
     private void closeWindow(Event event) {
         String moveName = name.getText();

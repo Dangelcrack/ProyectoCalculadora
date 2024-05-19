@@ -15,24 +15,44 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-
+/**
+ * The AppController class is responsible for handling the main application layout,
+ * switching scenes, and opening modal dialogs.
+ */
 public class AppController extends Controller implements Initializable {
     @FXML
     private BorderPane borderPane;
     private Controller centerController;
-
+    /**
+     * Called when the controller is opened. It sets the initial scene.
+     */
     @Override
     public void onOpen(Object input) throws IOException{
         changeScene(Scenes.PokemonList, null);
     }
 
+    /**
+     * Changes the scene displayed in the center of the BorderPane.
+     *
+     * @param scene the scene to be displayed
+     * @param data  the data to be passed to the controller
+     * @throws IOException if the FXML file cannot be loaded
+     */
     public void changeScene(Scenes scene, Object data) throws IOException {
         View view = loadFXML(scene);
         borderPane.setCenter(view.scene);
         this.centerController = view.controller;
         this.centerController.onOpen(data);
     }
-
+    /**
+     * Opens a modal dialog with the specified scene and title.
+     *
+     * @param scene  the scene to be displayed in the modal
+     * @param title  the title of the modal window
+     * @param parent the parent controller
+     * @param data   the data to be passed to the controller
+     * @throws IOException if the FXML file cannot be loaded
+     */
     public void openModal(Scenes scene, String title, Controller parent, Object data) throws IOException {
         View view = loadFXML(scene);
         Stage stage = new Stage();
@@ -50,17 +70,27 @@ public class AppController extends Controller implements Initializable {
         stage.showAndWait();
     }
 
-
+    /**
+     * Called when the controller is closed.
+     */
     @Override
     public void onClose(Object output) {
         //nothing to do
     }
-
+    /**
+     * Initializes the controller class. This method is automatically called after the FXML file has been loaded.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
-
+    /**
+     * Loads the FXML file for the specified scene.
+     *
+     * @param scenes the scene to be loaded
+     * @return the View object containing the scene and controller
+     * @throws IOException if the FXML file cannot be loaded
+     */
     public static View loadFXML(Scenes scenes) throws IOException {
         String url = scenes.getURL();
         FXMLLoader loader = new FXMLLoader(App.class.getResource(url));
@@ -71,23 +101,37 @@ public class AppController extends Controller implements Initializable {
         view.controller = c;
         return view;
     }
-
+    /**
+     * Navigates to the About scene.
+     */
     @FXML
     private void goToAbout() throws IOException {
         changeScene(Scenes.ABOUT, null);
     }
+    /**
+     * Navigates to the Pokémon List scene.
+     */
     @FXML
     private void goToPokemon() throws IOException {
         changeScene(Scenes.PokemonList,null);
     }
+    /**
+     * Navigates to the Moves List scene.
+     */
     @FXML
     private void goToMoves() throws IOException{
         changeScene(Scenes.MOVESLIST,null);
     }
+    /**
+     * Navigates to the Objects List scene.
+     */
     @FXML
     private void goToObjects() throws IOException{
         changeScene(Scenes.OBJECTSLIST,null);
     }
+    /**
+     * Navigates to the Combats scene.
+     */
     @FXML
     private void goToCombats() throws IOException{
         changeScene(Scenes.COMBATS,null);

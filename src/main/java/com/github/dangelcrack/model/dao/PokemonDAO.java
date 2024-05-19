@@ -15,22 +15,59 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PokemonDAO implements DAO<Pokemon, String> {
-    private static final String INSERT = "INSERT INTO Pokemon (PokemonName, FirstType, SecondType, Photo, LEVELCAP, HP, Attack, Defense, SpAttack, SpDefense, Speed, Iv_HP, Iv_Attack, Iv_Defense, Iv_SpAttack, Iv_SpDefense, Iv_Speed, Ev_HP, Ev_Attack, Ev_Defense, Ev_SpAttack, Ev_SpDefense, Ev_Speed, Nature) " +
-            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String INSERT =
+            "INSERT INTO Pokemon (PokemonName, FirstType, SecondType, Photo, LEVELCAP, HP, Attack, Defense, SpAttack, SpDefense, Speed, Iv_HP, Iv_Attack, Iv_Defense, Iv_SpAttack, Iv_SpDefense, Iv_Speed, Ev_HP, Ev_Attack, Ev_Defense, Ev_SpAttack, Ev_SpDefense, Ev_Speed, Nature) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-    private static final String UPDATE = "UPDATE Pokemon\n" +
-            "SET FirstType = ?, SecondType = ?, Photo = ?, LEVELCAP = ?, HP = ?, Attack = ?, Defense = ?, SpAttack = ?, SpDefense = ?, Speed = ?, Iv_HP = ?, Iv_Attack = ?, Iv_Defense = ?, Iv_SpAttack = ?, Iv_SpDefense = ?, Iv_Speed = ?, Ev_HP = ?, Ev_Attack = ?, Ev_Defense = ?, Ev_SpAttack = ?, Ev_SpDefense = ?, Ev_Speed = ?, Nature = ? " +
-            "WHERE PokemonName = ?";
+    private static final String UPDATE =
+            "UPDATE Pokemon AS p " +
+                    "SET p.FirstType = ?, p.SecondType = ?, p.Photo = ?, p.LEVELCAP = ?, p.HP = ?, p.Attack = ?, p.Defense = ?, p.SpAttack = ?, p.SpDefense = ?, p.Speed = ?, " +
+                    "p.Iv_HP = ?, p.Iv_Attack = ?, p.Iv_Defense = ?, p.Iv_SpAttack = ?, p.Iv_SpDefense = ?, p.Iv_Speed = ?, " +
+                    "p.Ev_HP = ?, p.Ev_Attack = ?, p.Ev_Defense = ?, p.Ev_SpAttack = ?, p.Ev_SpDefense = ?, p.Ev_Speed = ?, " +
+                    "p.Nature = ? " +
+                    "WHERE p.PokemonName = ?";
 
-    private static final String FINDALL = "SELECT p.PokemonName, p.FirstType, p.SecondType, p.Photo, p.LEVELCAP, p.HP, p.Attack, p.Defense, p.SpAttack, p.SpDefense, p.Speed, p.Iv_HP, p.Iv_Attack, p.Iv_Defense, p.Iv_SpAttack, p.Iv_SpDefense, p.Iv_Speed, p.Ev_HP, p.Ev_Attack, p.Ev_Defense, p.Ev_SpAttack, p.Ev_SpDefense, p.Ev_Speed, p.Nature FROM Pokemon p";
+    private static final String FINDALL =
+            "SELECT p.PokemonName, p.FirstType, p.SecondType, p.Photo, p.LEVELCAP, p.HP, p.Attack, p.Defense, p.SpAttack, p.SpDefense, p.Speed, " +
+                    "p.Iv_HP, p.Iv_Attack, p.Iv_Defense, p.Iv_SpAttack, p.Iv_SpDefense, p.Iv_Speed, " +
+                    "p.Ev_HP, p.Ev_Attack, p.Ev_Defense, p.Ev_SpAttack, p.Ev_SpDefense, p.Ev_Speed, " +
+                    "p.Nature " +
+                    "FROM Pokemon AS p";
 
-    private static final String FINDBYNAME = "SELECT PokemonName FROM Pokemon WHERE PokemonName=?";
-    private static final String DELETE_POKEMON = "DELETE FROM Pokemon WHERE PokemonName = ?";
-    private static final String INSERTMOVESTOPOKEMON = "INSERT INTO PokemonMoves (PokemonName, MoveName) VALUES (?, ?)";
-    private static final String DELETEOLDMOVES = "DELETE FROM PokemonMoves WHERE PokemonName = ?";
-    private static final String REMOVE_POKEMON_OBJECT = "UPDATE Pokemon SET Object_Name = NULL WHERE PokemonName = ?";
-    private static final  String FIND_BY_MOVE_NAME = "SELECT p.* FROM Pokemon p INNER JOIN PokemonMoves pm ON p.PokemonName = pm.PokemonName WHERE pm.MoveName = ?";
-    private static final String FIND_BY_OBJ_NAME = "SELECT p.* FROM Pokemon p INNER JOIN Objects o ON p.Object_Name = o.Name WHERE o.Name = ?";
+    private static final String FINDBYNAME =
+            "SELECT p.PokemonName " +
+                    "FROM Pokemon AS p " +
+                    "WHERE p.PokemonName = ?";
+
+    private static final String DELETE_POKEMON =
+            "DELETE FROM Pokemon " +
+                    "WHERE PokemonName = ?";
+
+    private static final String INSERTMOVESTOPOKEMON =
+            "INSERT INTO PokemonMoves (PokemonName, MoveName) " +
+                    "VALUES (?, ?)";
+
+    private static final String DELETEOLDMOVES =
+            "DELETE FROM PokemonMoves " +
+                    "WHERE PokemonName = ?";
+
+    private static final String REMOVE_POKEMON_OBJECT =
+            "UPDATE Pokemon AS p " +
+                    "SET p.Object_Name = NULL " +
+                    "WHERE p.PokemonName = ?";
+
+    private static final String FIND_BY_MOVE_NAME =
+            "SELECT p.* " +
+                    "FROM Pokemon AS p " +
+                    "INNER JOIN PokemonMoves AS pm ON p.PokemonName = pm.PokemonName " +
+                    "WHERE pm.MoveName = ?";
+
+    private static final String FIND_BY_OBJ_NAME =
+            "SELECT p.* " +
+                    "FROM Pokemon AS p " +
+                    "INNER JOIN Objects AS o ON p.Object_Name = o.Name " +
+                    "WHERE o.Name = ?";
+
     private Connection conn;
     public PokemonDAO() {
         conn = ConnectionMariaDB.getConnection();

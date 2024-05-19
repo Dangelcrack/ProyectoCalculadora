@@ -1,5 +1,7 @@
 package com.github.dangelcrack.view;
 
+// Import statements for necessary classes and packages
+
 import com.github.dangelcrack.model.dao.MoveDAO;
 import com.github.dangelcrack.model.dao.PokemonDAO;
 import com.github.dangelcrack.model.entity.Move;
@@ -24,11 +26,11 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class EditMoveController extends Controller implements Initializable{ @FXML
-private HBox hBox;
+public class EditMoveController extends Controller implements Initializable {
+    @FXML
+    private HBox hBox;
     @FXML
     private TableView<Move> tableViewMoves;
     @FXML
@@ -63,29 +65,46 @@ private HBox hBox;
     private TableColumn<Pokemon, Image> columnFirstType;
     @FXML
     private TableColumn<Pokemon, Image> columnSecondType;
+    // ObservableList to hold Pokemon entities
     private ObservableList<Pokemon> pokemonList = FXCollections.observableArrayList();
+    // ObservableList to hold Move entities
     public ObservableList<Move> moves;
+    // Reference to the MovesController
     private MovesController controller;
 
+    /**
+     * This method is called when the view is opened with the given input.
+     *
+     * @param input The MovesController instance passed as input.
+     */
     @Override
     public void onOpen(Object input) {
+        // Initialize the Pokemon list and set it to the TableView
         List<Pokemon> pokemons = new ArrayList<>();
         pokemonList = FXCollections.observableArrayList(pokemons);
         tableViewPokemon.setItems(pokemonList);
+        // Set the controller reference
         this.controller = (MovesController) input;
+        // Retrieve the list of Moves and set them to the TableView
         List<Move> moves = MoveDAO.build().findAll();
         this.moves = FXCollections.observableArrayList(moves);
         tableViewMoves.refresh();
         tableViewMoves.setItems(this.moves);
     }
 
-
-
     @Override
     public void onClose(Object output) {
 
     }
 
+    /**
+     * Initializes the controller with specified URL and ResourceBundle.
+     * Sets background image for the HBox, configures table columns to display Pokemon images,
+     * sets up ComboBoxes, handles adding and deleting Pokemon, and initializes TableView for moves.
+     *
+     * @param url            The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resourceBundle The resources used to localize the root object, or null if the root object was not localized.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         URL imageUrl = getClass().getResource("/com/github/dangelcrack/media/ModalImageUtils/pokestop.jpg");
@@ -96,16 +115,14 @@ private HBox hBox;
                 BackgroundPosition.DEFAULT,
                 new BackgroundSize(100, 100, true, true, false, true)
         );
-        hBox.setBackground(new Background(backgroundImage));
         imageViewTableColumn.setCellValueFactory(pokemon -> {
             String imageExtension = pokemon.getValue().getPhotoPokemon();
             String imagePath = "/com/github/dangelcrack/media/PokemonImages/" + imageExtension;
             InputStream inputStream = getClass().getResourceAsStream(imagePath);
             SimpleObjectProperty<Image> property = null;
             if (inputStream != null) {
-                Image Image = new Image(inputStream);
-                property = new SimpleObjectProperty<>(Image);
-
+                Image image = new Image(inputStream);
+                property = new SimpleObjectProperty<>(image);
             }
             return property;
         });
@@ -331,10 +348,12 @@ private HBox hBox;
                 });
                 columnFirstType.setCellFactory(column -> new TableCell<>() {
                     private final ImageView imageView = new ImageView();
+
                     {
                         imageView.setFitWidth(100);
                         imageView.setPreserveRatio(true);
                     }
+
                     @Override
                     protected void updateItem(Image item, boolean empty) {
                         super.updateItem(item, empty);
@@ -360,10 +379,12 @@ private HBox hBox;
                 });
                 columnSecondType.setCellFactory(column -> new TableCell<>() {
                     private final ImageView imageView = new ImageView();
+
                     {
                         imageView.setFitWidth(100);
                         imageView.setPreserveRatio(true);
                     }
+
                     @Override
                     protected void updateItem(Image item, boolean empty) {
                         super.updateItem(item, empty);
@@ -378,29 +399,49 @@ private HBox hBox;
             }
         });
     }
+
+    /**
+     * Initializes the UI with the details of the selected move.
+     * @param move The move to initialize the UI with.
+     */
     private void initializeWithMove(Move move) {
+        // Set the power of the move in the UI
         power.setValue(move.getPower());
+        // Set the type of the move in the UI
         type.setValue(move.getTypeMove());
+        // Populate the type options in the UI
         type.setItems(FXCollections.observableArrayList(Types.values()));
+        // Set the category of the move in the UI
         category.setValue(move.getCategory());
+        // Populate the category options in the UI
         category.setItems(FXCollections.observableArrayList(Category.values()));
     }
+
+
     @FXML
     private void closeWindow(Event event) {
+        // Retrieve the power value from the UI and cast it to an integer
         int powerValue = (int) power.getValue();
+        // Retrieve the move type from the UI
         Types moveType = type.getValue();
+        // Retrieve the move category from the UI
         Category moveCategory = category.getValue();
+        // Create a list of selected Pokemon
         List<Pokemon> selectedPokemonList = new ArrayList<>(pokemonList);
+        // Get the currently selected move from the table view
         Move moveBeingEdited = tableViewMoves.getSelectionModel().getSelectedItem();
 
+        // If a move is selected, update its details
         if (moveBeingEdited != null) {
             moveBeingEdited.setPower(powerValue);
             moveBeingEdited.setTypeMove(moveType);
             moveBeingEdited.setCategory(moveCategory);
             moveBeingEdited.setPokemonCanLearn(selectedPokemonList);
+            // Delete the old move and save the updated move
             this.controller.deleteOldMove(tableViewMoves.getSelectionModel().getSelectedItem());
             this.controller.saveMove(moveBeingEdited);
 
+            // Close the window
             ((Node) event.getSource()).getScene().getWindow().hide();
         }
     }

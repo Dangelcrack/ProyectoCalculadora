@@ -40,7 +40,12 @@ public class ObjectsController extends Controller implements Initializable {
     private TableColumn<Obj, Image> columnMovesBoost;
 
     public ObservableList<Obj> objs;
-
+    /**
+     * Called when the controller is opened.
+     * Retrieves all objects from the database, updates the observable list, and sets it to the table view.
+     *
+     * @param input The input object, not used in this method.
+     */
     @Override
     public void onOpen(Object input) {
         List<Obj> objs = ObjDAO.build().findAll();
@@ -48,23 +53,51 @@ public class ObjectsController extends Controller implements Initializable {
         tableView.setItems(this.objs);
     }
 
+    /**
+     * Called when the controller is closed.
+     *
+     * @param output The output object, not used in this method.
+     */
     @Override
     public void onClose(Object output) {
-
+        // No action needed on close
     }
-    public void deleteOldObj(Obj oldObj){
+
+    /**
+     * Deletes the specified old object from the observable list.
+     *
+     * @param oldObj The object to be deleted.
+     */
+    public void deleteOldObj(Obj oldObj) {
         this.objs.remove(oldObj);
     }
+
+    /**
+     * Saves the new object to the database and adds it to the observable list.
+     *
+     * @param newObj The object to be saved.
+     */
     public void saveObj(Obj newObj) {
         ObjDAO.build().save(newObj);
         this.objs.add(newObj);
-
     }
+
+    /**
+     * Deletes the specified object from the database and removes it from the observable list.
+     *
+     * @param deleteObj The object to be deleted.
+     */
     public void deleteObj(Obj deleteObj) {
         ObjDAO.build().delete(deleteObj);
         this.objs.remove(deleteObj);
     }
 
+    /**
+     * Initializes the controller when the corresponding view is loaded.
+     *
+     * @param url The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resourceBundle The resources used to localize the root object, or null if the root object was not localized.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tableView.refresh();
@@ -185,16 +218,33 @@ public class ObjectsController extends Controller implements Initializable {
         });
 
     }
+    /**
+     * Handles the event when the user wants to add an object.
+     *
+     * @throws IOException If an I/O error occurs.
+     */
     @FXML
     private void addObjet() throws IOException {
-        App.currentController.openModal(Scenes.ADDOBJECT, "Agregando un Objeto...", this, null);
+        App.currentController.openModal(Scenes.ADDOBJECT, "Adding an Object...", this, null);
     }
+
+    /**
+     * Handles the event when the user wants to delete an object.
+     *
+     * @throws IOException If an I/O error occurs.
+     */
     @FXML
     private void deleteObjet() throws IOException {
-        App.currentController.openModal(Scenes.DELETEOBJECT, "Borrando un Objeto...", this, null);
+        App.currentController.openModal(Scenes.DELETEOBJECT, "Deleting an Object...", this, null);
     }
+
+    /**
+     * Handles the event when the user wants to edit an object.
+     *
+     * @throws IOException If an I/O error occurs.
+     */
     @FXML
     private void editObjet() throws IOException {
-        App.currentController.openModal(Scenes.EDITOBJECT, "Editando un Objeto...", this, null);
+        App.currentController.openModal(Scenes.EDITOBJECT, "Editing an Object...", this, null);
     }
 }

@@ -44,7 +44,10 @@ public class PokemonController extends Controller implements Initializable {
     @FXML
     private TableColumn<Pokemon , String> pokemonHolds;
     public ObservableList<Pokemon> pokemons;
-
+    /**
+     * Called when the view is opened.
+     * @param input The input provided when the view is opened.
+     */
     @Override
     public void onOpen(Object input) {
         List<Pokemon> pokemons = PokemonDAO.build().findAll();
@@ -52,22 +55,45 @@ public class PokemonController extends Controller implements Initializable {
         tableView.setItems(this.pokemons);
     }
 
+    /**
+     * Called when the view is closed.
+     * @param output The output provided when the view is closed.
+     */
     @Override
     public void onClose(Object output) {
-
     }
+
+    /**
+     * Deletes an old Pokemon from the observable list.
+     * @param oldPokemon The Pokemon to be removed from the list.
+     */
     public void deleteOldPokemon(Pokemon oldPokemon){
         this.pokemons.remove(oldPokemon);
     }
+
+    /**
+     * Saves a new Pokemon both to the database and the observable list.
+     * @param newPokemon The new Pokemon to be added.
+     */
     public void savePokemon(Pokemon newPokemon) {
         PokemonDAO.build().save(newPokemon);
         this.pokemons.add(newPokemon);
-
     }
+
+    /**
+     * Deletes a Pokemon from both the database and the observable list.
+     * @param deletePokemon The Pokemon to be deleted.
+     */
     public void deletePokemon(Pokemon deletePokemon) {
         PokemonDAO.build().delete(deletePokemon);
         this.pokemons.remove(deletePokemon);
     }
+    /**
+     * Initializes the controller when the corresponding view is loaded.
+     *
+     * @param location The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resources The resources used to localize the root pokemon, or null if the root object was not localized.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         tableView.refresh();
@@ -82,8 +108,6 @@ public class PokemonController extends Controller implements Initializable {
                 new BackgroundSize(100, 100, true, true, false, true)
         );
         vbox.setBackground(new Background(backgroundImage));
-
-
         imageViewTableColumn.setCellValueFactory(pokemon -> {
             String imageExtension = pokemon.getValue().getPhotoPokemon();
             String imagePath = "/com/github/dangelcrack/media/PokemonImages/" + imageExtension;
@@ -93,12 +117,10 @@ public class PokemonController extends Controller implements Initializable {
         });
         imageViewTableColumn.setCellFactory(column -> new TableCell<>() {
             private final ImageView imageView = new ImageView();
-
             {
                 imageView.setFitWidth(100);
                 imageView.setPreserveRatio(true);
             }
-
             @Override
             protected void updateItem(Image item, boolean empty) {
                 super.updateItem(item, empty);
@@ -122,12 +144,10 @@ public class PokemonController extends Controller implements Initializable {
         });
         columnFirstType.setCellFactory(column -> new TableCell<>() {
             private final ImageView imageView = new ImageView();
-
             {
                 imageView.setFitWidth(100);
                 imageView.setPreserveRatio(true);
             }
-
             @Override
             protected void updateItem(Image item, boolean empty) {
                 super.updateItem(item, empty);
@@ -190,18 +210,31 @@ public class PokemonController extends Controller implements Initializable {
             }
         });
     }
-
+    /**
+     * Handles the event when the user wants to add a Pokemon.
+     *
+     * @throws IOException If an I/O error occurs.
+     */
     @FXML
-    private void agregaPokemon() throws IOException {
-        App.currentController.openModal(Scenes.ADDPOKEMON, "Agregando un Pokemon...", this, null);
-        //deberíamos saber si hemos agregado un pokemon nuevo o no para acatualizar la lista
+    private void addPokemon() throws IOException {
+        App.currentController.openModal(Scenes.ADDPOKEMON, "Adding a Pokemon...", this, null);
     }
+    /**
+     * Handles the event when the user wants to delete a Pokemon.
+     *
+     * @throws IOException If an I/O error occurs.
+     */
     @FXML
-    private void borrarPokemon() throws IOException{
-        App.currentController.openModal(Scenes.DELETEPOKEMON,"Borrando un Pokemon...",this,null);
+    private void deletePokemon() throws IOException {
+        App.currentController.openModal(Scenes.DELETEPOKEMON, "Deleting a Pokemon...", this, null);
     }
+    /**
+     * Handles the event when the user wants to edit a Pokemon.
+     *
+     * @throws IOException If an I/O error occurs.
+     */
     @FXML
-    private void editarPokemon() throws IOException{
-        App.currentController.openModal(Scenes.EDITPOKEMON,"Editando un Pokemon...", this,null);
+    private void editPokemon() throws IOException {
+        App.currentController.openModal(Scenes.EDITPOKEMON, "Editing a Pokemon...", this, null);
     }
 }

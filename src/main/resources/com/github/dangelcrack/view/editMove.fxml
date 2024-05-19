@@ -18,9 +18,9 @@
                   <TableView fx:id="tableViewMoves" editable="true" prefHeight="402.0" prefWidth="433.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;">
                      <columns>
                         <TableColumn fx:id="columnNameMove" maxWidth="1000.0" minWidth="100.0" prefWidth="100.0" resizable="false" text="Nombre" />
-                        <TableColumn fx:id="columnTypeMove" maxWidth="1000.0" minWidth="100.0" prefWidth="100.0" resizable="false" text="Tipo" />
-                        <TableColumn fx:id="columnCategoryMove" maxWidth="1000.0" minWidth="150.0" prefWidth="150.0" resizable="false" text="Categoría" />
-                        <TableColumn fx:id="columnPowerMove" maxWidth="1000.0" minWidth="85.0" prefWidth="85.0" resizable="false" text="Potencia" />
+                        <TableColumn fx:id="columnTypeMove" maxWidth="1000.0" minWidth="100.0" prefWidth="100.0" resizable="false" text="Type" />
+                        <TableColumn fx:id="columnCategoryMove" maxWidth="1000.0" minWidth="150.0" prefWidth="150.0" resizable="false" text="Category" />
+                        <TableColumn fx:id="columnPowerMove" maxWidth="1000.0" minWidth="85.0" prefWidth="85.0" resizable="false" text="Power" />
                      </columns>
                      <VBox.margin>
                         <Insets />
@@ -34,7 +34,7 @@
                           <ComboBox fx:id="pokemonCanLearn" prefHeight="27.0" prefWidth="204.0" promptText="POKEMON" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;" />
                   <HBox prefHeight="22.0" prefWidth="229.0">
                      <children>
-                        <Button fx:id="addPokemon" mnemonicParsing="false" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;" text="Agregar">
+                        <Button fx:id="addPokemon" mnemonicParsing="false" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;" text="Add">
                            <HBox.margin>
                               <Insets right="50.0" />
                            </HBox.margin>
@@ -79,7 +79,7 @@
                                   </HBox>
                               </children>
                           </VBox>
-                      <Button mnemonicParsing="false" onAction="#closeWindow" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;" text="Añadir Movimiento" />
+                      <Button mnemonicParsing="false" onAction="#closeWindow" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;" text="Add Move" />
                       </children>
                       <HBox.margin>
                           <Insets left="50.0" right="50.0" />
@@ -91,8 +91,8 @@
                               <columns>
                                   <TableColumn fx:id="imageViewTableColumn" maxWidth="1000.0" minWidth="100.0" prefWidth="100.0" resizable="false" text="Pokemon" />
                                   <TableColumn fx:id="columnNamePokemon" minWidth="75.0" prefWidth="75.0" resizable="false" text="Name" />
-                                  <TableColumn fx:id="columnFirstType" editable="false" minWidth="114.0" prefWidth="114.0" resizable="false" sortable="false" text="Type" />
-                                  <TableColumn fx:id="columnSecondType" minWidth="105.0" prefWidth="105.0" resizable="false" text="Type" />
+                                  <TableColumn fx:id="columnFirstType" editable="false" minWidth="114.0" prefWidth="114.0" resizable="false" sortable="false" text="Type 1" />
+                                  <TableColumn fx:id="columnSecondType" minWidth="105.0" prefWidth="105.0" resizable="false" text="Type 2" />
                               </columns>
                           </TableView>
                       </children>

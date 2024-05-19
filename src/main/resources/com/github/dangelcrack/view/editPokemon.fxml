@@ -381,7 +381,7 @@
          </VBox>
       </HBox>
 
-      <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Movimientos">
+      <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Moves">
          <font>
             <Font name="Arial Bold Italic" size="15.0" />
          </font>
@@ -406,7 +406,7 @@
             <ComboBox fx:id="moveChoiceBox4" prefHeight="27.0" prefWidth="200.0" promptText="4º MOVE" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;" />
          </children>
       </HBox>
-      <Button mnemonicParsing="false" onAction="#closeWindow" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;" text="Editar" />
+      <Button mnemonicParsing="false" onAction="#closeWindow" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;" text="Edit" />
       <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </VBox>

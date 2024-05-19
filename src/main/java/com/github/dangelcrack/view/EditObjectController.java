@@ -1,9 +1,6 @@
 package com.github.dangelcrack.view;
-
-import com.github.dangelcrack.model.dao.MoveDAO;
 import com.github.dangelcrack.model.dao.ObjDAO;
 import com.github.dangelcrack.model.dao.PokemonDAO;
-import com.github.dangelcrack.model.entity.Move;
 import com.github.dangelcrack.model.entity.Obj;
 import com.github.dangelcrack.model.entity.Pokemon;
 import javafx.beans.property.SimpleObjectProperty;
@@ -20,7 +17,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -53,22 +49,18 @@ public class EditObjectController extends Controller implements Initializable{
     private Slider attackBoost;
     @FXML
     public Label attackValueBoost;
-
     @FXML
     private Slider defenseBoost;
     @FXML
     public Label defenseValueBoost;
-
     @FXML
     private Slider spAttackBoost;
     @FXML
     public Label spAttackValueBoost;
-
     @FXML
     private Slider spDefenseBoost;
     @FXML
     public Label spDefenseValueBoost;
-
     @FXML
     private Slider speedBoost;
     @FXML

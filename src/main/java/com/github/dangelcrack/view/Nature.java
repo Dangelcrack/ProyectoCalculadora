@@ -1,86 +1,119 @@
 package com.github.dangelcrack.view;
 
+/**
+ * Enum representing different natures of Pokémon.
+ * Each nature has multipliers for different stats.
+ */
 public enum Nature {
     HARDY, LONELY, BRAVE, ADAMANT, NAUGHTY, BOLD, DOCILE, RELAXED, IMPISH, LAX, TIMID, HASTY, SERIOUS, JOLLY, NAIVE,
     MODEST, MILD, QUIET, BASHFUL, RASH, CALM, GENTLE, SASSY, CAREFUL, QUIRKY;
+
+    /**
+     * Returns the attack multiplier for the nature.
+     *
+     * @return The attack multiplier.
+     */
     public double getAttackMultiplier() {
         switch (this) {
-            case LONELY: // Aumenta Ataque, disminuye Defensa
-            case BRAVE:  // Aumenta Ataque, disminuye Velocidad
-            case ADAMANT: // Aumenta Ataque, disminuye Ataque Especial
-            case NAUGHTY: // Aumenta Ataque, disminuye Defensa Especial
+            case LONELY:
+            case BRAVE:
+            case ADAMANT:
+            case NAUGHTY:
                 return 1.1;
-            case BOLD: // Aumenta Defensa, disminuye Ataque
-            case TIMID: // Aumenta Velocidad, disminuye Ataque
-            case MODEST: // Aumenta Ataque Especial, disminuye Ataque
-            case CALM: // Aumenta Defensa Especial, disminuye Ataque
+            case BOLD:
+            case TIMID:
+            case MODEST:
+            case CALM:
                 return 0.9;
-            default: // Naturalezas neutrales
-                return 1.0;
-        }
-    }
-    public double getDefenseMultiplier() {
-        switch (this) {
-            case BOLD: // Aumenta Defensa, disminuye Ataque
-            case IMPISH: // Aumenta Defensa, disminuye Ataque Especial
-            case LAX: // Aumenta Defensa, disminuye Defensa Especial
-            case RELAXED: // Aumenta Defensa, disminuye Velocidad
-                return 1.1;
-            case LONELY: // Aumenta Ataque, disminuye Defensa
-            case HASTY: // Aumenta Velocidad, disminuye Defensa
-            case MILD: // Aumenta Ataque Especial, disminuye Defensa
-            case GENTLE: // Aumenta Defensa Especial, disminuye Defensa
-                return 0.9;
-            default: // Naturalezas neutrales
-                return 1.0;
-        }
-    }
-    public double getSpAttackMultiplier() {
-        switch (this) {
-            case MODEST: // Aumenta Ataque Especial, disminuye Ataque
-            case MILD: // Aumenta Ataque Especial, disminuye Defensa
-            case QUIET: // Aumenta Ataque Especial, disminuye Velocidad
-            case RASH: // Aumenta Ataque Especial, disminuye Defensa Especial
-                return 1.1;
-            case ADAMANT: // Aumenta Ataque, disminuye Ataque Especial
-            case IMPISH: // Aumenta Defensa, disminuye Ataque Especial
-            case JOLLY: // Aumenta Velocidad, disminuye Ataque Especial
-            case CAREFUL: // Aumenta Defensa Especial, disminuye Ataque Especial
-                return 0.9;
-            default: // Naturalezas neutrales
+            default:
                 return 1.0;
         }
     }
 
-    public double getSpDefenseMultiplier() {
+    /**
+     * Returns the defense multiplier for the nature.
+     *
+     * @return The defense multiplier.
+     */
+    public double getDefenseMultiplier() {
         switch (this) {
-            case CALM: // Aumenta Defensa Especial, disminuye Ataque
-            case GENTLE: // Aumenta Defensa Especial, disminuye Defensa
-            case SASSY: // Aumenta Defensa Especial, disminuye Velocidad
-            case CAREFUL: // Aumenta Defensa Especial, disminuye Ataque Especial
+            case BOLD:
+            case IMPISH:
+            case LAX:
+            case RELAXED:
                 return 1.1;
-            case NAUGHTY: // Aumenta Ataque, disminuye Defensa Especial
-            case LAX: // Aumenta Defensa, disminuye Defensa Especial
-            case NAIVE: // Aumenta Velocidad, disminuye Defensa Especial
-            case RASH: // Aumenta Ataque Especial, disminuye Defensa Especial
+            case LONELY:
+            case HASTY:
+            case MILD:
+            case GENTLE:
                 return 0.9;
-            default: // Naturalezas neutrales
+            default:
                 return 1.0;
         }
     }
+
+    /**
+     * Returns the special attack multiplier for the nature.
+     *
+     * @return The special attack multiplier.
+     */
+    public double getSpAttackMultiplier() {
+        switch (this) {
+            case MODEST:
+            case MILD:
+            case QUIET:
+            case RASH:
+                return 1.1;
+            case ADAMANT:
+            case IMPISH:
+            case JOLLY:
+            case CAREFUL:
+                return 0.9;
+            default:
+                return 1.0;
+        }
+    }
+
+    /**
+     * Returns the special defense multiplier for the nature.
+     *
+     * @return The special defense multiplier.
+     */
+    public double getSpDefenseMultiplier() {
+        switch (this) {
+            case CALM:
+            case GENTLE:
+            case SASSY:
+            case CAREFUL:
+                return 1.1;
+            case NAUGHTY:
+            case LAX:
+            case NAIVE:
+            case RASH:
+                return 0.9;
+            default:
+                return 1.0;
+        }
+    }
+
+    /**
+     * Returns the speed multiplier for the nature.
+     *
+     * @return The speed multiplier.
+     */
     public double getSpeedMultiplier() {
         switch (this) {
-            case TIMID: // Aumenta Velocidad, disminuye Ataque
-            case HASTY: // Aumenta Velocidad, disminuye Defensa
-            case JOLLY: // Aumenta Velocidad, disminuye Ataque Especial
-            case NAIVE: // Aumenta Velocidad, disminuye Defensa Especial
+            case TIMID:
+            case HASTY:
+            case JOLLY:
+            case NAIVE:
                 return 1.1;
-            case BRAVE: // Aumenta Ataque, disminuye Velocidad
-            case RELAXED: // Aumenta Defensa, disminuye Velocidad
-            case QUIET: // Aumenta Ataque Especial, disminuye Velocidad
-            case SASSY: // Aumenta Defensa Especial, disminuye Velocidad
+            case BRAVE:
+            case RELAXED:
+            case QUIET:
+            case SASSY:
                 return 0.9;
-            default: // Naturalezas neutrales
+            default:
                 return 1.0;
         }
     }

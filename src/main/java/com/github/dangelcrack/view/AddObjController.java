@@ -27,6 +27,10 @@ import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+/**
+ * The AddObjController class is responsible for handling the UI logic for adding objects in the application.
+ * It implements the Initializable interface to initialize the controller after its root element has been completely processed.
+ */
 
 public class AddObjController extends Controller implements Initializable {
     @FXML
@@ -86,7 +90,9 @@ public class AddObjController extends Controller implements Initializable {
     private TableColumn<Pokemon, String> columnNamePokemon;
     private ObservableList<Pokemon> pokemonList = FXCollections.observableArrayList();
     private ObjectsController controller;
-
+    /**
+     * This method is called when the controller is opened. It initializes the list of Pokemon and sets the controller reference.
+     */
     @Override
     public void onOpen(Object input) throws IOException {
         List<Pokemon> pokemons = new ArrayList<>();
@@ -94,12 +100,16 @@ public class AddObjController extends Controller implements Initializable {
         tableView.setItems(pokemonList);
         this.controller = (ObjectsController) input;
     }
-
+    /**
+     * This method is called when the controller is closed. Currently, it has no implementation.
+     */
     @Override
     public void onClose(Object output) {
 
     }
-
+    /**
+     * Initializes the controller class. This method is automatically called after the FXML file has been loaded.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         URL imageUrl = getClass().getResource("/com/github/dangelcrack/media/ModalImageUtils/imgAddPokemon.png");
@@ -222,7 +232,9 @@ public class AddObjController extends Controller implements Initializable {
             tableView.refresh();
         });
     }
-
+    /**
+     * Handles the closing of the window. It saves the object details and hides the window.
+     */
     @FXML
     private void closeWindow(Event event) {
         int attackValueBoost = (int) attackBoost.getValue();
@@ -239,7 +251,9 @@ public class AddObjController extends Controller implements Initializable {
         this.controller.saveObj(obj);
         ((Node) (event.getSource())).getScene().getWindow().hide();
     }
-
+    /**
+     * Allows the user to select a photo from their file system and display it in the UI.
+     */
     @FXML
     private void selectPhoto() {
         Stage stage = (Stage) photo.getScene().getWindow();

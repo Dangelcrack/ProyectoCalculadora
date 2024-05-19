@@ -1,103 +1,174 @@
 package com.github.dangelcrack.view;
-
+/**
+ * Enum representing different types of creatures in the game.
+ * Each type has unique interactions with other types, such as super effectiveness, not effectiveness, and immunity.
+ */
 public enum Types {
     NORMAL, FIRE, WATER, ELECTRIC, GRASS, ICE, FIGHTING, POISON, GROUND, FLYING, PSYCHIC, BUG, ROCK, GHOST, DARK, DRAGON, STEEL, FAIRY;
-
-    public boolean esSuperEfectivoContra(Types tipo) {
+    /**
+     * Checks if the current type is super effective against another type.
+     * @param tipo The type to compare against.
+     * @return true if super effective, false otherwise.
+     */
+    public boolean isSuperEffectiveAgainst(Types tipo) {
+        boolean result = false;
         switch (this) {
             case FIRE:
-                return tipo == GRASS || tipo == ICE || tipo == BUG || tipo == STEEL;
+                result = tipo == GRASS || tipo == ICE || tipo == BUG || tipo == STEEL;
+                break;
             case WATER:
-                return tipo == FIRE || tipo == GROUND || tipo == ROCK;
+                result = tipo == FIRE || tipo == GROUND || tipo == ROCK;
+                break;
             case ELECTRIC:
-                return tipo == WATER || tipo == FLYING;
+                result = tipo == WATER || tipo == FLYING;
+                break;
             case GRASS:
-                return tipo == WATER || tipo == GROUND || tipo == ROCK;
+                result = tipo == WATER || tipo == GROUND || tipo == ROCK;
+                break;
             case ICE:
-                return tipo == GRASS || tipo == GROUND || tipo == FLYING || tipo == DRAGON;
+                result = tipo == GRASS || tipo == GROUND || tipo == FLYING || tipo == DRAGON;
+                break;
             case FIGHTING:
-                return tipo == NORMAL || tipo == ICE || tipo == ROCK || tipo == DARK || tipo == STEEL;
+                result = tipo == NORMAL || tipo == ICE || tipo == ROCK || tipo == DARK || tipo == STEEL;
+                break;
             case POISON:
-                return tipo == GRASS || tipo == FAIRY;
+                result = tipo == GRASS || tipo == FAIRY;
+                break;
             case GROUND:
-                return tipo == FIRE || tipo == ELECTRIC || tipo == POISON || tipo == ROCK || tipo == STEEL;
+                result = tipo == FIRE || tipo == ELECTRIC || tipo == POISON || tipo == ROCK || tipo == STEEL;
+                break;
             case FLYING:
-                return tipo == GRASS || tipo == FIGHTING || tipo == BUG;
+                result = tipo == GRASS || tipo == FIGHTING || tipo == BUG;
+                break;
             case PSYCHIC:
-                return tipo == FIGHTING || tipo == POISON;
+                result = tipo == FIGHTING || tipo == POISON;
+                break;
             case BUG:
-                return tipo == GRASS || tipo == PSYCHIC || tipo == DARK;
+                result = tipo == GRASS || tipo == PSYCHIC || tipo == DARK;
+                break;
             case ROCK:
-                return tipo == FIRE || tipo == ICE || tipo == FLYING || tipo == BUG;
+                result = tipo == FIRE || tipo == ICE || tipo == FLYING || tipo == BUG;
+                break;
             case GHOST:
-                return tipo == PSYCHIC || tipo == GHOST;
+                result = tipo == PSYCHIC || tipo == GHOST;
+                break;
             case DRAGON:
-                return tipo == DRAGON;
+                result = tipo == DRAGON;
+                break;
             case DARK:
-                return tipo == PSYCHIC || tipo == GHOST;
+                result = tipo == PSYCHIC || tipo == GHOST;
+                break;
             case STEEL:
-                return tipo == ICE || tipo == ROCK || tipo == FAIRY;
+                result = tipo == ICE || tipo == ROCK || tipo == FAIRY;
+                break;
             case FAIRY:
-                return tipo == FIGHTING || tipo == DRAGON || tipo == DARK;
+                result = tipo == FIGHTING || tipo == DRAGON || tipo == DARK;
+                break;
             default:
-                return false;
+                result = false;
+                break;
         }
+
+        return result;
     }
 
-    public boolean esNoEfectivoContra(Types tipo) {
+    /**
+     * Checks if the current type is not very effective against another type.
+     * @param tipo The type to compare against.
+     * @return true if not effective, false otherwise.
+     */
+    public boolean isNotEffectiveAgainst(Types tipo) {
+        boolean result = false;
+
         switch (this) {
             case FIRE:
-                return tipo == FIRE || tipo == WATER || tipo == ROCK || tipo == DRAGON;
+                result = tipo == FIRE || tipo == WATER || tipo == ROCK || tipo == DRAGON;
+                break;
             case WATER:
-                return tipo == WATER || tipo == GRASS || tipo == DRAGON;
+                result = tipo == WATER || tipo == GRASS || tipo == DRAGON;
+                break;
             case ELECTRIC:
-                return tipo == ELECTRIC || tipo == GRASS || tipo == DRAGON || tipo == GROUND;
+                result = tipo == ELECTRIC || tipo == GRASS || tipo == DRAGON || tipo == GROUND;
+                break;
             case GRASS:
-                return tipo == FIRE || tipo == GRASS || tipo == POISON || tipo == FLYING || tipo == BUG || tipo == DRAGON || tipo == STEEL;
+                result = tipo == FIRE || tipo == GRASS || tipo == POISON || tipo == FLYING || tipo == BUG || tipo == DRAGON || tipo == STEEL;
+                break;
             case ICE:
-                return tipo == FIRE || tipo == WATER || tipo == ICE || tipo == STEEL;
+                result = tipo == FIRE || tipo == WATER || tipo == ICE || tipo == STEEL;
+                break;
             case FIGHTING:
-                return tipo == POISON || tipo == FLYING || tipo == PSYCHIC || tipo == BUG || tipo == FAIRY;
+                result = tipo == POISON || tipo == FLYING || tipo == PSYCHIC || tipo == BUG || tipo == FAIRY;
+                break;
             case POISON:
-                return tipo == POISON || tipo == GROUND || tipo == ROCK || tipo == GHOST;
+                result = tipo == POISON || tipo == GROUND || tipo == ROCK || tipo == GHOST;
+                break;
             case GROUND:
-                return tipo == GRASS || tipo == BUG;
+                result = tipo == GRASS || tipo == BUG;
+                break;
             case FLYING:
-                return tipo == ELECTRIC || tipo == ROCK || tipo == STEEL;
+                result = tipo == ELECTRIC || tipo == ROCK || tipo == STEEL;
+                break;
             case PSYCHIC:
-                return tipo == PSYCHIC || tipo == STEEL;
+                result = tipo == PSYCHIC || tipo == STEEL;
+                break;
             case BUG:
-                return tipo == FIRE || tipo == FIGHTING || tipo == POISON || tipo == FLYING || tipo == GHOST || tipo == STEEL || tipo == FAIRY;
+                result = tipo == FIRE || tipo == FIGHTING || tipo == POISON || tipo == FLYING || tipo == GHOST || tipo == STEEL || tipo == FAIRY;
+                break;
             case ROCK:
-                return tipo == FIGHTING || tipo == GROUND || tipo == STEEL;
+                result = tipo == FIGHTING || tipo == GROUND || tipo == STEEL;
+                break;
             case GHOST:
-                return tipo == DARK;
+                result = tipo == DARK;
+                break;
             case DRAGON:
-                return tipo == STEEL;
+                result = tipo == STEEL;
+                break;
             case DARK:
-                return tipo == FIGHTING || tipo == DARK || tipo == FAIRY;
+                result = tipo == FIGHTING || tipo == DARK || tipo == FAIRY;
+                break;
             case STEEL:
-                return tipo == FIRE || tipo == WATER || tipo == ELECTRIC || tipo == STEEL;
+                result = tipo == FIRE || tipo == WATER || tipo == ELECTRIC || tipo == STEEL;
+                break;
             case FAIRY:
-                return tipo == FIRE || tipo == POISON || tipo == STEEL;
+                result = tipo == FIRE || tipo == POISON || tipo == STEEL;
+                break;
             default:
-                return false;
+                result = false;
+                break;
         }
+
+        return result;
     }
-    public boolean esInmuneContra(Types tipo) {
+    /**
+     * Checks if the current type is immune against another type.
+     * @param tipo The type to compare against.
+     * @return true if immune, false otherwise.
+     */
+    public boolean isImmuneAgainst(Types tipo) {
+        boolean result = false;
+
         switch (this) {
             case NORMAL:
-                return tipo == GHOST;
+                result = tipo == GHOST;
+                break;
             case GROUND:
-                return tipo == FLYING;
+                result = tipo == FLYING;
+                break;
             case GHOST:
-                return tipo == NORMAL || tipo == FIGHTING;
+                result = tipo == NORMAL || tipo == FIGHTING;
+                break;
             case DARK:
-                return tipo == PSYCHIC;
+                result = tipo == PSYCHIC;
+                break;
             case FAIRY:
-                return tipo == DRAGON;
+                result = tipo == DRAGON;
+                break;
             default:
-                return false;
+                result = false;
+                break;
         }
+
+        return result;
     }
+
 }

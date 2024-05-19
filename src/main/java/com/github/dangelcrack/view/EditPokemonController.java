@@ -149,16 +149,13 @@ public class EditPokemonController extends Controller implements Initializable {
     private ComboBox<Move> moveChoiceBox4;
     private PokemonController controller;
 
-    @Override
-    public void onOpen(Object input) {
-        this.controller = (PokemonController) input;
-    }
-
-    @Override
-    public void onClose(Object output) {
-
-    }
-
+    /**
+     * Initializes the controller with necessary components and data.
+     * Loads background image, populates Pokemon ComboBox, and sets actions for ComboBox selection.
+     *
+     * @param url The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resourceBundle  The resources used to localize the root object, or null if the root object was not localized.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         URL imageUrl = getClass().getResource("/com/github/dangelcrack/media/ModalImageUtils/imgEditPokemon.jpg");
@@ -193,6 +190,12 @@ public class EditPokemonController extends Controller implements Initializable {
         });
     }
 
+    /**
+     * Initializes the UI components with the attributes of the provided Pokemon object.
+     * Sets text and images based on Pokemon's attributes and updates corresponding UI elements.
+     *
+     * @param pokemon The Pokemon object whose attributes will be used to initialize UI components.
+     */
     private void initializeWithPokemon(Pokemon pokemon) {
         photo.setText(pokemon.getPhotoPokemon());
         InputStream inputStream = getClass().getResourceAsStream("/com/github/dangelcrack/media/PokemonImages/" + pokemon.getPhotoPokemon());
@@ -262,7 +265,6 @@ public class EditPokemonController extends Controller implements Initializable {
         nature.setValue(pokemon.getNature());
         nature.setItems(FXCollections.observableArrayList(Nature.values()));
         if (pokemon.getMoves() != null && !pokemon.getMoves().isEmpty()) {
-            // Limpiar los items anteriores
             moveChoiceBox1.getItems().clear();
             moveChoiceBox2.getItems().clear();
             moveChoiceBox3.getItems().clear();
@@ -272,8 +274,6 @@ public class EditPokemonController extends Controller implements Initializable {
             moveChoiceBox2.getItems().addAll(movimientos);
             moveChoiceBox3.getItems().addAll(movimientos);
             moveChoiceBox4.getItems().addAll(movimientos);
-
-            // Seleccionar los movimientos del Pokemon en los ChoiceBox
             if (pokemon.getMoves().size() > 0) {
                 moveChoiceBox1.setValue(pokemon.getMoves().get(0));
             }
@@ -288,7 +288,12 @@ public class EditPokemonController extends Controller implements Initializable {
             }
         }
     }
-
+    /**
+     * Handles the closing of the window.
+     * Collects data from UI components, creates a new Pokemon object, and saves it through the controller.
+     *
+     * @param event The event triggering the method call.
+     */
     @FXML
     private void closeWindow(Event event) {
         String nameValue = pokemonComboBox.getValue().getPokemonName();
@@ -337,7 +342,10 @@ public class EditPokemonController extends Controller implements Initializable {
         this.controller.savePokemon(pokemonBeingEdited);
         ((Node) (event.getSource())).getScene().getWindow().hide();
     }
-
+    /**
+     * Opens a file chooser dialog for selecting a photo.
+     * Sets the selected photo's path to the text field and displays the image below the button.
+     */
     @FXML
     private void selectPhoto() {
         Stage stage = (Stage) photo.getScene().getWindow();
@@ -348,7 +356,7 @@ public class EditPokemonController extends Controller implements Initializable {
         );
         File selectedFile = fileChooser.showOpenDialog(stage);
         if (selectedFile != null) {
-            String photoPath = selectedFile.getName();//aqui me cogia el absolutePath
+            String photoPath = selectedFile.getName();
             photo.setText(photoPath);
             String mediaPath = "src/main/resources/com/github/dangelcrack/media/PokemonImages/";
             File destinationFolder = new File(mediaPath);
@@ -359,9 +367,18 @@ public class EditPokemonController extends Controller implements Initializable {
                 e.printStackTrace();
             }
             Image image = new Image(destinationFile.toURI().toString());
-            imageView.setImage(image);//esto es para que en la pantalla de añadir pokemon al seleccionar la imagen se muestre abajo del boton de agregar
+            imageView.setImage(image);
         }
     }
 
+    @Override
+    public void onOpen(Object input) throws IOException {
+
+    }
+
+    @Override
+    public void onClose(Object output) {
+
+    }
 }
 
