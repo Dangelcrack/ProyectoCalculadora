@@ -1,9 +1,11 @@
-package com.github.dangelcrack.view;
+package com.github.dangelcrack.controller;
 
 import com.github.dangelcrack.App;
 import com.github.dangelcrack.model.dao.PokemonDAO;
 import com.github.dangelcrack.model.entity.Obj;
 import com.github.dangelcrack.model.entity.Pokemon;
+import com.github.dangelcrack.model.entity.Scenes;
+import com.github.dangelcrack.model.entity.Types;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -22,7 +24,6 @@ import javafx.scene.layout.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 

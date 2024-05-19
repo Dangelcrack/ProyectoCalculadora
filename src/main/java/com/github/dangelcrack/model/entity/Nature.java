@@ -1,4 +1,4 @@
-package com.github.dangelcrack.view;
+package com.github.dangelcrack.model.entity;
 
 /**
  * Enum representing different natures of Pokémon.

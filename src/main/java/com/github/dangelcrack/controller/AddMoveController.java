@@ -1,8 +1,10 @@
-package com.github.dangelcrack.view;
+package com.github.dangelcrack.controller;
 
 import com.github.dangelcrack.model.dao.PokemonDAO;
 import com.github.dangelcrack.model.entity.Move;
 import com.github.dangelcrack.model.entity.Pokemon;
+import com.github.dangelcrack.model.entity.Category;
+import com.github.dangelcrack.model.entity.Types;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;

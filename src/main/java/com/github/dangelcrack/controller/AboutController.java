@@ -1,4 +1,4 @@
-package com.github.dangelcrack.view;
+package com.github.dangelcrack.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

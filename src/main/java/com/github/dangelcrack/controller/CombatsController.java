@@ -1,10 +1,12 @@
-package com.github.dangelcrack.view;
+package com.github.dangelcrack.controller;
 import com.github.dangelcrack.model.dao.MoveDAO;
 import com.github.dangelcrack.model.dao.ObjDAO;
 import com.github.dangelcrack.model.dao.PokemonDAO;
 import com.github.dangelcrack.model.entity.Move;
 import com.github.dangelcrack.model.entity.Obj;
 import com.github.dangelcrack.model.entity.Pokemon;
+import com.github.dangelcrack.model.entity.Category;
+import com.github.dangelcrack.model.entity.Types;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.FXCollections;

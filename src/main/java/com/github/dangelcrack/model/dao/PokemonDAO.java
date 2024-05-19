@@ -4,12 +4,10 @@ import com.github.dangelcrack.model.connection.ConnectionMariaDB;
 import com.github.dangelcrack.model.entity.Move;
 import com.github.dangelcrack.model.entity.Obj;
 import com.github.dangelcrack.model.entity.Pokemon;
-import com.github.dangelcrack.view.Nature;
-import com.github.dangelcrack.view.Types;
+import com.github.dangelcrack.model.entity.Nature;
+import com.github.dangelcrack.model.entity.Types;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

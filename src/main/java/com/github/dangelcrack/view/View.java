@@ -1,5 +1,6 @@
 package com.github.dangelcrack.view;
 
+import com.github.dangelcrack.controller.Controller;
 import javafx.scene.Parent;
 
 /**

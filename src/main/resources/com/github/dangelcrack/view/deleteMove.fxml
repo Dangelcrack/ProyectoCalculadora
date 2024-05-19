@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<VBox fx:id="vbox" alignment="CENTER" fillWidth="false" prefHeight="646.0" prefWidth="1147.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.dangelcrack.view.DeleteMoveController">   <padding>
+<VBox fx:id="vbox" alignment="CENTER" fillWidth="false" prefHeight="646.0" prefWidth="1147.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.dangelcrack.controller.DeleteMoveController">   <padding>
    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
 </padding>
    <children>

@@ -1,7 +1,7 @@
 package com.github.dangelcrack;
 
-import com.github.dangelcrack.view.AppController;
-import com.github.dangelcrack.view.Scenes;
+import com.github.dangelcrack.controller.AppController;
+import com.github.dangelcrack.model.entity.Scenes;
 import com.github.dangelcrack.view.View;
 import javafx.application.Application;
 import javafx.scene.Scene;

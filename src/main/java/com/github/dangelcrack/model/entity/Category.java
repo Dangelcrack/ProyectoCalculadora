@@ -1,4 +1,4 @@
-package com.github.dangelcrack.view;
+package com.github.dangelcrack.model.entity;
 /**
  * The Category enum defines the different categories of Pokémon moves.
  * Moves can be categorized as Special, Physical, or State.

@@ -1,4 +1,4 @@
-package com.github.dangelcrack.view;
+package com.github.dangelcrack.controller;
 import com.github.dangelcrack.model.dao.PokemonDAO;
 import com.github.dangelcrack.model.entity.Pokemon;
 import javafx.collections.FXCollections;

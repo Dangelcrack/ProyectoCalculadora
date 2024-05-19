@@ -1,17 +1,21 @@
-package com.github.dangelcrack.view;
+package com.github.dangelcrack.controller;
 
 import com.github.dangelcrack.model.dao.MoveDAO;
-import com.github.dangelcrack.model.dao.PokemonDAO;
 import com.github.dangelcrack.model.entity.Move;
 import com.github.dangelcrack.model.entity.Obj;
 import com.github.dangelcrack.model.entity.Pokemon;
+import com.github.dangelcrack.model.entity.Nature;
+import com.github.dangelcrack.model.entity.Types;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -20,23 +24,26 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
-import java.util.*;
-
-public class EditPokemonController extends Controller implements Initializable {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.ResourceBundle;
+/**
+ * The AddPokemonController class is responsible for handling the UI logic for adding pokemon in the application.
+ * It implements the Initializable interface to initialize the controller after its root element has been completely processed.
+ */
+public class AddPokemonController extends Controller implements Initializable {
     @FXML
     private VBox vbox;
     @FXML
-    private ComboBox<Pokemon> pokemonComboBox;
-    @FXML
     private ComboBox<Types> firstType;
     @FXML
-    private ComboBox<Types> secondType;
+    private TextField name;
     @FXML
-    private ComboBox<Nature> nature;
+    private ComboBox<Types> secondType;
     @FXML
     private TextField photo;
     @FXML
@@ -45,7 +52,8 @@ public class EditPokemonController extends Controller implements Initializable {
     private Slider level;
     @FXML
     public Label levelValue;
-
+    @FXML
+    private ComboBox<Nature> nature;
     @FXML
     private Slider hp;
     @FXML
@@ -148,17 +156,26 @@ public class EditPokemonController extends Controller implements Initializable {
     @FXML
     private ComboBox<Move> moveChoiceBox4;
     private PokemonController controller;
-
     /**
-     * Initializes the controller with necessary components and data.
-     * Loads background image, populates Pokemon ComboBox, and sets actions for ComboBox selection.
-     *
-     * @param url The location used to resolve relative paths for the root object, or null if the location is not known.
-     * @param resourceBundle  The resources used to localize the root object, or null if the root object was not localized.
+     * This method is called when the controller is opened. It sets the controller reference.
      */
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        URL imageUrl = getClass().getResource("/com/github/dangelcrack/media/ModalImageUtils/imgEditPokemon.jpg");
+    public void onOpen(Object input) {
+        this.controller = (PokemonController) input;
+    }
+    /**
+     * This method is called when the controller is closed. Currently, it has no implementation.
+     */
+    @Override
+    public void onClose(Object output) {
+
+    }
+    /**
+     * Initializes the controller class. This method is automatically called after the FXML file has been loaded.
+     */
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        URL imageUrl = getClass().getResource("/com/github/dangelcrack/media/ModalImageUtils/imgAddPokemon.png");
         BackgroundImage backgroundImage = new BackgroundImage(
                 new Image(imageUrl.toExternalForm()),
                 BackgroundRepeat.NO_REPEAT,
@@ -167,78 +184,9 @@ public class EditPokemonController extends Controller implements Initializable {
                 new BackgroundSize(100, 100, true, true, false, true)
         );
         vbox.setBackground(new Background(backgroundImage));
-        List<Pokemon> pokemons = PokemonDAO.build().findAll();
-        ObservableList<Pokemon> observableNames = FXCollections.observableArrayList(pokemons);
-        pokemonComboBox.setItems(observableNames);
-        pokemonComboBox.setCellFactory(lv -> new ListCell<>() {
-            @Override
-            protected void updateItem(Pokemon item, boolean empty) {
-                super.updateItem(item, empty);
-                setText(empty ? "" : item.getPokemonName());
-            }
-        });
-        pokemonComboBox.setButtonCell(new ListCell<Pokemon>() {
-            @Override
-            protected void updateItem(Pokemon item, boolean empty) {
-                super.updateItem(item, empty);
-                setText(empty ? "" : item.getPokemonName());
-            }
-        });
-        pokemonComboBox.setOnAction(event -> {
-            Pokemon selectedPokemon = pokemonComboBox.getValue();
-            initializeWithPokemon(selectedPokemon);
-        });
-    }
-
-    /**
-     * Initializes the UI components with the attributes of the provided Pokemon object.
-     * Sets text and images based on Pokemon's attributes and updates corresponding UI elements.
-     *
-     * @param pokemon The Pokemon object whose attributes will be used to initialize UI components.
-     */
-    private void initializeWithPokemon(Pokemon pokemon) {
-        photo.setText(pokemon.getPhotoPokemon());
-        InputStream inputStream = getClass().getResourceAsStream("/com/github/dangelcrack/media/PokemonImages/" + pokemon.getPhotoPokemon());
-        Image image = new Image(inputStream);
-        imageView.setImage(image);
-        level.setValue(pokemon.getLevelCap());
-        levelValue.setText(String.valueOf((int)level.getValue()));
-        hp.setValue(pokemon.getHealth());
-        hpValue.setText(String.valueOf((int)hp.getValue()));
-        attack.setValue(pokemon.getAttack());
-        attackValue.setText(String.valueOf((int)attack.getValue()));
-        defense.setValue(pokemon.getDefense());
-        defenseValue.setText(String.valueOf((int)defense.getValue()));
-        spattack.setValue(pokemon.getSpecialAttack());
-        spattackValue.setText(String.valueOf((int)spattack.getValue()));
-        spdefense.setValue(pokemon.getSpecialDefense());
-        spdefenseValue.setText(String.valueOf((int)spdefense.getValue()));
-        speed.setValue(pokemon.getSpeed());
-        speedValue.setText(String.valueOf((int)speed.getValue()));
-        iv_hp.setValue(pokemon.getIv_Health());
-        iv_hpValue.setText(String.valueOf((int)iv_hp.getValue()));
-        iv_attack.setValue(pokemon.getIv_Attack());
-        iv_attackValue.setText(String.valueOf((int)iv_attack.getValue()));
-        iv_defense.setValue(pokemon.getIv_Defense());
-        iv_defenseValue.setText(String.valueOf((int)iv_defense.getValue()));
-        iv_spattack.setValue(pokemon.getIv_SpecialAttack());
-        iv_spattackValue.setText(String.valueOf((int)iv_spattack.getValue()));
-        iv_spdefense.setValue(pokemon.getIv_SpecialDefense());
-        iv_spdefenseValue.setText(String.valueOf((int)iv_spdefense.getValue()));
-        iv_speed.setValue(pokemon.getIv_Speed());
-        iv_speedValue.setText(String.valueOf((int)iv_speed.getValue()));
-        ev_hp.setValue(pokemon.getEv_Health());
-        ev_hpValue.setText(String.valueOf((int)ev_hp.getValue()));
-        ev_attack.setValue(pokemon.getEv_Attack());
-        ev_attackValue.setText(String.valueOf((int)ev_attack.getValue()));
-        ev_defense.setValue(pokemon.getEv_Defense());
-        ev_defenseValue.setText(String.valueOf((int)ev_defense.getValue()));
-        ev_spattack.setValue(pokemon.getEv_SpecialAttack());
-        ev_spattackValue.setText(String.valueOf((int)ev_spattack.getValue()));
-        ev_spdefense.setValue(pokemon.getEv_SpecialDefense());
-        ev_spdefenseValue.setText(String.valueOf((int)ev_spdefense.getValue()));
-        ev_speed.setValue(pokemon.getEv_Speed());
-        ev_speedValue.setText(String.valueOf((int)ev_speed.getValue()));
+        firstType.setItems(FXCollections.observableArrayList(Types.values()));
+        secondType.setItems(FXCollections.observableArrayList(Types.values()));
+        nature.setItems(FXCollections.observableArrayList(Nature.values()));
         level.valueProperty().addListener((observable, oldValue, newValue) -> levelValue.setText(String.valueOf(newValue.intValue())));
         hp.valueProperty().addListener((observable, oldValue, newValue) -> hpValue.setText(String.valueOf(newValue.intValue())));
         attack.valueProperty().addListener((observable, oldValue, newValue) -> attackValue.setText(String.valueOf(newValue.intValue())));
@@ -246,58 +194,32 @@ public class EditPokemonController extends Controller implements Initializable {
         spattack.valueProperty().addListener((observable, oldValue, newValue) -> spattackValue.setText(String.valueOf(newValue.intValue())));
         spdefense.valueProperty().addListener((observable, oldValue, newValue) -> spdefenseValue.setText(String.valueOf(newValue.intValue())));
         speed.valueProperty().addListener((observable, oldValue, newValue) -> speedValue.setText(String.valueOf(newValue.intValue())));
+
         iv_hp.valueProperty().addListener((observable, oldValue, newValue) -> iv_hpValue.setText(String.valueOf(newValue.intValue())));
         iv_attack.valueProperty().addListener((observable, oldValue, newValue) -> iv_attackValue.setText(String.valueOf(newValue.intValue())));
         iv_defense.valueProperty().addListener((observable, oldValue, newValue) -> iv_defenseValue.setText(String.valueOf(newValue.intValue())));
         iv_spattack.valueProperty().addListener((observable, oldValue, newValue) -> iv_spattackValue.setText(String.valueOf(newValue.intValue())));
         iv_spdefense.valueProperty().addListener((observable, oldValue, newValue) -> iv_spdefenseValue.setText(String.valueOf(newValue.intValue())));
         iv_speed.valueProperty().addListener((observable, oldValue, newValue) -> iv_speedValue.setText(String.valueOf(newValue.intValue())));
+
         ev_hp.valueProperty().addListener((observable, oldValue, newValue) -> ev_hpValue.setText(String.valueOf(newValue.intValue())));
         ev_attack.valueProperty().addListener((observable, oldValue, newValue) -> ev_attackValue.setText(String.valueOf(newValue.intValue())));
         ev_defense.valueProperty().addListener((observable, oldValue, newValue) -> ev_defenseValue.setText(String.valueOf(newValue.intValue())));
         ev_spattack.valueProperty().addListener((observable, oldValue, newValue) -> ev_spattackValue.setText(String.valueOf(newValue.intValue())));
         ev_spdefense.valueProperty().addListener((observable, oldValue, newValue) -> ev_spdefenseValue.setText(String.valueOf(newValue.intValue())));
         ev_speed.valueProperty().addListener((observable, oldValue, newValue) -> ev_speedValue.setText(String.valueOf(newValue.intValue())));
-        firstType.setValue(pokemon.getPokemonFirstType());
-        secondType.setValue(pokemon.getPokemonSecondType());
-        firstType.setItems(FXCollections.observableArrayList(Types.values()));
-        secondType.setItems(FXCollections.observableArrayList(Types.values()));
-        nature.setValue(pokemon.getNature());
-        nature.setItems(FXCollections.observableArrayList(Nature.values()));
-        if (pokemon.getMoves() != null && !pokemon.getMoves().isEmpty()) {
-            moveChoiceBox1.getItems().clear();
-            moveChoiceBox2.getItems().clear();
-            moveChoiceBox3.getItems().clear();
-            moveChoiceBox4.getItems().clear();
-            ObservableList<Move> movimientos = FXCollections.observableArrayList(MoveDAO.build().findAll());
-            moveChoiceBox1.getItems().addAll(movimientos);
-            moveChoiceBox2.getItems().addAll(movimientos);
-            moveChoiceBox3.getItems().addAll(movimientos);
-            moveChoiceBox4.getItems().addAll(movimientos);
-            if (pokemon.getMoves().size() > 0) {
-                moveChoiceBox1.setValue(pokemon.getMoves().get(0));
-            }
-            if (pokemon.getMoves().size() > 1) {
-                moveChoiceBox2.setValue(pokemon.getMoves().get(1));
-            }
-            if (pokemon.getMoves().size() > 2) {
-                moveChoiceBox3.setValue(pokemon.getMoves().get(2));
-            }
-            if (pokemon.getMoves().size() > 3) {
-                moveChoiceBox4.setValue(pokemon.getMoves().get(3));
-            }
-        }
+        List<Move> moves = MoveDAO.build().findAll();
+        ObservableList<Move> observableMoves = FXCollections.observableArrayList(moves);
+        moveChoiceBox1.setItems(observableMoves);
+        moveChoiceBox2.setItems(observableMoves);
+        moveChoiceBox3.setItems(observableMoves);
+        moveChoiceBox4.setItems(observableMoves);
     }
     /**
-     * Handles the closing of the window.
-     * Collects data from UI components, creates a new Pokemon object, and saves it through the controller.
-     *
-     * @param event The event triggering the method call.
+     * Handles the closing of the window. It saves the Pokémon details and hides the window.
      */
     @FXML
     private void closeWindow(Event event) {
-        String nameValue = pokemonComboBox.getValue().getPokemonName();
-        String photoValue= photo.getText();
         int levelValue = (int) level.getValue();
         int hpValue = (int) hp.getValue();
         int attackValue = (int) attack.getValue();
@@ -317,7 +239,7 @@ public class EditPokemonController extends Controller implements Initializable {
         int evSpattackValue = (int) ev_spattack.getValue();
         int evSpdefenseValue = (int) ev_spdefense.getValue();
         int evSpeedValue = (int) ev_speed.getValue();
-        Obj obj = null;
+
         Types firstTypeValue = firstType.getValue();
         Types secondTypeValue = secondType.getValue();
         Nature natureValue = nature.getValue();
@@ -330,21 +252,19 @@ public class EditPokemonController extends Controller implements Initializable {
         if (move2 != null) moves.add(move2);
         if (move3 != null) moves.add(move3);
         if (move4 != null) moves.add(move4);
-        Pokemon pokemonBeingEdited = new Pokemon(
-                nameValue, firstTypeValue, secondTypeValue, photoValue, levelValue, hpValue, attackValue, defenseValue,
-                spattackValue, spdefenseValue, speedValue, ivHpValue, ivAttackValue, ivDefenseValue, ivSpattackValue,
-                ivSpdefenseValue, ivSpeedValue, evHpValue, evAttackValue, evDefenseValue, evSpattackValue, evSpdefenseValue,
-                evSpeedValue, moves, obj, natureValue);
-        if (!photo.getText().isEmpty()) {
-            pokemonBeingEdited.setPhotoPokemon(photo.getText());
+        Obj obj = new Obj();
+        Pokemon pokemon = new Pokemon(name.getText(), firstTypeValue, secondTypeValue, photo.getText(), levelValue, hpValue, attackValue, defenseValue, spattackValue, spdefenseValue, speedValue,
+                ivHpValue, ivAttackValue, ivDefenseValue, ivSpattackValue, ivSpdefenseValue, ivSpeedValue,
+                evHpValue, evAttackValue, evDefenseValue, evSpattackValue, evSpdefenseValue, evSpeedValue, moves, obj, natureValue);
+
+        if(Objects.equals(pokemon.getPokemonName(), name.getText())){
+            this.controller.deletePokemon(pokemon);
         }
-        this.controller.deleteOldPokemon(pokemonComboBox.getValue());
-        this.controller.savePokemon(pokemonBeingEdited);
+        this.controller.savePokemon(pokemon);
         ((Node) (event.getSource())).getScene().getWindow().hide();
     }
     /**
-     * Opens a file chooser dialog for selecting a photo.
-     * Sets the selected photo's path to the text field and displays the image below the button.
+     * Allows the user to select a photo from their file system and display it in the UI.
      */
     @FXML
     private void selectPhoto() {
@@ -356,7 +276,7 @@ public class EditPokemonController extends Controller implements Initializable {
         );
         File selectedFile = fileChooser.showOpenDialog(stage);
         if (selectedFile != null) {
-            String photoPath = selectedFile.getName();
+            String photoPath = selectedFile.getName();//aqui me cogia el absolutePath
             photo.setText(photoPath);
             String mediaPath = "src/main/resources/com/github/dangelcrack/media/PokemonImages/";
             File destinationFolder = new File(mediaPath);
@@ -367,18 +287,9 @@ public class EditPokemonController extends Controller implements Initializable {
                 e.printStackTrace();
             }
             Image image = new Image(destinationFile.toURI().toString());
-            imageView.setImage(image);
+            imageView.setImage(image);//esto es para que en la pantalla de añadir pokemon al seleccionar la imagen se muestre abajo del boton de agregar
         }
     }
 
-    @Override
-    public void onOpen(Object input) throws IOException {
 
-    }
-
-    @Override
-    public void onClose(Object output) {
-
-    }
 }
-

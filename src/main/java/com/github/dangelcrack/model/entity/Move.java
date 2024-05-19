@@ -1,8 +1,5 @@
 package com.github.dangelcrack.model.entity;
 
-import com.github.dangelcrack.view.Category;
-import com.github.dangelcrack.view.Types;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;

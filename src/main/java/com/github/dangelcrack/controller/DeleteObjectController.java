@@ -1,4 +1,4 @@
-package com.github.dangelcrack.view;
+package com.github.dangelcrack.controller;
 import com.github.dangelcrack.model.dao.ObjDAO;
 import com.github.dangelcrack.model.entity.Obj;
 import javafx.collections.FXCollections;

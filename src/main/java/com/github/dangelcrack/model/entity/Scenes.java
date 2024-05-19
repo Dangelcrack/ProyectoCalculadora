@@ -1,4 +1,4 @@
-package com.github.dangelcrack.view;
+package com.github.dangelcrack.model.entity;
 
 /**
  * Enum representing various scenes in the application.

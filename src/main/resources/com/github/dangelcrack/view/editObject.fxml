@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="vbox" alignment="CENTER" prefHeight="637.0" prefWidth="1147.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.dangelcrack.view.EditObjectController">
+<VBox fx:id="vbox" alignment="CENTER" prefHeight="637.0" prefWidth="1147.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.dangelcrack.controller.EditObjectController">
     <children>
       <ComboBox fx:id="objetoComboBox" prefHeight="27.0" prefWidth="200.0" promptText="Object" style="-fx-font-family: 'Arial'; -fx-font-size: 15.0; -fx-font-style: italic; -fx-font-weight: bold; -fx-background-color: -fx-text-box-border, -fx-background; -fx-background-insets: 0, 0 0 1 0; -fx-background-radius: 0;" />
         <HBox fillHeight="false" maxHeight="402.0" maxWidth="1147.0" minHeight="402.0" minWidth="1147.0" prefHeight="402.0" prefWidth="1147.0">

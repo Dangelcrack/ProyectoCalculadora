@@ -1,4 +1,4 @@
-package com.github.dangelcrack.view;
+package com.github.dangelcrack.controller;
 import com.github.dangelcrack.model.dao.MoveDAO;
 import com.github.dangelcrack.model.entity.Move;
 import javafx.collections.FXCollections;

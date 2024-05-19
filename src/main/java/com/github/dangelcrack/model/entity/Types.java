@@ -1,4 +1,4 @@
-package com.github.dangelcrack.view;
+package com.github.dangelcrack.model.entity;
 /**
  * Enum representing different types of creatures in the game.
  * Each type has unique interactions with other types, such as super effectiveness, not effectiveness, and immunity.

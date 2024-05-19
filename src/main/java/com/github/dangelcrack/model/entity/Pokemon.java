@@ -1,7 +1,5 @@
 package com.github.dangelcrack.model.entity;
 
-import com.github.dangelcrack.view.Nature;
-import com.github.dangelcrack.view.Types;
 import javafx.scene.image.Image;
 
 import java.io.File;

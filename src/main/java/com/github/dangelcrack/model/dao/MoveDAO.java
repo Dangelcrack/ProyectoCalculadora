@@ -3,8 +3,8 @@ package com.github.dangelcrack.model.dao;
 import com.github.dangelcrack.model.connection.ConnectionMariaDB;
 import com.github.dangelcrack.model.entity.Move;
 import com.github.dangelcrack.model.entity.Pokemon;
-import com.github.dangelcrack.view.Category;
-import com.github.dangelcrack.view.Types;
+import com.github.dangelcrack.model.entity.Category;
+import com.github.dangelcrack.model.entity.Types;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

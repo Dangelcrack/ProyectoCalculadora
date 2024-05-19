@@ -1,4 +1,4 @@
-package com.github.dangelcrack.view;
+package com.github.dangelcrack.controller;
 
 import com.github.dangelcrack.App;
 import java.io.IOException;
