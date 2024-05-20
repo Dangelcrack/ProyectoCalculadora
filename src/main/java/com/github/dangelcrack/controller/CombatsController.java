@@ -165,7 +165,7 @@ public class CombatsController extends Controller implements Initializable {
         imageView.setImage(image);
         double levelCap = pokemon.getLevelCap();
         levelValue.setText(String.valueOf((int)levelCap));
-        double hpTotalValue = 10 + (int) ((levelCap / 100.0) * ((pokemon.getHealth() * 2) + pokemon.getIv_Health() + pokemon.getEv_Health())) + levelCap;
+        double hpTotalValue = 10 + (int) ((levelCap / 100.0) * ((pokemon.getHealth() * 2) + pokemon.getIv_Health() + pokemon.getEv_Health()/4)) + levelCap;
         hpValue.setText(String.valueOf((int) hpTotalValue));
         hpTotalProperty.set(hpTotalValue);
         double attackTotalValue = 5 + ((levelCap / 100.0) * ((pokemon.getAttack() * 2) + pokemon.getIv_Attack() + (double) pokemon.getEv_Attack() / 4)) * (pokemon.getNature().getAttackMultiplier());
