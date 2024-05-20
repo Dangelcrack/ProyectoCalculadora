@@ -6,34 +6,57 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
 
+/**
+ * Utility class for reading and writing objects to and from XML files using JAXB.
+ */
 public class XMLManager {
-    public static <T> boolean writeXML(T c,String filename){
+
+    /**
+     * Writes an object to an XML file.
+     *
+     * @param <T>      the type of the object
+     * @param c        the object to write to XML
+     * @param filename the name of the file to write to
+     * @return true if the write operation was successful, false otherwise
+     */
+    public static <T> boolean writeXML(T c, String filename) {
         boolean result = false;
         JAXBContext context;
         try {
+            // Create JAXB context and marshaller
             context = JAXBContext.newInstance(c.getClass());
             Marshaller m = context.createMarshaller();
-            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,true);
-            m.setProperty(Marshaller.JAXB_ENCODING,"UTF-8");
-            m.marshal(c,new File(filename));
+            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            m.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
+            // Marshal the object to the specified file
+            m.marshal(c, new File(filename));
             result = true;
-        } catch (JAXBException e){
+        } catch (JAXBException e) {
             e.printStackTrace();
         }
-        return  result;
+        return result;
     }
 
-    public  static <T> T readXML(T c,String filename){
+    /**
+     * Reads an object from an XML file.
+     *
+     * @param <T>      the type of the object
+     * @param c        an instance of the object type to read
+     * @param filename the name of the file to read from
+     * @return the object read from the XML file
+     */
+    public static <T> T readXML(T c, String filename) {
         T result = c;
         JAXBContext context;
-
         try {
+            // Create JAXB context and unmarshaller
             context = JAXBContext.newInstance(c.getClass());
             Unmarshaller um = context.createUnmarshaller();
-            result = (T) um.unmarshal(new File (filename));
-        }catch (JAXBException e){
+            // Unmarshal the object from the specified file
+            result = (T) um.unmarshal(new File(filename));
+        } catch (JAXBException e) {
             e.printStackTrace();
         }
-        return  result;
+        return result;
     }
 }

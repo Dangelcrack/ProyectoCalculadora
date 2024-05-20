@@ -6,8 +6,11 @@ module com.github.dangelcrack {
 
     opens com.github.dangelcrack to javafx.fxml;
     opens com.github.dangelcrack.model.connection to java.xml.bind;
-    opens com.github.dangelcrack.model.entity to javafx.base;
     exports com.github.dangelcrack;
     exports com.github.dangelcrack.view;
     opens com.github.dangelcrack.view to javafx.fxml;
+    exports com.github.dangelcrack.controller;
+    opens com.github.dangelcrack.controller to javafx.fxml;
+    exports com.github.dangelcrack.model.entity;
+    opens com.github.dangelcrack.model.entity to javafx.base, javafx.fxml;
 }

@@ -1,16 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.dangelcrack.view.AboutController">
+<VBox fx:id="vbox" alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.dangelcrack.controller.AboutController">
     <children>
-      <Button mnemonicParsing="false" onAction="#goToMain" text="Volver" />
-        <Label text="ABOUT" />
+      <HBox prefHeight="475.0" prefWidth="928.0" spacing="100.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="274.0" prefWidth="398.0" spacing="20.0">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../media/ModalImageUtils/images.jpeg" />
+                     </image></ImageView>
+                  <Label prefHeight="36.0" prefWidth="69.0" text="ABOUT " textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="Arial Bold Italic" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label text="ÁNGEL DAVID GUERRERO SÁNCHEZ" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="Arial Bold Italic" size="17.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="100.0" />
+               </padding>
+            </VBox>
+             <VBox alignment="CENTER">
+                 <children>
+                     <Label text="As a first-year DAM student, I'm diving into the depths of Java programming, navigating through the foundational concepts while exploring the intricacies of object-oriented design. Each day, as I sit down with my IDE, I'm met with new challenges that test my problem-solving skills and ignite my passion for coding. Despite the inevitable hurdles of debugging and logic errors, I'm driven by a relentless curiosity to unravel the mysteries of software development.&#10;&#10;Beyond the syntax and semantics of Java, I'm drawn to the broader principles of computer science. Data structures, algorithms, and software design patterns captivate me, serving as the bedrock upon which I hope to build my career as a software engineer. With each line of code I write and each bug I squash, I'm inching closer to my goal of mastering the craft and making a meaningful impact in the world of technology." textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="Arial Bold Italic" size="20.0" />
+                     </font>
+                     <effect>
+                        <ColorAdjust brightness="1.0" contrast="1.0" />
+                     </effect></Label>
+                 </children>
+             </VBox>
+         </children>
+      </HBox>
     </children>
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+        <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
     </padding>
 </VBox>
