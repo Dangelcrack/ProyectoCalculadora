@@ -23,7 +23,6 @@ public class DeletePokemonController extends Controller implements Initializable
     private ImageView imageView;
     @FXML
     private ComboBox<Pokemon> pokemonComboBox;
-    // Reference to the PokemonController
     private PokemonController controller;
     /**
      * This method is called when the view is opened with the given input.
@@ -41,7 +40,6 @@ public class DeletePokemonController extends Controller implements Initializable
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Set the background image for the vbox
         URL imageUrl = getClass().getResource("/com/github/dangelcrack/media/ModalImageUtils/img.jpg");
         BackgroundImage backgroundImage = new BackgroundImage(
                 new Image(imageUrl.toExternalForm()),
@@ -51,13 +49,9 @@ public class DeletePokemonController extends Controller implements Initializable
                 new BackgroundSize(100, 100, true, true, false, true)
         );
         vbox.setBackground(new Background(backgroundImage));
-
-        // Retrieve the list of Pokemon and set them in the combo box
         List<Pokemon> pokemons = PokemonDAO.build().findAll();
         ObservableList<Pokemon> observableNames = FXCollections.observableArrayList(pokemons);
         pokemonComboBox.setItems(observableNames);
-
-        // Set an action on the combo box to initialize the view with the selected Pokemon
         pokemonComboBox.setOnAction(event -> {
             Pokemon selectedPokemon = pokemonComboBox.getValue();
             initializeWithPokemon(selectedPokemon);
@@ -69,7 +63,6 @@ public class DeletePokemonController extends Controller implements Initializable
      * @param pokemon The Pokemon instance containing the Pokemon's data.
      */
     private void initializeWithPokemon(Pokemon pokemon) {
-        // Load the Pokemon's image and set it to the imageView
         InputStream inputStream = getClass().getResourceAsStream("/com/github/dangelcrack/media/PokemonImages/" + pokemon.getPhotoPokemon());
         Image image = new Image(inputStream);
         imageView.setImage(image);
@@ -81,16 +74,13 @@ public class DeletePokemonController extends Controller implements Initializable
      */
     @FXML
     private void closeWindow(Event event) {
-        // Get the selected Pokemon name from the combo box
         String pokemonName = pokemonComboBox.getValue().getPokemonName();
         if (pokemonName != null) {
-            // Find the Pokemon by name and delete it if it exists
             Pokemon pokemon = PokemonDAO.build().findByName(pokemonName);
             if (pokemon != null) {
                 this.controller.deletePokemon(pokemon);
             }
         }
-        // Hide the window
         ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 
@@ -100,6 +90,5 @@ public class DeletePokemonController extends Controller implements Initializable
      */
     @Override
     public void onClose(Object output) {
-        // Not implemented
     }
 }

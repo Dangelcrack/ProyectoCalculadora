@@ -365,7 +365,7 @@ public class EditObjectController extends Controller implements Initializable{
                 e.printStackTrace();
             }
             Image image = new Image(destinationFile.toURI().toString());
-            imageView.setImage(image);//esto es para que en la pantalla de añadir pokemon al seleccionar la imagen se muestre abajo del boton de agregar
+            imageView.setImage(image);
         }
     }
 

@@ -20,10 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name="connection")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ConnectionProperties implements Serializable {
-    // Unique identifier for the Serializable class
     private static final long serialVersionUID = 1L;
-
-    // Database connection properties
     private String server;
     private String port;
     private String database;

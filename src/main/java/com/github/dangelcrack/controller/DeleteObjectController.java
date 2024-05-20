@@ -24,7 +24,6 @@ public class DeleteObjectController extends Controller implements Initializable 
     private ComboBox<Obj> objComboBox;
     @FXML
     private ImageView imageView;
-    // Reference to the ObjectsController
     private ObjectsController controller;
     /**
      * This method is called when the view is opened.
@@ -41,7 +40,6 @@ public class DeleteObjectController extends Controller implements Initializable 
      */
     @Override
     public void onClose(Object output) {
-        // Not implemented
     }
     /**
      * Initializes the controller class, sets up the background image, and populates the objects combo box.
@@ -50,7 +48,6 @@ public class DeleteObjectController extends Controller implements Initializable 
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Set the background image for the vbox
         URL imageUrl = getClass().getResource("/com/github/dangelcrack/media/ModalImageUtils/img.jpg");
         BackgroundImage backgroundImage = new BackgroundImage(
                 new Image(imageUrl.toExternalForm()),
@@ -60,13 +57,9 @@ public class DeleteObjectController extends Controller implements Initializable 
                 new BackgroundSize(100, 100, true, true, false, true)
         );
         vbox.setBackground(new Background(backgroundImage));
-
-        // Retrieve the list of objects and set them in the combo box
         List<Obj> objs = ObjDAO.build().findAll();
         ObservableList<Obj> observableNames = FXCollections.observableArrayList(objs);
         objComboBox.setItems(observableNames);
-
-        // Set an action on the combo box to initialize the view with the selected object
         objComboBox.setOnAction(event -> {
             Obj selectedObj = objComboBox.getValue();
             initializeWithObj(selectedObj);
@@ -78,7 +71,6 @@ public class DeleteObjectController extends Controller implements Initializable 
      * @param obj The Obj instance containing the object's data.
      */
     private void initializeWithObj(Obj obj) {
-        // Load the object's image and set it to the imageView
         InputStream inputStream = getClass().getResourceAsStream("/com/github/dangelcrack/media/ObjImages/" + obj.getPhotoObj());
         Image image = new Image(inputStream);
         imageView.setImage(image);
@@ -90,16 +82,13 @@ public class DeleteObjectController extends Controller implements Initializable 
      */
     @FXML
     private void closeWindow(Event event) {
-        // Get the selected object name from the combo box
         String objName = objComboBox.getValue().getNameObject();
         if (objName != null) {
-            // Find the object by name and delete it if it exists
             Obj obj = ObjDAO.build().findByName(objName);
             if (obj != null) {
                 this.controller.deleteObj(obj);
             }
         }
-        // Hide the window
         ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 }

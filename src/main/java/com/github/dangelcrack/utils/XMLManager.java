@@ -23,12 +23,10 @@ public class XMLManager {
         boolean result = false;
         JAXBContext context;
         try {
-            // Create JAXB context and marshaller
             context = JAXBContext.newInstance(c.getClass());
             Marshaller m = context.createMarshaller();
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             m.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
-            // Marshal the object to the specified file
             m.marshal(c, new File(filename));
             result = true;
         } catch (JAXBException e) {
@@ -49,10 +47,8 @@ public class XMLManager {
         T result = c;
         JAXBContext context;
         try {
-            // Create JAXB context and unmarshaller
             context = JAXBContext.newInstance(c.getClass());
             Unmarshaller um = context.createUnmarshaller();
-            // Unmarshal the object from the specified file
             result = (T) um.unmarshal(new File(filename));
         } catch (JAXBException e) {
             e.printStackTrace();

@@ -19,7 +19,6 @@ public class DeleteMoveController extends Controller implements Initializable {
     private VBox vbox;
     @FXML
     private ComboBox<Move> movesComboBox;
-    // Reference to the MovesController
     private MovesController controller;
     /**
      * This method is called when the view is opened.
@@ -36,7 +35,6 @@ public class DeleteMoveController extends Controller implements Initializable {
      */
     @Override
     public void onClose(Object output) {
-        // Not implemented
     }
     /**
      * Initializes the controller class and sets up the background image and moves combo box.
@@ -45,7 +43,6 @@ public class DeleteMoveController extends Controller implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Set the background image for the vbox
         URL imageUrl = getClass().getResource("/com/github/dangelcrack/media/ModalImageUtils/img.jpg");
         BackgroundImage backgroundImage = new BackgroundImage(
                 new Image(imageUrl.toExternalForm()),
@@ -55,8 +52,6 @@ public class DeleteMoveController extends Controller implements Initializable {
                 new BackgroundSize(100, 100, true, true, false, true)
         );
         vbox.setBackground(new Background(backgroundImage));
-
-        // Retrieve the list of moves and set them in the combo box
         List<Move> moves = MoveDAO.build().findAll();
         ObservableList<Move> observableNames = FXCollections.observableArrayList(moves);
         movesComboBox.setItems(observableNames);
@@ -68,16 +63,13 @@ public class DeleteMoveController extends Controller implements Initializable {
      */
     @FXML
     private void closeWindow(Event event) {
-        // Get the selected move name from the combo box
         String moveName = movesComboBox.getValue().getNameMove();
         if (moveName != null) {
-            // Find the move by name and delete it if it exists
             Move move = MoveDAO.build().findByName(moveName);
             if (move != null) {
                 this.controller.deleteMove(move);
             }
         }
-        // Hide the window
         ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 }

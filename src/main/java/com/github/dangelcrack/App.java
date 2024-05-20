@@ -31,25 +31,17 @@ public class App extends Application {
      */
     @Override
     public void start(Stage stage) throws IOException {
-        // Load the root layout from the FXML file.
         View view = AppController.loadFXML(Scenes.ROOT);
-        // Create a new scene with the loaded view and set dimensions.
         scene = new Scene(view.scene, 1105, 654);
-        // Get the controller associated with the ROOT view.
         currentController = (AppController) view.controller;
-        // Perform any actions required on opening the application.
         currentController.onOpen(null);
-        // Set the scene on the primary stage.
         stage.setScene(scene);
-        // Attempt to set the application icon.
         try {
             stage.getIcons().add(new Image(getClass().getResourceAsStream("/com/github/dangelcrack/media/ModalImageUtils/iconPokemon.png")));
         } catch (Exception e) {
             e.printStackTrace();
         }
-        // Set the title of the primary stage window.
         stage.setTitle("Pokemon Calculator");
-        // Display the primary stage.
         stage.show();
     }
 
@@ -67,7 +59,6 @@ public class App extends Application {
      * @param args The command line arguments passed to the application.
      */
     public static void main(String[] args) {
-        // Launch the JavaFX application.
         launch();
     }
 }

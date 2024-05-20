@@ -11,9 +11,7 @@ import com.github.dangelcrack.utils.XMLManager;
  */
 public class loadConnection {
     public static void main(String[] args) {
-        // Create a new ConnectionProperties object and populate it by reading from the "connection.xml" file
         ConnectionProperties c = XMLManager.readXML(new ConnectionProperties(), "connection.xml");
-        // Print the loaded connection properties to the console
         System.out.println(c);
     }
 }

@@ -88,15 +88,12 @@ public class CombatsController extends Controller implements Initializable {
 
     @Override
     public void onOpen(Object input) throws IOException {
-        // Implement any necessary operations when the view is opened
     }
     @Override
     public void onClose(Object output) {
-        // Implement any necessary operations when the view is closed
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Load the background image for the battlefield
         URL imageUrl = getClass().getResource("/com/github/dangelcrack/media/ModalImageUtils/Campodebatalla.png");
         BackgroundImage backgroundImage = new BackgroundImage(
                 new Image(imageUrl.toExternalForm()),
@@ -105,24 +102,19 @@ public class CombatsController extends Controller implements Initializable {
                 BackgroundPosition.DEFAULT,
                 new BackgroundSize(100, 100, true, true, false, true)
         );
-        // Set the background image to the vbox
         vbox.setBackground(new Background(backgroundImage));
-        // Retrieve all Pokemon from the database and add them to the combo boxes
         List<Pokemon> pokemons = PokemonDAO.build().findAll();
         ObservableList<Pokemon> observableNames = FXCollections.observableArrayList(pokemons);
         pokemon1ComboBox.setItems(observableNames);
-        // Set an action on Pokemon selection from the combo box
         pokemon1ComboBox.setOnAction(event -> {
             Pokemon selectedPokemon1 = pokemon1ComboBox.getValue();
             initializeWithPokemon1(selectedPokemon1);
         });
         pokemon2ComboBox.setItems(observableNames);
-        // Set an action on Pokemon selection from the combo box
         pokemon2ComboBox.setOnAction(event -> {
             Pokemon selectedPokemon2 = pokemon2ComboBox.getValue();
             initializeWithPokemon2(selectedPokemon2);
         });
-        // Calculate remaining health and update health bars upon button click
         btnCalculateHealth.setOnAction(event -> {
             double remainingHealth1 = calculateRemainingHealthPokemon1();
             double remainingHealth2 = calculateRemainingHealthPokemon2();
@@ -130,7 +122,6 @@ public class CombatsController extends Controller implements Initializable {
             double progressBar2 = updateHealthBarPokemon2(remainingHealth2);
             healthBarPokemon1.setProgress(progressBar1);
             healthBarPokemon2.setProgress(progressBar2);
-            // Update the labels with the remaining health
             labelRemainingHealthPokemon1.setText((int) (remainingHealth1) + "/" + totalHpPokemon1.getValue());
             labelRemainingHealthPokemon2.setText((int) (remainingHealth2) + "/" + totalHpPokemon2.getValue());
         });
@@ -264,7 +255,7 @@ public class CombatsController extends Controller implements Initializable {
         }
         double baseDamage = getBaseDamage(pokemon1ComboBox.getValue(), move, pokemon2ComboBox.getValue(), object);
         double typeModifier = calculateTypeModifier(move.getTypeMove(), pokemon2ComboBox.getValue().getPokemonFirstType(), pokemon2ComboBox.getValue().getPokemonSecondType());
-        double stab; // Same Type Attack Bonus
+        double stab;
         if (pokemon1ComboBox.getValue().getPokemonFirstType().equals(move.getTypeMove())) {
             stab = 1.5;
         } else {
@@ -294,7 +285,7 @@ public class CombatsController extends Controller implements Initializable {
         }
         double baseDamage = getBaseDamage(pokemon2ComboBox.getValue(), move, pokemon1ComboBox.getValue(), object);
         double typeModifier = calculateTypeModifier(move.getTypeMove(), pokemon1ComboBox.getValue().getPokemonFirstType(), pokemon1ComboBox.getValue().getPokemonSecondType());
-        double stab; // Same Type Attack Bonus
+        double stab;
         if (pokemon1ComboBox.getValue().getPokemonFirstType().equals(move.getTypeMove())) {
             stab = 1.5;
         } else {
@@ -323,7 +314,7 @@ public class CombatsController extends Controller implements Initializable {
         if (object.getBoostType() == move.getTypeMove()) {
             modifier += 0.2;
         }
-        return modifier; // Return the calculated modifier
+        return modifier;
     }
     /**
      * Calculates the base damage of a move.
