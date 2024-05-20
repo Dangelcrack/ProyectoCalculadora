@@ -37,7 +37,7 @@ public class ConnectionMariaDB {
         try {
             conn = DriverManager.getConnection(properties.getURL(), properties.getUser(), properties.getPassword());
             Statement stmt = conn.createStatement();
-            String sql = readFile("DBPokedex.sql");
+            String sql = readFile("src/main/resources/com/github/dangelcrack/DBPokedex.sql");
             String[] sqlStatements = sql.split(";");
             for (String sqlStatement : sqlStatements) {
                 if (!sqlStatement.trim().isEmpty()) {
