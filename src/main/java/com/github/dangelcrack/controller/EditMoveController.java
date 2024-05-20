@@ -1,7 +1,4 @@
 package com.github.dangelcrack.controller;
-
-// Import statements for necessary classes and packages
-
 import com.github.dangelcrack.model.dao.MoveDAO;
 import com.github.dangelcrack.model.dao.PokemonDAO;
 import com.github.dangelcrack.model.entity.Move;
@@ -117,6 +114,7 @@ public class EditMoveController extends Controller implements Initializable {
                 BackgroundPosition.DEFAULT,
                 new BackgroundSize(100, 100, true, true, false, true)
         );
+        hBox.setBackground(new Background(backgroundImage));
         imageViewTableColumn.setCellValueFactory(pokemon -> {
             String imageExtension = pokemon.getValue().getPhotoPokemon();
             String imagePath = "/com/github/dangelcrack/media/PokemonImages/" + imageExtension;
@@ -407,43 +405,33 @@ public class EditMoveController extends Controller implements Initializable {
      * @param move The move to initialize the UI with.
      */
     private void initializeWithMove(Move move) {
-        // Set the power of the move in the UI
         power.setValue(move.getPower());
-        // Set the type of the move in the UI
         type.setValue(move.getTypeMove());
-        // Populate the type options in the UI
         type.setItems(FXCollections.observableArrayList(Types.values()));
-        // Set the category of the move in the UI
         category.setValue(move.getCategory());
-        // Populate the category options in the UI
         category.setItems(FXCollections.observableArrayList(Category.values()));
     }
 
-
+    /**
+     * Handles the closing of the window.
+     * Collects data from UI components, creates a new Move , and saves it through the controller.
+     *
+     * @param event The event triggering the method call.
+     */
     @FXML
     private void closeWindow(Event event) {
-        // Retrieve the power value from the UI and cast it to an integer
         int powerValue = (int) power.getValue();
-        // Retrieve the move type from the UI
         Types moveType = type.getValue();
-        // Retrieve the move category from the UI
         Category moveCategory = category.getValue();
-        // Create a list of selected Pokemon
         List<Pokemon> selectedPokemonList = new ArrayList<>(pokemonList);
-        // Get the currently selected move from the table view
         Move moveBeingEdited = tableViewMoves.getSelectionModel().getSelectedItem();
-
-        // If a move is selected, update its details
         if (moveBeingEdited != null) {
             moveBeingEdited.setPower(powerValue);
             moveBeingEdited.setTypeMove(moveType);
             moveBeingEdited.setCategory(moveCategory);
             moveBeingEdited.setPokemonCanLearn(selectedPokemonList);
-            // Delete the old move and save the updated move
             this.controller.deleteOldMove(tableViewMoves.getSelectionModel().getSelectedItem());
             this.controller.saveMove(moveBeingEdited);
-
-            // Close the window
             ((Node) event.getSource()).getScene().getWindow().hide();
         }
     }

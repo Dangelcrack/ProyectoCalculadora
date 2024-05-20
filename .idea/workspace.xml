@@ -10,10 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="63469422-25db-44e1-a049-4cbbe737eae6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/ProyectoCalculadora_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/Ejecutable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/Executable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/controller/EditMoveController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/dangelcrack/controller/EditMoveController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/view/deleteObject.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/github/dangelcrack/view/deleteObject.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
