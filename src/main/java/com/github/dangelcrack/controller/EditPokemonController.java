@@ -150,6 +150,10 @@ public class EditPokemonController extends Controller implements Initializable {
     @FXML
     private ComboBox<Move> moveChoiceBox4;
     private PokemonController controller;
+    @Override
+    public void onOpen(Object input) throws IOException {
+            this.controller = (PokemonController) input;
+    }
 
     /**
      * Initializes the controller with necessary components and data.
@@ -373,10 +377,7 @@ public class EditPokemonController extends Controller implements Initializable {
         }
     }
 
-    @Override
-    public void onOpen(Object input) throws IOException {
 
-    }
 
     @Override
     public void onClose(Object output) {
