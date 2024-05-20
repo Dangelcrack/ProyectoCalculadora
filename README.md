@@ -1,11 +1,11 @@
-# Proyecto Calculadora de Daño entre Pokémon
+# Pokemon Damage Calculator Project
 
-Este proyecto implementa una calculadora de daño en Java que permite calcular el daño que se infligirían dos Pokémon entre sí en un combate. La calculadora tiene en cuenta diversos factores, como los tipos de los Pokémon, sus estadísticas, movimientos y efectos adicionales.
+This project implements a damage calculator in Java that allows calculating the damage two Pokémon would inflict on each other in a battle. The calculator takes into account various factors, such as the types of the Pokémon, their statistics, moves, and additional effects.
 
-## Funcionalidades principales
+## Key Features
 
-- **Cálculo de daño**: Permite calcular el daño que un Pokémon infligiría a otro utilizando diferentes movimientos.
-- **Tipos de Pokémon**: Considera la efectividad de los tipos de Pokémon en el cálculo del daño.
-- **Estadísticas Pokémon**: Utiliza las estadísticas de ataque, defensa, poder especial y defensa especial para calcular el daño.
-- **Movimientos Pokémon**: Permite seleccionar movimientos específicos y sus efectos para calcular el daño resultante.
-- **Interfaz gráfica (opcional)**: Posibilidad de implementar una interfaz gráfica para una experiencia más intuitiva.
+- **Damage Calculation**: Allows calculating the damage a Pokémon would inflict on another using different moves.
+- **Pokemon Types**: Considers the effectiveness of Pokémon types in the damage calculation.
+- **Pokemon Statistics**: Utilizes attack, defense, special attack, and special defense statistics to calculate damage.
+- **Pokemon Moves**: Permits selecting specific moves and their effects to calculate resultant damage.
+- **Graphical User Interface (Optional)**: Potential to implement a graphical user interface for a more intuitive experience.
