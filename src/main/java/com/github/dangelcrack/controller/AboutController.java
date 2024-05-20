@@ -49,10 +49,7 @@ public class AboutController extends Controller implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Load the background image from resources
         URL imageUrl = getClass().getResource("/com/github/dangelcrack/media/ModalImageUtils/FondoAbout.jpg");
-
-        // Create a BackgroundImage with specified properties
         BackgroundImage backgroundImage = new BackgroundImage(
                 new Image(imageUrl.toExternalForm()),
                 BackgroundRepeat.NO_REPEAT,
@@ -60,8 +57,6 @@ public class AboutController extends Controller implements Initializable {
                 BackgroundPosition.DEFAULT,
                 new BackgroundSize(100, 100, true, true, false, true)
         );
-
-        // Set the background image to the VBox
         vbox.setBackground(new Background(backgroundImage));
     }
 }

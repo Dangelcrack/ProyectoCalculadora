@@ -64,11 +64,8 @@ public class EditMoveController extends Controller implements Initializable {
     private TableColumn<Pokemon, Image> columnFirstType;
     @FXML
     private TableColumn<Pokemon, Image> columnSecondType;
-    // ObservableList to hold Pokemon entities
     private ObservableList<Pokemon> pokemonList = FXCollections.observableArrayList();
-    // ObservableList to hold Move entities
     public ObservableList<Move> moves;
-    // Reference to the MovesController
     private MovesController controller;
 
     /**
@@ -78,13 +75,10 @@ public class EditMoveController extends Controller implements Initializable {
      */
     @Override
     public void onOpen(Object input) {
-        // Initialize the Pokemon list and set it to the TableView
         List<Pokemon> pokemons = new ArrayList<>();
         pokemonList = FXCollections.observableArrayList(pokemons);
         tableViewPokemon.setItems(pokemonList);
-        // Set the controller reference
         this.controller = (MovesController) input;
-        // Retrieve the list of Moves and set them to the TableView
         List<Move> moves = MoveDAO.build().findAll();
         this.moves = FXCollections.observableArrayList(moves);
         tableViewMoves.refresh();

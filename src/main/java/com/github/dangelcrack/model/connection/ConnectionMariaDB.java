@@ -9,11 +9,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 public class ConnectionMariaDB {
-    // XML file containing the connection properties
     private final static String FILE = "connection.xml";
-    // Single instance of the class (Singleton pattern)
     private static ConnectionMariaDB _instance;
-    // Connection object for database connection
     private static Connection conn;
 
     /**
@@ -24,9 +21,7 @@ public class ConnectionMariaDB {
         // Read the connection properties from the XML file
         ConnectionProperties properties = (ConnectionProperties) XMLManager.readXML(new ConnectionProperties(), FILE);
         try {
-            // Validate the database by executing the necessary SQL scripts
             validateDB(properties);
-            // Establish the connection to the database with the read properties
             conn = DriverManager.getConnection(properties.getURL() + "/" + properties.getDatabase(), properties.getUser(), properties.getPassword());
         } catch (SQLException e) {
             e.printStackTrace();
@@ -40,14 +35,10 @@ public class ConnectionMariaDB {
      */
     private void validateDB(ConnectionProperties properties) {
         try {
-            // Establish an initial connection to the database
             conn = DriverManager.getConnection(properties.getURL(), properties.getUser(), properties.getPassword());
             Statement stmt = conn.createStatement();
-            // Read the SQL file with the configuration scripts
             String sql = readFile("DBPokedex.sql");
-            // Split the SQL scripts into individual statements
             String[] sqlStatements = sql.split(";");
-            // Execute each SQL statement if it is not empty
             for (String sqlStatement : sqlStatements) {
                 if (!sqlStatement.trim().isEmpty()) {
                     stmt.execute(sqlStatement);
@@ -68,7 +59,6 @@ public class ConnectionMariaDB {
         StringBuilder content = new StringBuilder();
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
-            // Read the file line by line and construct the content string
             while ((line = reader.readLine()) != null) {
                 content.append(line).append("\n");
             }
